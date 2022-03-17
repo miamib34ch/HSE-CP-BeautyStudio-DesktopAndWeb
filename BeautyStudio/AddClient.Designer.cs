@@ -364,6 +364,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(559, 581);
+            this.ControlBox = false;
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.btnCancel);

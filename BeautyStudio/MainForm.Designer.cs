@@ -36,6 +36,7 @@
             this.добавитьНовогоКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.свойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьСловариToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,8 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.клиентыToolStripMenuItem,
-            this.свойстваToolStripMenuItem});
+            this.свойстваToolStripMenuItem,
+            this.выходToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1310, 29);
@@ -108,11 +110,20 @@
             this.обновитьСловариToolStripMenuItem.Text = "Обновить словари";
             this.обновитьСловариToolStripMenuItem.Click += new System.EventHandler(this.обновитьСловариToolStripMenuItem_Click);
             // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(67, 25);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1310, 632);
+            this.ControlBox = false;
             this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
@@ -135,5 +146,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem свойстваToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обновитьСловариToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
     }
 }

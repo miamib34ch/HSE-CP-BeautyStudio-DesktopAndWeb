@@ -27,8 +27,8 @@ namespace BeautyStudio
 
         int lastSelectedRowId = 0;
         bool flag = true; //нужен для проверки была ли строка выбрана автоматически (при перезаливке таблицы) или вручную 
-        string connectionSourse = "(LocalDB)\\MSSQLLocalDB";
-        string bdName = "BeautyStudio";
+        public string connectionSourse = "(LocalDB)\\MSSQLLocalDB";
+        public string bdName = "BeautyStudio";
 
         private void Clients_Activated(object sender, EventArgs e)
         {
@@ -82,12 +82,14 @@ namespace BeautyStudio
                 посмотретьИнформациюToolStripMenuItem.Enabled = true;
                 изменитьИнформациюToolStripMenuItem.Enabled = true;
                 удалитьКлиентаToolStripMenuItem.Enabled = true;
+                добавитьПосещениеКлиентуToolStripMenuItem.Enabled = true;
             }
             else
             {
                 посмотретьИнформациюToolStripMenuItem.Enabled = false;
                 изменитьИнформациюToolStripMenuItem.Enabled = false;
                 удалитьКлиентаToolStripMenuItem.Enabled = false;
+                добавитьПосещениеКлиентуToolStripMenuItem.Enabled = false;
             }
         }
 
@@ -129,7 +131,7 @@ namespace BeautyStudio
             visit.MdiParent = this.MdiParent;
             visit.Show();
             this.Enabled = false;
-            ((MainForm)MdiParent).addVisit = visit;
+            //((MainForm)MdiParent).addVisit = visit;
         }
     }
 }

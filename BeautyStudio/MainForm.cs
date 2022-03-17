@@ -102,5 +102,10 @@ namespace BeautyStudio
                 dictionaries.Show();
             }
         }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

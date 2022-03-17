@@ -36,6 +36,8 @@
             System.Windows.Forms.Label id_типа_иглыLabel;
             System.Windows.Forms.Label примечание_о_посещенииLabel;
             System.Windows.Forms.Label id_скидкиLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.beautyStudioDataSet = new BeautyStudio.BeautyStudioDataSet();
             this.посещениеBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.посещениеTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПосещениеTableAdapter();
@@ -45,7 +47,6 @@
             this.дата_и_время_посещенияDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.итоговая_ценаTextBox = new System.Windows.Forms.TextBox();
             this.примечание_о_посещенииTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.типИглыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.тип_иглыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Тип_иглыTableAdapter();
@@ -58,6 +59,20 @@
             this.button3 = new System.Windows.Forms.Button();
             this.fKПроцедурыВПосещенииПосещениеBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.процедуры_в_посещенииTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Процедуры_в_посещенииTableAdapter();
+            this.процедуры_клиентаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.процедуры_клиентаTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter();
+            this.процедуры_клиентаDataGridView = new System.Windows.Forms.DataGridView();
+            this.процедураBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.пигментыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.процедураTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter();
+            this.пигментыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПигментыTableAdapter();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.удалитьПроцедуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             id_посещенияLabel = new System.Windows.Forms.Label();
             id_клиентаLabel = new System.Windows.Forms.Label();
             дата_и_время_посещенияLabel = new System.Windows.Forms.Label();
@@ -67,10 +82,15 @@
             id_скидкиLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.посещениеBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.типИглыBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПосещениеBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.пигментыBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // id_посещенияLabel
@@ -226,16 +246,6 @@
             this.примечание_о_посещенииTextBox.Size = new System.Drawing.Size(217, 67);
             this.примечание_о_посещенииTextBox.TabIndex = 12;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(392, 38);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(448, 162);
-            this.dataGridView1.TabIndex = 15;
-            // 
             // comboBox1
             // 
             this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.посещениеBindingSource, "Id типа иглы", true));
@@ -244,7 +254,7 @@
             this.comboBox1.DisplayMember = "Название типа иглы";
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(169, 77);
+            this.comboBox1.Location = new System.Drawing.Point(169, 75);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 29);
             this.comboBox1.TabIndex = 16;
@@ -295,7 +305,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(619, 206);
+            this.button1.Location = new System.Drawing.Point(620, 206);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(221, 31);
             this.button1.TabIndex = 19;
@@ -312,7 +322,7 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "Сохранить посещение";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button3
             // 
@@ -334,18 +344,153 @@
             // 
             this.процедуры_в_посещенииTableAdapter.ClearBeforeFill = true;
             // 
+            // процедуры_клиентаBindingSource
+            // 
+            this.процедуры_клиентаBindingSource.DataMember = "Процедуры клиента";
+            this.процедуры_клиентаBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // процедуры_клиентаTableAdapter
+            // 
+            this.процедуры_клиентаTableAdapter.ClearBeforeFill = true;
+            // 
+            // процедуры_клиентаDataGridView
+            // 
+            this.процедуры_клиентаDataGridView.AllowUserToAddRows = false;
+            this.процедуры_клиентаDataGridView.AllowUserToDeleteRows = false;
+            this.процедуры_клиентаDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.процедуры_клиентаDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.процедуры_клиентаDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.процедуры_клиентаDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.процедуры_клиентаDataGridView.DataSource = this.процедуры_клиентаBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.процедуры_клиентаDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.процедуры_клиентаDataGridView.Location = new System.Drawing.Point(392, 37);
+            this.процедуры_клиентаDataGridView.Name = "процедуры_клиентаDataGridView";
+            this.процедуры_клиентаDataGridView.ReadOnly = true;
+            this.процедуры_клиентаDataGridView.Size = new System.Drawing.Size(448, 163);
+            this.процедуры_клиентаDataGridView.TabIndex = 21;
+            this.процедуры_клиентаDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.процедуры_клиентаDataGridView_DataError);
+            this.процедуры_клиентаDataGridView.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.процедуры_клиентаDataGridView_RowContextMenuStripNeeded);
+            // 
+            // процедураBindingSource
+            // 
+            this.процедураBindingSource.DataMember = "Процедура";
+            this.процедураBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // пигментыBindingSource
+            // 
+            this.пигментыBindingSource.DataMember = "Пигменты";
+            this.пигментыBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource
+            // 
+            this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource.DataMember = "FK_Процедуры в посещении_Процедуры клиента";
+            this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource.DataSource = this.процедуры_клиентаBindingSource;
+            // 
+            // процедураTableAdapter
+            // 
+            this.процедураTableAdapter.ClearBeforeFill = true;
+            // 
+            // пигментыTableAdapter
+            // 
+            this.пигментыTableAdapter.ClearBeforeFill = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьПроцедуруToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.ShowImageMargin = false;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 26);
+            // 
+            // удалитьПроцедуруToolStripMenuItem
+            // 
+            this.удалитьПроцедуруToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.удалитьПроцедуруToolStripMenuItem.Name = "удалитьПроцедуруToolStripMenuItem";
+            this.удалитьПроцедуруToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.удалитьПроцедуруToolStripMenuItem.Text = "Удалить процедуру";
+            this.удалитьПроцедуруToolStripMenuItem.Click += new System.EventHandler(this.удалитьПроцедуруToolStripMenuItem_Click);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id процедуры клиента";
+            this.dataGridViewTextBoxColumn1.DividerWidth = 2;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id процедуры клиента";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 2;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Id процедуры";
+            this.dataGridViewTextBoxColumn2.DataSource = this.процедураBindingSource;
+            this.dataGridViewTextBoxColumn2.DisplayMember = "Название процедуры";
+            this.dataGridViewTextBoxColumn2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Id процедуры";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn2.ValueMember = "Id процедуры";
+            this.dataGridViewTextBoxColumn2.Width = 102;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Id пигмента";
+            this.dataGridViewTextBoxColumn3.DataSource = this.пигментыBindingSource;
+            this.dataGridViewTextBoxColumn3.DisplayMember = "Название пигмента";
+            this.dataGridViewTextBoxColumn3.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Id пигмента";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.ValueMember = "Id пигмента";
+            this.dataGridViewTextBoxColumn3.Width = 89;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Примечание о процедуре клиента";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Примечание о процедуре клиента";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn4.Width = 166;
+            // 
             // Visiting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 314);
+            this.ClientSize = new System.Drawing.Size(861, 311);
+            this.ControlBox = false;
+            this.Controls.Add(this.процедуры_клиентаDataGridView);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(id_посещенияLabel);
             this.Controls.Add(this.id_посещенияTextBox);
             this.Controls.Add(id_клиентаLabel);
@@ -369,10 +514,15 @@
             this.Load += new System.EventHandler(this.Visiting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.посещениеBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.типИглыBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПосещениеBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.пигментыBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,7 +539,6 @@
         private System.Windows.Forms.DateTimePicker дата_и_время_посещенияDateTimePicker;
         private System.Windows.Forms.TextBox итоговая_ценаTextBox;
         private System.Windows.Forms.TextBox примечание_о_посещенииTextBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.BindingSource типИглыBindingSource;
         private BeautyStudioDataSetTableAdapters.Тип_иглыTableAdapter тип_иглыTableAdapter;
@@ -402,5 +551,19 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.BindingSource fKПроцедурыВПосещенииПосещениеBindingSource;
         private BeautyStudioDataSetTableAdapters.Процедуры_в_посещенииTableAdapter процедуры_в_посещенииTableAdapter;
+        private System.Windows.Forms.BindingSource процедуры_клиентаBindingSource;
+        private BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter процедуры_клиентаTableAdapter;
+        private System.Windows.Forms.DataGridView процедуры_клиентаDataGridView;
+        private System.Windows.Forms.BindingSource fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource;
+        private System.Windows.Forms.BindingSource процедураBindingSource;
+        private BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter процедураTableAdapter;
+        private System.Windows.Forms.BindingSource пигментыBindingSource;
+        private BeautyStudioDataSetTableAdapters.ПигментыTableAdapter пигментыTableAdapter;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem удалитьПроцедуруToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
