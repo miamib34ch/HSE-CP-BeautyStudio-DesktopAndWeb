@@ -14,7 +14,7 @@ namespace BeautyStudio
     {
 
         public Clients clients { get; set; }
-        int id = 0;
+        int idSkin = 0;
 
         public AddClient()
         {
@@ -35,12 +35,11 @@ namespace BeautyStudio
             дата_рожденияDateTimePicker.Value = DateTime.Now;
         }
 
-        public AddClient(int position, Clients clients, int id)
+        public AddClient(int idClient, Clients clients, int idSkin)
         {
             InitializeComponent();
-            this.клиентTableAdapter.Fill(this.beautyStudioDataSet.Клиент);
-            клиентBindingSource.Position = position;
-            this.id = id;
+            this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент, idClient);
+            this.idSkin = idSkin;
             this.Text = "Изменение информации о клиенте";
             this.clients = clients;
         }
@@ -57,6 +56,13 @@ namespace BeautyStudio
             Close();
         }
 
+        private void AddClient_Load(object sender, EventArgs e)
+        {
+            this.тип_кожиTableAdapter.Fill(this.beautyStudioDataSet.Тип_кожи);
+            Invalidate();
+            comboBoxType.SelectedIndex = idSkin;
+        }
+
         private void AddClient_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (clients != null)
@@ -68,12 +74,9 @@ namespace BeautyStudio
             Invalidate();
         }
 
-        private void AddClient_Load(object sender, EventArgs e)
+        private void фамилияTextBox_Leave(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet.Тип_кожи". При необходимости она может быть перемещена или удалена.
-            this.тип_кожиTableAdapter.Fill(this.beautyStudioDataSet.Тип_кожи);
-            Invalidate();
-            comboBoxType.SelectedIndex = id;
+            фамилияTextBox.Text = clients.firstUp(фамилияTextBox.Text);
         }
     }
 }

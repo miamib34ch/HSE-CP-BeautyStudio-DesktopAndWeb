@@ -66,9 +66,9 @@ namespace BeautyStudio
         {
             AddClient addClient;
             if (int.TryParse(клиентDataGridView.CurrentRow.Cells[6].Value.ToString(),out int res))
-                addClient = new AddClient(клиентBindingSource.Position, this, res);
+                addClient = new AddClient(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, res);
             else
-                addClient = new AddClient(клиентBindingSource.Position, this, 0);
+                addClient = new AddClient(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, 0);
             addClient.MdiParent = this.MdiParent;
             addClient.Show();
             this.Enabled = false;
@@ -81,14 +81,12 @@ namespace BeautyStudio
             {
                 посмотретьИнформациюToolStripMenuItem.Enabled = true;
                 изменитьИнформациюToolStripMenuItem.Enabled = true;
-                удалитьКлиентаToolStripMenuItem.Enabled = true;
                 добавитьПосещениеКлиентуToolStripMenuItem.Enabled = true;
             }
             else
             {
                 посмотретьИнформациюToolStripMenuItem.Enabled = false;
                 изменитьИнформациюToolStripMenuItem.Enabled = false;
-                удалитьКлиентаToolStripMenuItem.Enabled = false;
                 добавитьПосещениеКлиентуToolStripMenuItem.Enabled = false;
             }
         }
@@ -98,32 +96,6 @@ namespace BeautyStudio
             e.ContextMenuStrip = contextMenuStripClient;
         }
 
-        private void удалитьКлиентаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string surname = клиентDataGridView.CurrentRow.Cells[1].Value.ToString();
-            string name = клиентDataGridView.CurrentRow.Cells[2].Value.ToString();
-            string fatherName = клиентDataGridView.CurrentRow.Cells[3].Value.ToString();
-            var result = MessageBox.Show($"Удаление клиента: {surname} {name} {fatherName}", "Удалить?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                int index = клиентDataGridView.CurrentRow.Index;
-                DeleteRow(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()));
-                клиентDataGridView.Rows.Remove(клиентDataGridView.CurrentRow);
-                клиентDataGridView.Refresh();
-            }
-        }
-
-        void DeleteRow(int id)
-        {
-            SqlConnection conn = new SqlConnection($@"Data Source={connectionSourse};Initial Catalog= {bdName};Integrated Security=True;");
-            conn.Open();
-            var sqlq = $"DELETE FROM [dbo].[Клиент] WHERE [Id клиента] = @id";
-            var cmd = new SqlCommand(sqlq, conn);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-        }
-
         private void добавитьПосещениеКлиентуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Visiting visit;
@@ -131,7 +103,44 @@ namespace BeautyStudio
             visit.MdiParent = this.MdiParent;
             visit.Show();
             this.Enabled = false;
-            //((MainForm)MdiParent).addVisit = visit;
+            ((MainForm)MdiParent).addVisit = visit;
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            if (surnameSearch.Text != "")
+            {
+                this.клиентTableAdapter.FillBySurname(this.beautyStudioDataSet.Клиент, firstUp(surnameSearch.Text));
+                
+                surnameSearch.Text = "";
+            }
+            if (numberSearch.Text != "(   )    -" && numberSearch.Text.Length == 14)
+            {
+                this.клиентTableAdapter.FillByNumber(this.beautyStudioDataSet.Клиент, numberSearch.Text);
+                numberSearch.Text = "(   )    -";
+            }
+        }
+
+        public string firstUp(string s)
+        {
+            if (s != "")
+            {
+                var s0Up = char.ToUpper(s[0]);
+                if (s0Up != s[0])
+                {
+                    string new_s = ""; 
+                    new_s += s0Up;
+                    for (int i = 1; i < s.Length; i++)
+                    {
+                        new_s += s[i].ToString();
+                    }
+                    return new_s;
+                }
+                else 
+                    return s;
+            }
+            else
+                return s;
         }
     }
 }

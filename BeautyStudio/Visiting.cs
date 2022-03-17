@@ -30,6 +30,10 @@ namespace BeautyStudio
 
         private void Visiting_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet1.Процедура". При необходимости она может быть перемещена или удалена.
+            this.процедураTableAdapter.Fill(this.beautyStudioDataSet1.Процедура);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet1.Скидка". При необходимости она может быть перемещена или удалена.
+            this.скидкаTableAdapter.Fill(this.beautyStudioDataSet1.Скидка);
             this.пигментыTableAdapter.Fill(this.beautyStudioDataSet.Пигменты);
             this.процедураTableAdapter.Fill(this.beautyStudioDataSet.Процедура);
             this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
@@ -49,17 +53,11 @@ namespace BeautyStudio
 
         private void Visiting_Activated(object sender, EventArgs e)
         {
-            if (посещениеTableAdapter.sumPrice(int.Parse(id_посещенияTextBox.Text)) == null)
-            {
-                итоговая_ценаTextBox.Text = "0";
-            }
-            else
-                итоговая_ценаTextBox.Text = $"{посещениеTableAdapter.sumPrice(int.Parse(id_посещенияTextBox.Text))}";
+            updateMoney();
             посещениеBindingSource.EndEdit();
             посещениеTableAdapter.Update(this.beautyStudioDataSet.Посещение);
             this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
         }
-
 
         private void Visiting_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -105,12 +103,7 @@ namespace BeautyStudio
                 процедуры_клиентаDataGridView.Rows.Remove(процедуры_клиентаDataGridView.CurrentRow);
                 процедуры_клиентаDataGridView.Refresh();
             }
-            if (посещениеTableAdapter.sumPrice(int.Parse(id_посещенияTextBox.Text)) == null)
-            {
-                итоговая_ценаTextBox.Text = "0";
-            }
-            else
-                итоговая_ценаTextBox.Text = $"{посещениеTableAdapter.sumPrice(int.Parse(id_посещенияTextBox.Text))}";
+            updateMoney();
         }
 
         void DeleteRow(int id)
@@ -122,6 +115,31 @@ namespace BeautyStudio
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
             conn.Close();
+        }
+
+        void updateMoney()
+        {
+            try
+            {
+                int sale = int.Parse(comboBox2.Text);
+                if (посещениеTableAdapter.sumPrice(int.Parse(id_посещенияTextBox.Text)) == null)
+                {
+                    итоговая_ценаTextBox.Text = $"{0 - sale}";
+                }
+                else
+                {
+                    итоговая_ценаTextBox.Text = $"{(int)посещениеTableAdapter.sumPrice(int.Parse(id_посещенияTextBox.Text)) - sale}";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void comboBox2_TextChanged(object sender, EventArgs e)
+        {
+            updateMoney();
         }
     }
 }

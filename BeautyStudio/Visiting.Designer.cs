@@ -51,24 +51,23 @@
             this.типИглыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.тип_иглыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Тип_иглыTableAdapter();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.скидкаBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.скидкаTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.СкидкаTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.fKПроцедурыВПосещенииПосещениеBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.процедуры_в_посещенииTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Процедуры_в_посещенииTableAdapter();
             this.процедуры_клиентаBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.процедуры_клиентаTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter();
             this.процедуры_клиентаDataGridView = new System.Windows.Forms.DataGridView();
-            this.процедураBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.пигментыBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.процедураTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter();
             this.пигментыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПигментыTableAdapter();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьПроцедуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beautyStudioDataSet1 = new BeautyStudio.BeautyStudioDataSet();
+            this.скидкаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.процедураBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -83,14 +82,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.посещениеBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.типИглыBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПосещениеBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.пигментыBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // id_посещенияLabel
@@ -272,9 +270,8 @@
             // comboBox2
             // 
             this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.посещениеBindingSource, "Id скидки", true));
-            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.скидкаBindingSource, "Название скидки", true));
             this.comboBox2.DataSource = this.скидкаBindingSource;
-            this.comboBox2.DisplayMember = "Название скидки";
+            this.comboBox2.DisplayMember = "Размер скидки";
             this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(169, 234);
@@ -282,11 +279,7 @@
             this.comboBox2.Size = new System.Drawing.Size(200, 29);
             this.comboBox2.TabIndex = 17;
             this.comboBox2.ValueMember = "Id скидки";
-            // 
-            // скидкаBindingSource
-            // 
-            this.скидкаBindingSource.DataMember = "Скидка";
-            this.скидкаBindingSource.DataSource = this.beautyStudioDataSet;
+            this.comboBox2.TextChanged += new System.EventHandler(this.comboBox2_TextChanged);
             // 
             // скидкаTableAdapter
             // 
@@ -334,11 +327,6 @@
             this.button3.Text = "Отмена";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Cancel_Click);
-            // 
-            // fKПроцедурыВПосещенииПосещениеBindingSource
-            // 
-            this.fKПроцедурыВПосещенииПосещениеBindingSource.DataMember = "FK_Процедуры в посещении_Посещение";
-            this.fKПроцедурыВПосещенииПосещениеBindingSource.DataSource = this.посещениеBindingSource;
             // 
             // процедуры_в_посещенииTableAdapter
             // 
@@ -389,20 +377,10 @@
             this.процедуры_клиентаDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.процедуры_клиентаDataGridView_DataError);
             this.процедуры_клиентаDataGridView.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.процедуры_клиентаDataGridView_RowContextMenuStripNeeded);
             // 
-            // процедураBindingSource
-            // 
-            this.процедураBindingSource.DataMember = "Процедура";
-            this.процедураBindingSource.DataSource = this.beautyStudioDataSet;
-            // 
             // пигментыBindingSource
             // 
             this.пигментыBindingSource.DataMember = "Пигменты";
             this.пигментыBindingSource.DataSource = this.beautyStudioDataSet;
-            // 
-            // fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource
-            // 
-            this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource.DataMember = "FK_Процедуры в посещении_Процедуры клиента";
-            this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource.DataSource = this.процедуры_клиентаBindingSource;
             // 
             // процедураTableAdapter
             // 
@@ -427,6 +405,21 @@
             this.удалитьПроцедуруToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.удалитьПроцедуруToolStripMenuItem.Text = "Удалить процедуру";
             this.удалитьПроцедуруToolStripMenuItem.Click += new System.EventHandler(this.удалитьПроцедуруToolStripMenuItem_Click);
+            // 
+            // beautyStudioDataSet1
+            // 
+            this.beautyStudioDataSet1.DataSetName = "BeautyStudioDataSet";
+            this.beautyStudioDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // скидкаBindingSource
+            // 
+            this.скидкаBindingSource.DataMember = "Скидка";
+            this.скидкаBindingSource.DataSource = this.beautyStudioDataSet1;
+            // 
+            // процедураBindingSource
+            // 
+            this.процедураBindingSource.DataMember = "Процедура";
+            this.процедураBindingSource.DataSource = this.beautyStudioDataSet1;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -515,14 +508,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.посещениеBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.типИглыBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПосещениеBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.пигментыBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,24 +535,23 @@
         private System.Windows.Forms.BindingSource типИглыBindingSource;
         private BeautyStudioDataSetTableAdapters.Тип_иглыTableAdapter тип_иглыTableAdapter;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.BindingSource скидкаBindingSource;
         private BeautyStudioDataSetTableAdapters.СкидкаTableAdapter скидкаTableAdapter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.BindingSource fKПроцедурыВПосещенииПосещениеBindingSource;
         private BeautyStudioDataSetTableAdapters.Процедуры_в_посещенииTableAdapter процедуры_в_посещенииTableAdapter;
         private System.Windows.Forms.BindingSource процедуры_клиентаBindingSource;
         private BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter процедуры_клиентаTableAdapter;
         private System.Windows.Forms.DataGridView процедуры_клиентаDataGridView;
-        private System.Windows.Forms.BindingSource fKПроцедурыВПосещенииПроцедурыКлиентаBindingSource;
-        private System.Windows.Forms.BindingSource процедураBindingSource;
         private BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter процедураTableAdapter;
         private System.Windows.Forms.BindingSource пигментыBindingSource;
         private BeautyStudioDataSetTableAdapters.ПигментыTableAdapter пигментыTableAdapter;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem удалитьПроцедуруToolStripMenuItem;
+        private BeautyStudioDataSet beautyStudioDataSet1;
+        private System.Windows.Forms.BindingSource скидкаBindingSource;
+        private System.Windows.Forms.BindingSource процедураBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;

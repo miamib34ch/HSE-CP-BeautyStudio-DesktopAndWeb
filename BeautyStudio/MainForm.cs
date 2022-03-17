@@ -87,11 +87,6 @@ namespace BeautyStudio
             }
         }
 
-        private void найтиКлиентаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void обновитьСловариToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Password psw = new Password();

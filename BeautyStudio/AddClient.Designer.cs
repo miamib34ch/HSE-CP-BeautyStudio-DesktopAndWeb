@@ -210,6 +210,7 @@
             this.фамилияTextBox.Name = "фамилияTextBox";
             this.фамилияTextBox.Size = new System.Drawing.Size(320, 29);
             this.фамилияTextBox.TabIndex = 4;
+            this.фамилияTextBox.Leave += new System.EventHandler(this.фамилияTextBox_Leave);
             // 
             // имяTextBox
             // 
