@@ -146,7 +146,13 @@ namespace BeautyStudio
         private void посмотретьИнформациюToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClientInfo info = new ClientInfo(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()));
+            info.MdiParent = this.MdiParent;
             info.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

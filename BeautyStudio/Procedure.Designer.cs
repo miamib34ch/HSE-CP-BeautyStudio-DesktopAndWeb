@@ -150,7 +150,7 @@
             this.btnSave.Location = new System.Drawing.Point(243, 198);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(146, 31);
-            this.btnSave.TabIndex = 9;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -161,7 +161,7 @@
             this.Cancel.Location = new System.Drawing.Point(395, 198);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(147, 31);
-            this.Cancel.TabIndex = 10;
+            this.Cancel.TabIndex = 5;
             this.Cancel.Text = "Отмена";
             this.Cancel.UseVisualStyleBackColor = true;
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
@@ -176,7 +176,7 @@
             this.comboBox1.Location = new System.Drawing.Point(243, 16);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(299, 29);
-            this.comboBox1.TabIndex = 11;
+            this.comboBox1.TabIndex = 1;
             this.comboBox1.ValueMember = "Id процедуры";
             // 
             // процедураBindingSource
@@ -198,7 +198,7 @@
             this.comboBox2.Location = new System.Drawing.Point(243, 60);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(299, 29);
-            this.comboBox2.TabIndex = 12;
+            this.comboBox2.TabIndex = 2;
             this.comboBox2.ValueMember = "Id пигмента";
             // 
             // пигментыBindingSource
@@ -229,7 +229,7 @@
             this.примечание_о_процедуре_клиентаTextBox.Name = "примечание_о_процедуре_клиентаTextBox";
             this.примечание_о_процедуре_клиентаTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.примечание_о_процедуре_клиентаTextBox.Size = new System.Drawing.Size(316, 87);
-            this.примечание_о_процедуре_клиентаTextBox.TabIndex = 20;
+            this.примечание_о_процедуре_клиентаTextBox.TabIndex = 3;
             // 
             // id_процедуры_клиентаTextBox
             // 

@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace BeautyStudio
 {
     public partial class Dictionaries : Form
     {
+        bool wasImport = false;
+        int importCount = 0;
+        int countBeforeImport;
         public Dictionaries()
         {
             InitializeComponent();
             hideAllData();
             btnPrice.Select();  
-        }
-
-        private void пигментыBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.пигментыBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.beautyStudioDataSet);
         }
 
         private void Dictionaries_Load(object sender, EventArgs e)
@@ -40,6 +40,7 @@ namespace BeautyStudio
             this.процедураTableAdapter.Fill(this.beautyStudioDataSet.Процедура);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet.Пигменты". При необходимости она может быть перемещена или удалена.
             this.пигментыTableAdapter.Fill(this.beautyStudioDataSet.Пигменты);
+            toolTip1.SetToolTip(btnImport, "Id названий должны начинаться с 0 и идти с шагом 0\nИначе файл прочитан не будет!");
         }
 
         void hideAllData()
@@ -61,11 +62,6 @@ namespace BeautyStudio
 
             this.тип_процедурыDataGridView.Visible = false;
             this.тип_процедурыDataGridView.Enabled = false;
-
-            btnBack.Enabled = false;
-            btnBack.Visible = false;
-            btnSave.Enabled = false;
-            btnSave.Visible = false;
         }
         void hideAllBtn()
         {
@@ -86,6 +82,9 @@ namespace BeautyStudio
 
             btnSkin.Enabled = false;
             btnSkin.Visible = false;
+
+            btnClose.Enabled = false;
+            btnClose.Visible = false;
 
             btnBack.Enabled = true;
             btnBack.Visible = true;
@@ -111,10 +110,27 @@ namespace BeautyStudio
 
             btnSkin.Enabled = true;
             btnSkin.Visible = true;
+
+            btnClose.Enabled=true;
+            btnClose.Visible=true;
+
+            btnImport.Enabled = false;
+            btnImport.Visible = false;
+            btnExport.Enabled = false;
+            btnExport.Visible = false;
+            btnBack.Enabled = false;
+            btnBack.Visible = false;
+            btnSave.Enabled = false;
+            btnSave.Visible = false;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            if (wasImport && this.тип_иглыDataGridView.Enabled == true)
+            {
+                for(int i = 0; i < importCount; i++)
+                    тип_иглыTableAdapter.Delete(countBeforeImport+i);
+            }
             hideAllData();
             ComebackAllBtn();
         }
@@ -152,7 +168,11 @@ namespace BeautyStudio
             this.тип_иглыTableAdapter.Fill(this.beautyStudioDataSet.Тип_иглы);
             this.тип_иглыDataGridView.Visible = true;
             this.тип_иглыDataGridView.Enabled = true;
-            тип_иглыDataGridView.Columns[0].Visible = false;
+            this.тип_иглыDataGridView.Columns[0].Visible = false;
+            btnImport.Enabled = true;
+            btnImport.Visible = true;
+            btnExport.Enabled = true;
+            btnExport.Visible = true;
         }
 
         private void btnSkin_Click(object sender, EventArgs e)
@@ -187,11 +207,109 @@ namespace BeautyStudio
             this.процедураTableAdapter.Update(this.beautyStudioDataSet.Процедура);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet.Пигменты". При необходимости она может быть перемещена или удалена.
             this.пигментыTableAdapter.Update(this.beautyStudioDataSet.Пигменты);
+            wasImport = false;
         }
 
         private void процедураDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dt = new DataTable("Тип иглы");
+                dt.Columns.Add("Id типа иглы", typeof(int));
+                dt.Columns.Add("Название типа иглы", typeof(string));
+
+                for (int i = 0; i < тип_иглыDataGridView.Rows.Count-1; i++)
+                    dt.Rows.Add(new object[] { int.Parse(тип_иглыDataGridView.Rows[i].Cells[0].Value.ToString()), (string)тип_иглыDataGridView.Rows[i].Cells[1].Value.ToString() });
+
+                var dlg = new SaveFileDialog();
+
+                dlg.Filter = "XML|*.xml";
+
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return;
+
+                using (var fs =
+                new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write))
+                {
+                    switch (Path.GetExtension(dlg.FileName))
+                    {
+                        case ".xml":
+                            dt.WriteXml(new XmlTextWriter(fs,Encoding.UTF8));
+                            break;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Нет данных");
+            }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!wasImport)
+                    countBeforeImport = тип_иглыDataGridView.Rows.Count - 1;
+                DataTable dt = new DataTable("Тип иглы");
+                dt.Columns.Add("Id типа иглы", typeof(int));
+                dt.Columns.Add("Название типа иглы", typeof(string));
+
+                var dlg = new OpenFileDialog();
+
+                dlg.Filter = "XML|*.xml";
+
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return;
+
+                using (var fs =
+                new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    switch (Path.GetExtension(dlg.FileName))
+                    {
+                        case ".xml":
+                            dt.ReadXml(fs);
+                            break;
+                    }
+                }
+
+                if (dt.Rows[0].ItemArray[0].ToString() != "0") 
+                {
+                    MessageBox.Show("Плохой файл!");
+                    return;
+                }
+                else
+                {
+                    for (int i = 1; i < dt.Rows.Count; i++)
+                        if (dt.Rows[i].ItemArray[0].ToString() != $"{i}")
+                        {
+                            MessageBox.Show("Плохой файл!");
+                            return;
+                        }
+                }
+                
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    тип_иглыTableAdapter.Insert(int.Parse(dt.Rows[i].ItemArray[0].ToString()) + тип_иглыDataGridView.Rows.Count-1, (string)dt.Rows[i].ItemArray[1]);
+                    importCount++;
+                }
+                this.тип_иглыTableAdapter.Fill(this.beautyStudioDataSet.Тип_иглы);
+                wasImport = true;
+            }
+            catch
+            {
+                MessageBox.Show("Плохой файл!");
+            }
+}
     }
 }

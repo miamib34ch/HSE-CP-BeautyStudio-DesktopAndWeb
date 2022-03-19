@@ -209,7 +209,7 @@
             this.фамилияTextBox.Location = new System.Drawing.Point(208, 18);
             this.фамилияTextBox.Name = "фамилияTextBox";
             this.фамилияTextBox.Size = new System.Drawing.Size(320, 29);
-            this.фамилияTextBox.TabIndex = 4;
+            this.фамилияTextBox.TabIndex = 1;
             this.фамилияTextBox.Leave += new System.EventHandler(this.фамилияTextBox_Leave);
             // 
             // имяTextBox
@@ -220,7 +220,7 @@
             this.имяTextBox.Location = new System.Drawing.Point(208, 53);
             this.имяTextBox.Name = "имяTextBox";
             this.имяTextBox.Size = new System.Drawing.Size(320, 29);
-            this.имяTextBox.TabIndex = 6;
+            this.имяTextBox.TabIndex = 2;
             // 
             // отчествоTextBox
             // 
@@ -230,7 +230,7 @@
             this.отчествоTextBox.Location = new System.Drawing.Point(208, 88);
             this.отчествоTextBox.Name = "отчествоTextBox";
             this.отчествоTextBox.Size = new System.Drawing.Size(320, 29);
-            this.отчествоTextBox.TabIndex = 8;
+            this.отчествоTextBox.TabIndex = 3;
             // 
             // дата_рожденияDateTimePicker
             // 
@@ -243,7 +243,7 @@
             this.дата_рожденияDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.дата_рожденияDateTimePicker.Name = "дата_рожденияDateTimePicker";
             this.дата_рожденияDateTimePicker.Size = new System.Drawing.Size(320, 29);
-            this.дата_рожденияDateTimePicker.TabIndex = 12;
+            this.дата_рожденияDateTimePicker.TabIndex = 5;
             this.дата_рожденияDateTimePicker.Value = new System.DateTime(2022, 3, 16, 0, 0, 0, 0);
             // 
             // противопоказанияTextBox
@@ -256,7 +256,7 @@
             this.противопоказанияTextBox.Name = "противопоказанияTextBox";
             this.противопоказанияTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.противопоказанияTextBox.Size = new System.Drawing.Size(337, 70);
-            this.противопоказанияTextBox.TabIndex = 16;
+            this.противопоказанияTextBox.TabIndex = 7;
             // 
             // примечание_о_клиентеTextBox
             // 
@@ -268,7 +268,7 @@
             this.примечание_о_клиентеTextBox.Name = "примечание_о_клиентеTextBox";
             this.примечание_о_клиентеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.примечание_о_клиентеTextBox.Size = new System.Drawing.Size(337, 70);
-            this.примечание_о_клиентеTextBox.TabIndex = 18;
+            this.примечание_о_клиентеTextBox.TabIndex = 8;
             // 
             // соглашениеTextBox
             // 
@@ -280,7 +280,7 @@
             this.соглашениеTextBox.Name = "соглашениеTextBox";
             this.соглашениеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.соглашениеTextBox.Size = new System.Drawing.Size(337, 70);
-            this.соглашениеTextBox.TabIndex = 20;
+            this.соглашениеTextBox.TabIndex = 9;
             // 
             // как_узнал_о_салонеTextBox
             // 
@@ -292,7 +292,7 @@
             this.как_узнал_о_салонеTextBox.Name = "как_узнал_о_салонеTextBox";
             this.как_узнал_о_салонеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.как_узнал_о_салонеTextBox.Size = new System.Drawing.Size(337, 70);
-            this.как_узнал_о_салонеTextBox.TabIndex = 22;
+            this.как_узнал_о_салонеTextBox.TabIndex = 10;
             // 
             // btnSave
             // 
@@ -303,7 +303,7 @@
             this.btnSave.Location = new System.Drawing.Point(93, 540);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(183, 30);
-            this.btnSave.TabIndex = 23;
+            this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Добавить";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -318,7 +318,7 @@
             this.btnCancel.Location = new System.Drawing.Point(282, 540);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(183, 30);
-            this.btnCancel.TabIndex = 24;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -343,7 +343,7 @@
             this.comboBoxType.Location = new System.Drawing.Point(208, 193);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(320, 29);
-            this.comboBoxType.TabIndex = 25;
+            this.comboBoxType.TabIndex = 6;
             this.comboBoxType.ValueMember = "Id типа кожи";
             // 
             // maskedTextBox1
@@ -355,7 +355,7 @@
             this.maskedTextBox1.Mask = "(999) 000-0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(320, 29);
-            this.maskedTextBox1.TabIndex = 26;
+            this.maskedTextBox1.TabIndex = 4;
             // 
             // AddClient
             // 

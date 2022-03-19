@@ -39,10 +39,6 @@
             System.Windows.Forms.Label id_типа_иглыLabel;
             System.Windows.Forms.Label примечание_о_посещенииLabel;
             System.Windows.Forms.Label id_скидкиLabel;
-            System.Windows.Forms.Label id_процедуры_клиентаLabel;
-            System.Windows.Forms.Label id_процедурыLabel;
-            System.Windows.Forms.Label id_пигментаLabel;
-            System.Windows.Forms.Label примечание_о_процедуре_клиентаLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientInfo));
             this.фамилияLabel = new System.Windows.Forms.Label();
             this.клиентBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -55,7 +51,6 @@
             this.клиентTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.КлиентTableAdapter();
             this.tableAdapterManager = new BeautyStudio.BeautyStudioDataSetTableAdapters.TableAdapterManager();
             this.посещениеTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПосещениеTableAdapter();
-            this.процедуры_клиентаTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter();
             this.противопоказанияTextBox = new System.Windows.Forms.TextBox();
             this.примечание_о_клиентеTextBox = new System.Windows.Forms.TextBox();
             this.соглашениеTextBox = new System.Windows.Forms.TextBox();
@@ -67,24 +62,26 @@
             this.id_типа_иглыTextBox = new System.Windows.Forms.TextBox();
             this.примечание_о_посещенииTextBox = new System.Windows.Forms.TextBox();
             this.id_скидкиTextBox = new System.Windows.Forms.TextBox();
-            this.процедуры_клиентаBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.id_процедуры_клиентаTextBox = new System.Windows.Forms.TextBox();
-            this.id_процедурыTextBox = new System.Windows.Forms.TextBox();
-            this.id_пигментаTextBox = new System.Windows.Forms.TextBox();
-            this.примечание_о_процедуре_клиентаTextBox = new System.Windows.Forms.TextBox();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
             this.типКожиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.тип_кожиTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Тип_кожиTableAdapter();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.процедуры_клиентаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.процедуры_клиентаTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter();
             противопоказанияLabel = new System.Windows.Forms.Label();
             примечание_о_клиентеLabel = new System.Windows.Forms.Label();
             соглашениеLabel = new System.Windows.Forms.Label();
@@ -95,93 +92,14 @@
             id_типа_иглыLabel = new System.Windows.Forms.Label();
             примечание_о_посещенииLabel = new System.Windows.Forms.Label();
             id_скидкиLabel = new System.Windows.Forms.Label();
-            id_процедуры_клиентаLabel = new System.Windows.Forms.Label();
-            id_процедурыLabel = new System.Windows.Forms.Label();
-            id_пигментаLabel = new System.Windows.Forms.Label();
-            примечание_о_процедуре_клиентаLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.посещениеBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.типКожиBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // фамилияLabel
-            // 
-            this.фамилияLabel.AutoSize = true;
-            this.фамилияLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Фамилия", true));
-            this.фамилияLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.фамилияLabel.Location = new System.Drawing.Point(15, 39);
-            this.фамилияLabel.Name = "фамилияLabel";
-            this.фамилияLabel.Size = new System.Drawing.Size(78, 21);
-            this.фамилияLabel.TabIndex = 3;
-            this.фамилияLabel.Text = "Фамилия:";
-            // 
-            // клиентBindingSource
-            // 
-            this.клиентBindingSource.DataMember = "Клиент";
-            this.клиентBindingSource.DataSource = this.beautyStudioDataSet;
-            // 
-            // beautyStudioDataSet
-            // 
-            this.beautyStudioDataSet.DataSetName = "BeautyStudioDataSet";
-            this.beautyStudioDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // имяLabel
-            // 
-            this.имяLabel.AutoSize = true;
-            this.имяLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Имя", true));
-            this.имяLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.имяLabel.Location = new System.Drawing.Point(98, 39);
-            this.имяLabel.Name = "имяLabel";
-            this.имяLabel.Size = new System.Drawing.Size(44, 21);
-            this.имяLabel.TabIndex = 5;
-            this.имяLabel.Text = "Имя:";
-            // 
-            // отчествоLabel
-            // 
-            this.отчествоLabel.AutoSize = true;
-            this.отчествоLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Отчество", true));
-            this.отчествоLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.отчествоLabel.Location = new System.Drawing.Point(147, 39);
-            this.отчествоLabel.Name = "отчествоLabel";
-            this.отчествоLabel.Size = new System.Drawing.Size(80, 21);
-            this.отчествоLabel.TabIndex = 7;
-            this.отчествоLabel.Text = "Отчество:";
-            // 
-            // номер_телефонаLabel
-            // 
-            this.номер_телефонаLabel.AutoSize = true;
-            this.номер_телефонаLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Номер телефона", true));
-            this.номер_телефонаLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.номер_телефонаLabel.Location = new System.Drawing.Point(232, 39);
-            this.номер_телефонаLabel.Name = "номер_телефонаLabel";
-            this.номер_телефонаLabel.Size = new System.Drawing.Size(133, 21);
-            this.номер_телефонаLabel.TabIndex = 9;
-            this.номер_телефонаLabel.Text = "Номер телефона:";
-            // 
-            // дата_рожденияLabel
-            // 
-            this.дата_рожденияLabel.AutoSize = true;
-            this.дата_рожденияLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Дата рождения", true));
-            this.дата_рожденияLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.дата_рожденияLabel.Location = new System.Drawing.Point(370, 39);
-            this.дата_рожденияLabel.Name = "дата_рожденияLabel";
-            this.дата_рожденияLabel.Size = new System.Drawing.Size(124, 21);
-            this.дата_рожденияLabel.TabIndex = 11;
-            this.дата_рожденияLabel.Text = "Дата рождения:";
-            // 
-            // id_типа_кожиLabel
-            // 
-            this.id_типа_кожиLabel.AutoSize = true;
-            this.id_типа_кожиLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.id_типа_кожиLabel.Location = new System.Drawing.Point(508, 133);
-            this.id_типа_кожиLabel.Name = "id_типа_кожиLabel";
-            this.id_типа_кожиLabel.Size = new System.Drawing.Size(105, 21);
-            this.id_типа_кожиLabel.TabIndex = 13;
-            this.id_типа_кожиLabel.Text = "Id типа кожи:";
             // 
             // противопоказанияLabel
             // 
@@ -277,41 +195,80 @@
             id_скидкиLabel.TabIndex = 34;
             id_скидкиLabel.Text = "Id скидки:";
             // 
-            // id_процедуры_клиентаLabel
+            // фамилияLabel
             // 
-            id_процедуры_клиентаLabel.AutoSize = true;
-            id_процедуры_клиентаLabel.Location = new System.Drawing.Point(662, 463);
-            id_процедуры_клиентаLabel.Name = "id_процедуры_клиентаLabel";
-            id_процедуры_клиентаLabel.Size = new System.Drawing.Size(121, 13);
-            id_процедуры_клиентаLabel.TabIndex = 36;
-            id_процедуры_клиентаLabel.Text = "Id процедуры клиента:";
+            this.фамилияLabel.AutoSize = true;
+            this.фамилияLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Фамилия", true));
+            this.фамилияLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.фамилияLabel.Location = new System.Drawing.Point(15, 39);
+            this.фамилияLabel.Name = "фамилияLabel";
+            this.фамилияLabel.Size = new System.Drawing.Size(78, 21);
+            this.фамилияLabel.TabIndex = 3;
+            this.фамилияLabel.Text = "Фамилия:";
             // 
-            // id_процедурыLabel
+            // клиентBindingSource
             // 
-            id_процедурыLabel.AutoSize = true;
-            id_процедурыLabel.Location = new System.Drawing.Point(662, 489);
-            id_процедурыLabel.Name = "id_процедурыLabel";
-            id_процедурыLabel.Size = new System.Drawing.Size(77, 13);
-            id_процедурыLabel.TabIndex = 38;
-            id_процедурыLabel.Text = "Id процедуры:";
+            this.клиентBindingSource.DataMember = "Клиент";
+            this.клиентBindingSource.DataSource = this.beautyStudioDataSet;
             // 
-            // id_пигментаLabel
+            // beautyStudioDataSet
             // 
-            id_пигментаLabel.AutoSize = true;
-            id_пигментаLabel.Location = new System.Drawing.Point(662, 515);
-            id_пигментаLabel.Name = "id_пигментаLabel";
-            id_пигментаLabel.Size = new System.Drawing.Size(70, 13);
-            id_пигментаLabel.TabIndex = 40;
-            id_пигментаLabel.Text = "Id пигмента:";
+            this.beautyStudioDataSet.DataSetName = "BeautyStudioDataSet";
+            this.beautyStudioDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // примечание_о_процедуре_клиентаLabel
+            // имяLabel
             // 
-            примечание_о_процедуре_клиентаLabel.AutoSize = true;
-            примечание_о_процедуре_клиентаLabel.Location = new System.Drawing.Point(662, 541);
-            примечание_о_процедуре_клиентаLabel.Name = "примечание_о_процедуре_клиентаLabel";
-            примечание_о_процедуре_клиентаLabel.Size = new System.Drawing.Size(182, 13);
-            примечание_о_процедуре_клиентаLabel.TabIndex = 42;
-            примечание_о_процедуре_клиентаLabel.Text = "Примечание о процедуре клиента:";
+            this.имяLabel.AutoSize = true;
+            this.имяLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Имя", true));
+            this.имяLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.имяLabel.Location = new System.Drawing.Point(98, 39);
+            this.имяLabel.Name = "имяLabel";
+            this.имяLabel.Size = new System.Drawing.Size(44, 21);
+            this.имяLabel.TabIndex = 5;
+            this.имяLabel.Text = "Имя:";
+            // 
+            // отчествоLabel
+            // 
+            this.отчествоLabel.AutoSize = true;
+            this.отчествоLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Отчество", true));
+            this.отчествоLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.отчествоLabel.Location = new System.Drawing.Point(147, 39);
+            this.отчествоLabel.Name = "отчествоLabel";
+            this.отчествоLabel.Size = new System.Drawing.Size(80, 21);
+            this.отчествоLabel.TabIndex = 7;
+            this.отчествоLabel.Text = "Отчество:";
+            // 
+            // номер_телефонаLabel
+            // 
+            this.номер_телефонаLabel.AutoSize = true;
+            this.номер_телефонаLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Номер телефона", true));
+            this.номер_телефонаLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.номер_телефонаLabel.Location = new System.Drawing.Point(232, 39);
+            this.номер_телефонаLabel.Name = "номер_телефонаLabel";
+            this.номер_телефонаLabel.Size = new System.Drawing.Size(133, 21);
+            this.номер_телефонаLabel.TabIndex = 9;
+            this.номер_телефонаLabel.Text = "Номер телефона:";
+            // 
+            // дата_рожденияLabel
+            // 
+            this.дата_рожденияLabel.AutoSize = true;
+            this.дата_рожденияLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.клиентBindingSource, "Дата рождения", true));
+            this.дата_рожденияLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.дата_рожденияLabel.Location = new System.Drawing.Point(370, 39);
+            this.дата_рожденияLabel.Name = "дата_рожденияLabel";
+            this.дата_рожденияLabel.Size = new System.Drawing.Size(124, 21);
+            this.дата_рожденияLabel.TabIndex = 11;
+            this.дата_рожденияLabel.Text = "Дата рождения:";
+            // 
+            // id_типа_кожиLabel
+            // 
+            this.id_типа_кожиLabel.AutoSize = true;
+            this.id_типа_кожиLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.id_типа_кожиLabel.Location = new System.Drawing.Point(508, 133);
+            this.id_типа_кожиLabel.Name = "id_типа_кожиLabel";
+            this.id_типа_кожиLabel.Size = new System.Drawing.Size(105, 21);
+            this.id_типа_кожиLabel.TabIndex = 13;
+            this.id_типа_кожиLabel.Text = "Id типа кожи:";
             // 
             // клиентTableAdapter
             // 
@@ -326,7 +283,7 @@
             this.tableAdapterManager.ПосещениеTableAdapter = this.посещениеTableAdapter;
             this.tableAdapterManager.ПроцедураTableAdapter = null;
             this.tableAdapterManager.Процедуры_в_посещенииTableAdapter = null;
-            this.tableAdapterManager.Процедуры_клиентаTableAdapter = this.процедуры_клиентаTableAdapter;
+            this.tableAdapterManager.Процедуры_клиентаTableAdapter = null;
             this.tableAdapterManager.СкидкаTableAdapter = null;
             this.tableAdapterManager.Тип_иглыTableAdapter = null;
             this.tableAdapterManager.Тип_кожиTableAdapter = null;
@@ -335,10 +292,6 @@
             // посещениеTableAdapter
             // 
             this.посещениеTableAdapter.ClearBeforeFill = true;
-            // 
-            // процедуры_клиентаTableAdapter
-            // 
-            this.процедуры_клиентаTableAdapter.ClearBeforeFill = true;
             // 
             // противопоказанияTextBox
             // 
@@ -429,43 +382,6 @@
             this.id_скидкиTextBox.Size = new System.Drawing.Size(200, 20);
             this.id_скидкиTextBox.TabIndex = 35;
             // 
-            // процедуры_клиентаBindingSource
-            // 
-            this.процедуры_клиентаBindingSource.DataMember = "Процедуры клиента";
-            this.процедуры_клиентаBindingSource.DataSource = this.beautyStudioDataSet;
-            // 
-            // id_процедуры_клиентаTextBox
-            // 
-            this.id_процедуры_клиентаTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.процедуры_клиентаBindingSource, "Id процедуры клиента", true));
-            this.id_процедуры_клиентаTextBox.Location = new System.Drawing.Point(850, 460);
-            this.id_процедуры_клиентаTextBox.Name = "id_процедуры_клиентаTextBox";
-            this.id_процедуры_клиентаTextBox.Size = new System.Drawing.Size(100, 20);
-            this.id_процедуры_клиентаTextBox.TabIndex = 37;
-            // 
-            // id_процедурыTextBox
-            // 
-            this.id_процедурыTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.процедуры_клиентаBindingSource, "Id процедуры", true));
-            this.id_процедурыTextBox.Location = new System.Drawing.Point(850, 486);
-            this.id_процедурыTextBox.Name = "id_процедурыTextBox";
-            this.id_процедурыTextBox.Size = new System.Drawing.Size(100, 20);
-            this.id_процедурыTextBox.TabIndex = 39;
-            // 
-            // id_пигментаTextBox
-            // 
-            this.id_пигментаTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.процедуры_клиентаBindingSource, "Id пигмента", true));
-            this.id_пигментаTextBox.Location = new System.Drawing.Point(850, 512);
-            this.id_пигментаTextBox.Name = "id_пигментаTextBox";
-            this.id_пигментаTextBox.Size = new System.Drawing.Size(100, 20);
-            this.id_пигментаTextBox.TabIndex = 41;
-            // 
-            // примечание_о_процедуре_клиентаTextBox
-            // 
-            this.примечание_о_процедуре_клиентаTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.процедуры_клиентаBindingSource, "Примечание о процедуре клиента", true));
-            this.примечание_о_процедуре_клиентаTextBox.Location = new System.Drawing.Point(850, 538);
-            this.примечание_о_процедуре_клиентаTextBox.Name = "примечание_о_процедуре_клиентаTextBox";
-            this.примечание_о_процедуре_клиентаTextBox.Size = new System.Drawing.Size(100, 20);
-            this.примечание_о_процедуре_клиентаTextBox.TabIndex = 43;
-            // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = null;
@@ -482,7 +398,11 @@
             this.bindingNavigatorCountItem,
             this.bindingNavigatorSeparator1,
             this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem});
+            this.bindingNavigatorMoveLastItem,
+            this.toolStripSeparator1,
+            this.toolStripButton1,
+            this.toolStripSeparator2,
+            this.btnClose});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -490,9 +410,23 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1134, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1134, 28);
             this.bindingNavigator1.TabIndex = 44;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(36, 25);
+            this.bindingNavigatorCountItem.Text = "из {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(409, 25);
+            this.toolStripLabel1.Text = "Переключение посещений клиента по дате приёма:";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -500,7 +434,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 25);
             this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
             // 
             // bindingNavigatorMovePreviousItem
@@ -509,34 +443,28 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 25);
             this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 28);
             // 
             // bindingNavigatorPositionItem
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(36, 22);
-            this.bindingNavigatorCountItem.Text = "из {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -544,7 +472,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 25);
             this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
             // 
             // bindingNavigatorMoveLastItem
@@ -553,25 +481,50 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 25);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
             // 
-            // toolStripLabel1
+            // toolStripSeparator1
             // 
-            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(409, 22);
-            this.toolStripLabel1.Text = "Переключение посещений клиента по дате приёма:";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(276, 25);
+            this.toolStripButton1.Text = "Изменить информацию о клиенте";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnClose
+            // 
+            this.btnClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(76, 25);
+            this.btnClose.Text = "Закрыть";
+            this.btnClose.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(13, 39);
+            this.label1.Location = new System.Drawing.Point(10, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 21);
+            this.label1.Size = new System.Drawing.Size(59, 21);
             this.label1.TabIndex = 45;
+            this.label1.Text = "вывод";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // типКожиBindingSource
@@ -583,6 +536,28 @@
             // 
             this.тип_кожиTableAdapter.ClearBeforeFill = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(42, 472);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel1.TabIndex = 46;
+            // 
+            // процедуры_клиентаBindingSource
+            // 
+            this.процедуры_клиентаBindingSource.DataMember = "Процедуры клиента";
+            this.процедуры_клиентаBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // процедуры_клиентаTableAdapter
+            // 
+            this.процедуры_клиентаTableAdapter.ClearBeforeFill = true;
+            // 
             // ClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,16 +565,9 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1134, 665);
             this.ControlBox = false;
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bindingNavigator1);
-            this.Controls.Add(id_процедуры_клиентаLabel);
-            this.Controls.Add(this.id_процедуры_клиентаTextBox);
-            this.Controls.Add(id_процедурыLabel);
-            this.Controls.Add(this.id_процедурыTextBox);
-            this.Controls.Add(id_пигментаLabel);
-            this.Controls.Add(this.id_пигментаTextBox);
-            this.Controls.Add(примечание_о_процедуре_клиентаLabel);
-            this.Controls.Add(this.примечание_о_процедуре_клиентаTextBox);
             this.Controls.Add(id_посещенияLabel);
             this.Controls.Add(this.id_посещенияTextBox);
             this.Controls.Add(дата_и_время_посещенияLabel);
@@ -631,15 +599,16 @@
             this.MinimizeBox = false;
             this.Name = "ClientInfo";
             this.Text = "ClientInfo";
+            this.Activated += new System.EventHandler(this.ClientInfo_Activated);
             this.Load += new System.EventHandler(this.ClientInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.посещениеBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.типКожиBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -657,18 +626,12 @@
         private System.Windows.Forms.TextBox соглашениеTextBox;
         private System.Windows.Forms.TextBox как_узнал_о_салонеTextBox;
         private System.Windows.Forms.BindingSource посещениеBindingSource;
-        private BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter процедуры_клиентаTableAdapter;
         private System.Windows.Forms.TextBox id_посещенияTextBox;
         private System.Windows.Forms.DateTimePicker дата_и_время_посещенияDateTimePicker;
         private System.Windows.Forms.TextBox итоговая_ценаTextBox;
         private System.Windows.Forms.TextBox id_типа_иглыTextBox;
         private System.Windows.Forms.TextBox примечание_о_посещенииTextBox;
         private System.Windows.Forms.TextBox id_скидкиTextBox;
-        private System.Windows.Forms.BindingSource процедуры_клиентаBindingSource;
-        private System.Windows.Forms.TextBox id_процедуры_клиентаTextBox;
-        private System.Windows.Forms.TextBox id_процедурыTextBox;
-        private System.Windows.Forms.TextBox id_пигментаTextBox;
-        private System.Windows.Forms.TextBox примечание_о_процедуре_клиентаTextBox;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
@@ -688,5 +651,12 @@
         private System.Windows.Forms.BindingSource типКожиBindingSource;
         private BeautyStudioDataSetTableAdapters.Тип_кожиTableAdapter тип_кожиTableAdapter;
         private System.Windows.Forms.Label id_типа_кожиLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.BindingSource процедуры_клиентаBindingSource;
+        private BeautyStudioDataSetTableAdapters.Процедуры_клиентаTableAdapter процедуры_клиентаTableAdapter;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnClose;
     }
 }

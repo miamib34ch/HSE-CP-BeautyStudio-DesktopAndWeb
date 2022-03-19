@@ -219,7 +219,7 @@
             this.итоговая_ценаTextBox.Location = new System.Drawing.Point(179, 269);
             this.итоговая_ценаTextBox.Name = "итоговая_ценаTextBox";
             this.итоговая_ценаTextBox.Size = new System.Drawing.Size(200, 29);
-            this.итоговая_ценаTextBox.TabIndex = 8;
+            this.итоговая_ценаTextBox.TabIndex = 9;
             // 
             // примечание_о_посещенииTextBox
             // 
@@ -231,7 +231,7 @@
             this.примечание_о_посещенииTextBox.Name = "примечание_о_посещенииTextBox";
             this.примечание_о_посещенииTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.примечание_о_посещенииTextBox.Size = new System.Drawing.Size(217, 67);
-            this.примечание_о_посещенииTextBox.TabIndex = 12;
+            this.примечание_о_посещенииTextBox.TabIndex = 3;
             // 
             // comboBox1
             // 
@@ -243,7 +243,7 @@
             this.comboBox1.Location = new System.Drawing.Point(179, 75);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 29);
-            this.comboBox1.TabIndex = 16;
+            this.comboBox1.TabIndex = 2;
             this.comboBox1.ValueMember = "Id типа иглы";
             // 
             // типИглыBindingSource
@@ -265,7 +265,7 @@
             this.comboBox2.Location = new System.Drawing.Point(179, 234);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(200, 29);
-            this.comboBox2.TabIndex = 17;
+            this.comboBox2.TabIndex = 4;
             this.comboBox2.ValueMember = "Id скидки";
             this.comboBox2.TextChanged += new System.EventHandler(this.comboBox2_TextChanged);
             // 
@@ -299,7 +299,7 @@
             this.button1.Location = new System.Drawing.Point(630, 206);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(221, 31);
-            this.button1.TabIndex = 19;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Добавить процедуру";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.addProcedure_Click);
@@ -310,7 +310,7 @@
             this.button2.Location = new System.Drawing.Point(402, 269);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(221, 29);
-            this.button2.TabIndex = 20;
+            this.button2.TabIndex = 6;
             this.button2.Text = "Сохранить посещение";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnSave_Click);
@@ -321,7 +321,7 @@
             this.button3.Location = new System.Drawing.Point(630, 269);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(221, 29);
-            this.button3.TabIndex = 21;
+            this.button3.TabIndex = 7;
             this.button3.Text = "Отмена";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Cancel_Click);
@@ -371,7 +371,7 @@
             this.процедуры_клиентаDataGridView.Name = "процедуры_клиентаDataGridView";
             this.процедуры_клиентаDataGridView.ReadOnly = true;
             this.процедуры_клиентаDataGridView.Size = new System.Drawing.Size(448, 163);
-            this.процедуры_клиентаDataGridView.TabIndex = 21;
+            this.процедуры_клиентаDataGridView.TabIndex = 8;
             this.процедуры_клиентаDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.процедуры_клиентаDataGridView_DataError);
             this.процедуры_клиентаDataGridView.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.процедуры_клиентаDataGridView_RowContextMenuStripNeeded);
             // 
@@ -467,7 +467,7 @@
             this.maskedTextBox1.Mask = "00/00/0000 90:00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(200, 29);
-            this.maskedTextBox1.TabIndex = 22;
+            this.maskedTextBox1.TabIndex = 1;
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
             // 
             // Visiting

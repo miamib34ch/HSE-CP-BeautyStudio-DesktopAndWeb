@@ -76,7 +76,7 @@ namespace BeautyStudio
 
         private void фамилияTextBox_Leave(object sender, EventArgs e)
         {
-            фамилияTextBox.Text = clients.firstUp(фамилияTextBox.Text);
+            //фамилияTextBox.Text = clients.firstUp(фамилияTextBox.Text);
         }
     }
 }
