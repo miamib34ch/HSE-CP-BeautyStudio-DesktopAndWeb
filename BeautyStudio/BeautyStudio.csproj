@@ -57,6 +57,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BeautyStudioDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ClientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientInfo.Designer.cs">
+      <DependentUpon>ClientInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     <Compile Include="test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
+    <Compile Include="test2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test2.Designer.cs">
+      <DependentUpon>test2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Visiting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +115,9 @@
     </Compile>
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientInfo.resx">
+      <DependentUpon>ClientInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients.resx">
       <DependentUpon>Clients.cs</DependentUpon>
@@ -131,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test2.resx">
+      <DependentUpon>test2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visiting.resx">
       <DependentUpon>Visiting.cs</DependentUpon>

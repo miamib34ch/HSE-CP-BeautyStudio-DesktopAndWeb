@@ -13,33 +13,33 @@ namespace BeautyStudio
 {
     public partial class Visiting : Form
     {
-        string position;
+        string idClient;
         Clients clients;
 
-        public Visiting(string position, Clients clients)
+        public Visiting(string idClient, Clients clients)
         {
             InitializeComponent();
             this.посещениеTableAdapter.Fill(this.beautyStudioDataSet.Посещение);
             this.скидкаTableAdapter.Fill(this.beautyStudioDataSet.Скидка);
             this.тип_иглыTableAdapter.Fill(this.beautyStudioDataSet.Тип_иглы);
             посещениеBindingSource.AddNew();
-            дата_и_время_посещенияDateTimePicker.Value = DateTime.Now;
-            this.position = position;
+            this.idClient = idClient;
             this.clients = clients;
         }
 
         private void Visiting_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet1.Процедура". При необходимости она может быть перемещена или удалена.
             this.процедураTableAdapter.Fill(this.beautyStudioDataSet1.Процедура);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet1.Скидка". При необходимости она может быть перемещена или удалена.
             this.скидкаTableAdapter.Fill(this.beautyStudioDataSet1.Скидка);
             this.пигментыTableAdapter.Fill(this.beautyStudioDataSet.Пигменты);
             this.процедураTableAdapter.Fill(this.beautyStudioDataSet.Процедура);
             this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
             this.процедуры_в_посещенииTableAdapter.Fill(this.beautyStudioDataSet.Процедуры_в_посещении);
             итоговая_ценаTextBox.Text = "0";
-            id_клиентаTextBox.Text = position;
+            comboBox1.SelectedItem = 0;
+            comboBox1.SelectedValue = 0;
+            maskedTextBox1.Text = DateTime.Now.ToString();
+            id_клиентаTextBox.Text = idClient;
         }
 
         private void addProcedure_Click(object sender, EventArgs e)

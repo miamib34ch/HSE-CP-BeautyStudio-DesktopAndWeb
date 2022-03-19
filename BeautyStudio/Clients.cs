@@ -142,5 +142,11 @@ namespace BeautyStudio
             else
                 return s;
         }
+
+        private void посмотретьИнформациюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClientInfo info = new ClientInfo(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()));
+            info.Show();
+        }
     }
 }
