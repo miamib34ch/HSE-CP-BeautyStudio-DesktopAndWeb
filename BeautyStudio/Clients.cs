@@ -101,6 +101,7 @@ namespace BeautyStudio
             Visiting visit;
             visit = new Visiting(клиентDataGridView.CurrentRow.Cells[0].Value.ToString(),this);
             visit.MdiParent = this.MdiParent;
+            ((MainForm)MdiParent).addVisit = visit;
             visit.Show();
             this.Enabled = false;
             ((MainForm)MdiParent).addVisit = visit;
@@ -110,7 +111,7 @@ namespace BeautyStudio
         {
             if (surnameSearch.Text != "")
             {
-                this.клиентTableAdapter.FillBySurname(this.beautyStudioDataSet.Клиент, firstUp(surnameSearch.Text));
+                this.клиентTableAdapter.FillBySurname(this.beautyStudioDataSet.Клиент, ((MainForm)MdiParent).firstUp(surnameSearch.Text));
                 
                 surnameSearch.Text = "";
             }
@@ -121,35 +122,15 @@ namespace BeautyStudio
             }
         }
 
-        public string firstUp(string s)
-        {
-            if (s != "")
-            {
-                var s0Up = char.ToUpper(s[0]);
-                if (s0Up != s[0])
-                {
-                    string new_s = ""; 
-                    new_s += s0Up;
-                    for (int i = 1; i < s.Length; i++)
-                    {
-                        new_s += s[i].ToString();
-                    }
-                    return new_s;
-                }
-                else 
-                    return s;
-            }
-            else
-                return s;
-        }
+
 
         private void посмотретьИнформациюToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClientInfo info;
             if (int.TryParse(клиентDataGridView.CurrentRow.Cells[6].Value.ToString(), out int res))
-                info = new ClientInfo(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), res);
+                info = new ClientInfo(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, res);
             else
-                info = new ClientInfo(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), 0);
+                info = new ClientInfo(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, 0);
             info.MdiParent = this.MdiParent;
             info.Show();
         }

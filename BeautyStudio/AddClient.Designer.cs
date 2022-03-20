@@ -221,6 +221,7 @@
             this.имяTextBox.Name = "имяTextBox";
             this.имяTextBox.Size = new System.Drawing.Size(320, 29);
             this.имяTextBox.TabIndex = 2;
+            this.имяTextBox.Leave += new System.EventHandler(this.имяTextBox_Leave);
             // 
             // отчествоTextBox
             // 
@@ -231,6 +232,7 @@
             this.отчествоTextBox.Name = "отчествоTextBox";
             this.отчествоTextBox.Size = new System.Drawing.Size(320, 29);
             this.отчествоTextBox.TabIndex = 3;
+            this.отчествоTextBox.Leave += new System.EventHandler(this.отчествоTextBox_Leave);
             // 
             // дата_рожденияDateTimePicker
             // 
@@ -257,6 +259,7 @@
             this.противопоказанияTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.противопоказанияTextBox.Size = new System.Drawing.Size(337, 70);
             this.противопоказанияTextBox.TabIndex = 7;
+            this.противопоказанияTextBox.TextChanged += new System.EventHandler(this.противопоказанияTextBox_TextChanged);
             // 
             // примечание_о_клиентеTextBox
             // 
@@ -269,6 +272,7 @@
             this.примечание_о_клиентеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.примечание_о_клиентеTextBox.Size = new System.Drawing.Size(337, 70);
             this.примечание_о_клиентеTextBox.TabIndex = 8;
+            this.примечание_о_клиентеTextBox.TextChanged += new System.EventHandler(this.примечание_о_клиентеTextBox_TextChanged);
             // 
             // соглашениеTextBox
             // 
@@ -281,6 +285,7 @@
             this.соглашениеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.соглашениеTextBox.Size = new System.Drawing.Size(337, 70);
             this.соглашениеTextBox.TabIndex = 9;
+            this.соглашениеTextBox.TextChanged += new System.EventHandler(this.соглашениеTextBox_TextChanged);
             // 
             // как_узнал_о_салонеTextBox
             // 
@@ -293,6 +298,7 @@
             this.как_узнал_о_салонеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.как_узнал_о_салонеTextBox.Size = new System.Drawing.Size(337, 70);
             this.как_узнал_о_салонеTextBox.TabIndex = 10;
+            this.как_узнал_о_салонеTextBox.TextChanged += new System.EventHandler(this.как_узнал_о_салонеTextBox_TextChanged);
             // 
             // btnSave
             // 

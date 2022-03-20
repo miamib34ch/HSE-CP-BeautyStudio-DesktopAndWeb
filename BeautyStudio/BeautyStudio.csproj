@@ -60,6 +60,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BeautyStudioDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="birthdays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="birthdays.Designer.cs">
+      <DependentUpon>birthdays.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,20 +110,23 @@
     <Compile Include="test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
-    <Compile Include="test2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="test2.Designer.cs">
-      <DependentUpon>test2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Visiting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Visiting.Designer.cs">
       <DependentUpon>Visiting.cs</DependentUpon>
     </Compile>
+    <Compile Include="visitings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visitings.Designer.cs">
+      <DependentUpon>visitings.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="birthdays.resx">
+      <DependentUpon>birthdays.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientInfo.resx">
       <DependentUpon>ClientInfo.cs</DependentUpon>
@@ -150,11 +159,11 @@
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="test2.resx">
-      <DependentUpon>test2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Visiting.resx">
       <DependentUpon>Visiting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visitings.resx">
+      <DependentUpon>visitings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BeautyStudioDataSet.xsc">
       <DependentUpon>BeautyStudioDataSet.xsd</DependentUpon>

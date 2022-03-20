@@ -124,7 +124,7 @@ namespace BeautyStudio
             btnSave.Visible = false;
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        public void btnBack_Click(object sender, EventArgs e)
         {
             if (wasImport && this.тип_иглыDataGridView.Enabled == true)
             {

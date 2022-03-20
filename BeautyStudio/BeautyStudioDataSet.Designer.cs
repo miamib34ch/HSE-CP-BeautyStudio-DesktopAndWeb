@@ -5197,7 +5197,7 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Id клиента], Фамилия, Имя, Отчество, [Номер телефона], [Дата рождения], [" +
@@ -5206,25 +5206,31 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT [Id клиента], [Id типа кожи], [Дата рождения], Имя, [Как узнал о салоне], " +
-                "[Номер телефона], Отчество, [Примечание о клиенте], Противопоказания, Соглашение" +
-                ", Фамилия FROM Клиент WHERE ([Id клиента] = @idClient)";
+            this._commandCollection[1].CommandText = @"SELECT [Id клиента], Фамилия, Имя, Отчество, [Номер телефона], [Дата рождения], [Id типа кожи], Противопоказания, [Примечание о клиенте], Соглашение, [Как узнал о салоне] FROM dbo.Клиент WHERE 
+DAY(dbo.Клиент.[Дата рождения]) = DAY(@NOW) AND MONTH(dbo.Клиент.[Дата рождения]) = MONTH(@NOW)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idClient", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id клиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NOW", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT [Id клиента], [Id типа кожи], [Дата рождения], Имя, [Как узнал о салоне], " +
                 "[Номер телефона], Отчество, [Примечание о клиенте], Противопоказания, Соглашение" +
-                ", Фамилия FROM Клиент WHERE ([Номер телефона] = @phnNum)";
+                ", Фамилия FROM Клиент WHERE ([Id клиента] = @idClient)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phnNum", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Номер телефона", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idClient", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id клиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT [Id клиента], [Id типа кожи], [Дата рождения], Имя, [Как узнал о салоне], " +
                 "[Номер телефона], Отчество, [Примечание о клиенте], Противопоказания, Соглашение" +
-                ", Фамилия FROM Клиент WHERE (Фамилия = @surname)";
+                ", Фамилия FROM Клиент WHERE ([Номер телефона] = @phnNum)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Фамилия", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phnNum", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Номер телефона", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT [Id клиента], [Id типа кожи], [Дата рождения], Имя, [Как узнал о салоне], " +
+                "[Номер телефона], Отчество, [Примечание о клиенте], Противопоказания, Соглашение" +
+                ", Фамилия FROM Клиент WHERE (Фамилия = @surname)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Фамилия", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5255,8 +5261,34 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillById(BeautyStudioDataSet.КлиентDataTable dataTable, int idClient) {
+        public virtual int FillByBirthday(BeautyStudioDataSet.КлиентDataTable dataTable, System.DateTime NOW) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(NOW));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BeautyStudioDataSet.КлиентDataTable GetDataBy3(System.DateTime NOW) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(NOW));
+            BeautyStudioDataSet.КлиентDataTable dataTable = new BeautyStudioDataSet.КлиентDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillById(BeautyStudioDataSet.КлиентDataTable dataTable, int idClient) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idClient));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5270,7 +5302,7 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual BeautyStudioDataSet.КлиентDataTable GetDataBy2(int idClient) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idClient));
             BeautyStudioDataSet.КлиентDataTable dataTable = new BeautyStudioDataSet.КлиентDataTable();
             this.Adapter.Fill(dataTable);
@@ -5282,7 +5314,7 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByNumber(BeautyStudioDataSet.КлиентDataTable dataTable, string phnNum) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((phnNum == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5301,7 +5333,7 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual BeautyStudioDataSet.КлиентDataTable GetDataBy(string phnNum) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((phnNum == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5318,7 +5350,7 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBySurname(BeautyStudioDataSet.КлиентDataTable dataTable, string surname) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((surname == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5337,7 +5369,7 @@ SELECT [Id клиента], Фамилия, Имя, Отчество, [Номе�
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual BeautyStudioDataSet.КлиентDataTable GetDataBy1(string surname) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((surname == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -6094,7 +6126,7 @@ SELECT [Id посещения], [Id клиента], [Дата и время п�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Id посещения], [Id клиента], [Дата и время посещения], [Итоговая цена], [" +
@@ -6102,27 +6134,32 @@ SELECT [Id посещения], [Id клиента], [Дата и время п�
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        Посещение.[Id посещения], Посещение.[Id клиента], Посещение.[Дата и время посещения], Посещение.[Итоговая цена], Посещение.[Id типа иглы], Посещение.[Примечание о посещении], Посещение.[Id скидки]
+            this._commandCollection[1].CommandText = @"SELECT [Id посещения], [Id клиента], [Дата и время посещения], [Итоговая цена], [Id типа иглы], [Примечание о посещении], [Id скидки] FROM dbo.Посещение WHERE DAY(dbo.Посещение.[Дата и время посещения]) = DAY(@dateVisiting) AND MONTH(dbo.Посещение.[Дата и время посещения]) = MONTH(@dateVisiting) AND YEAR(dbo.Посещение.[Дата и время посещения]) = YEAR(@dateVisiting)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateVisiting", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        Посещение.[Id посещения], Посещение.[Id клиента], Посещение.[Дата и время посещения], Посещение.[Итоговая цена], Посещение.[Id типа иглы], Посещение.[Примечание о посещении], Посещение.[Id скидки]
 FROM            Посещение INNER JOIN
                          Клиент ON Посещение.[Id клиента] = Клиент.[Id клиента]
 WHERE        (Клиент.[Id клиента] = @idClient)";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idClient", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id клиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT [Id посещения], [Id клиента], [Дата и время посещения], [Итоговая цена], [" +
-                "Id типа иглы], [Примечание о посещении], [Id скидки] FROM dbo.Посещение\r\nWHERE d" +
-                "bo.Посещение.[Id посещения] = @idVisiting";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idVisiting", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id посещения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idClient", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id клиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT Sum(Процедура.[Цена процедуры]) AS Выражение1
+            this._commandCollection[3].CommandText = "SELECT [Id посещения], [Id клиента], [Дата и время посещения], [Итоговая цена], [" +
+                "Id типа иглы], [Примечание о посещении], [Id скидки] FROM dbo.Посещение\r\nWHERE d" +
+                "bo.Посещение.[Id посещения] = @idVisiting";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idVisiting", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id посещения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"SELECT Sum(Процедура.[Цена процедуры]) AS Выражение1
 FROM (Процедура INNER JOIN [Процедуры клиента] ON Процедура.[Id процедуры] = [Процедуры клиента].[Id процедуры]) INNER JOIN ((Скидка INNER JOIN Посещение ON Скидка.[Id скидки] = Посещение.[Id скидки]) INNER JOIN [Процедуры в посещении] ON Посещение.[Id посещения] = [Процедуры в посещении].[Id посещения]) ON [Процедуры клиента].[Id процедуры клиента] = [Процедуры в посещении].[Id процедуры клиента]
 WHERE ((([Процедуры в посещении].[Id посещения])=@idVisiting ))
 ";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idVisiting", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id посещения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idVisiting", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id посещения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6153,8 +6190,34 @@ WHERE ((([Процедуры в посещении].[Id посещения])=@id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByIdClient(BeautyStudioDataSet.ПосещениеDataTable dataTable, int idClient) {
+        public virtual int FillByDate(BeautyStudioDataSet.ПосещениеDataTable dataTable, System.DateTime dateVisiting) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(dateVisiting));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BeautyStudioDataSet.ПосещениеDataTable GetDataBy3(System.DateTime dateVisiting) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(dateVisiting));
+            BeautyStudioDataSet.ПосещениеDataTable dataTable = new BeautyStudioDataSet.ПосещениеDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByIdClient(BeautyStudioDataSet.ПосещениеDataTable dataTable, int idClient) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idClient));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6168,7 +6231,7 @@ WHERE ((([Процедуры в посещении].[Id посещения])=@id
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual BeautyStudioDataSet.ПосещениеDataTable GetDataBy2(int idClient) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idClient));
             BeautyStudioDataSet.ПосещениеDataTable dataTable = new BeautyStudioDataSet.ПосещениеDataTable();
             this.Adapter.Fill(dataTable);
@@ -6180,7 +6243,7 @@ WHERE ((([Процедуры в посещении].[Id посещения])=@id
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByIdVisiting(BeautyStudioDataSet.ПосещениеDataTable dataTable, int idVisiting) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idVisiting));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6194,7 +6257,7 @@ WHERE ((([Процедуры в посещении].[Id посещения])=@id
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual BeautyStudioDataSet.ПосещениеDataTable GetDataBy1(int idVisiting) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idVisiting));
             BeautyStudioDataSet.ПосещениеDataTable dataTable = new BeautyStudioDataSet.ПосещениеDataTable();
             this.Adapter.Fill(dataTable);
@@ -6341,7 +6404,7 @@ WHERE ((([Процедуры в посещении].[Id посещения])=@id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual object sumPrice(int idVisiting) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             command.Parameters[0].Value = ((int)(idVisiting));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

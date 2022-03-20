@@ -20,19 +20,23 @@ namespace BeautyStudio
         }
 
         Clients clients;
+        birthdays birthdays;
+        visitings visitings;
+        Dictionaries dictionaries;
         AddClient addClient;
-        public AddClient changeClient { get; set; }
+
         public Visiting addVisit { get; set; }
+        public AddClient changeClient { get; set; }
+
+        #region открытие дочерних форм 
 
         private void показатьВсехКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!(this.MdiChildren.Contains(clients)))
-            {
-                clients = new Clients();
-            }
+            Clients clients = new Clients();
             clients.MdiParent = this;
+            this.clients = clients;
             clients.Show();
-            if (this.MdiChildren.Contains(addClient))
+            if (MdiChildren.Contains(addClient))
             {
                 clients.Enabled = false;
                 addClient.clients = clients;
@@ -41,43 +45,130 @@ namespace BeautyStudio
 
         private void добавитьНовогоКлиентаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!(this.MdiChildren.Contains(addClient)))
+            if (this.MdiChildren.Contains(clients))
             {
-                if (this.MdiChildren.Contains(clients))
-                {
-                    addClient = new AddClient(clients);
-                    clients.Enabled = false;
-                }
-                else
-                    addClient = new AddClient();
+                addClient = new AddClient(clients);
+                clients.Enabled = false;
             }
+            else
+                addClient = new AddClient();
             addClient.MdiParent = this;
             addClient.Show();
         }
 
+        private void показатьУКогоСегодняДеньРожденияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            birthdays birth = new birthdays();
+            birth.MdiParent = this;
+            birthdays = birth;
+            birth.Show();
+        }
+
+        private void поискПосещенийПоДатеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            visitings visitings = new visitings();
+            visitings.MdiParent = this;
+            this.visitings = visitings;
+            visitings.Show();
+        }
+
+        private void обновитьСловариToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() == 0)
+            {
+                Password psw = new Password();
+                if (psw.ShowDialog() == DialogResult.OK)
+                {
+                    Dictionaries dictionaries = new Dictionaries();
+                    dictionaries.MdiParent = this;
+                    this.dictionaries = dictionaries;
+                    dictionaries.Show();
+                }
+            }
+            else
+                MessageBox.Show("Закройте все окна, прежде чем перейти к редактированию словарей!");
+        }
+
+        #endregion
+
+        #region учитывание открытых окон 
+
+        private void функцииToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (this.MdiChildren.Contains(birthdays) || this.MdiChildren.Contains(dictionaries))
+            {
+                показатьУКогоСегодняДеньРожденияToolStripMenuItem.Enabled = false;
+                if (!this.MdiChildren.Contains(dictionaries))
+                    показатьУКогоСегодняДеньРожденияToolStripMenuItem.Image = Properties.Resources.selected;
+                else
+                    показатьУКогоСегодняДеньРожденияToolStripMenuItem.Image = null;
+            }
+            else
+            {
+                показатьУКогоСегодняДеньРожденияToolStripMenuItem.Enabled = true;
+                показатьУКогоСегодняДеньРожденияToolStripMenuItem.Image = null;
+            }
+
+            if (this.MdiChildren.Contains(visitings) || this.MdiChildren.Contains(dictionaries))
+            {
+                поискПосещенийПоДатеToolStripMenuItem.Enabled = false;
+                if (!this.MdiChildren.Contains(dictionaries))
+                    поискПосещенийПоДатеToolStripMenuItem.Image = Properties.Resources.selected;
+                else
+                    поискПосещенийПоДатеToolStripMenuItem.Image = null;
+            }
+            else
+            {
+                поискПосещенийПоДатеToolStripMenuItem.Enabled = true;
+                поискПосещенийПоДатеToolStripMenuItem.Image = null;
+            }
+        }
+
+        private void свойстваToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (this.MdiChildren.Contains(dictionaries))
+            {
+                обновитьСловариToolStripMenuItem.Enabled = false;
+                обновитьСловариToolStripMenuItem.Image = Properties.Resources.selected;
+            }
+            else
+            {
+                обновитьСловариToolStripMenuItem.Enabled = true;
+                обновитьСловариToolStripMenuItem.Image = null;
+            }
+        }
+
         private void клиентыToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
-            if (this.MdiChildren.Contains(clients))
+            if (this.MdiChildren.Contains(clients) || this.MdiChildren.Contains(dictionaries))
             {
                 показатьВсехКлиентовToolStripMenuItem.Enabled = false;
-                показатьВсехКлиентовToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
+                if (!this.MdiChildren.Contains(dictionaries))
+                    показатьВсехКлиентовToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
+                else
+                    показатьВсехКлиентовToolStripMenuItem.Image = null;
             }
             else
             {
                 показатьВсехКлиентовToolStripMenuItem.Enabled = true;
                 показатьВсехКлиентовToolStripMenuItem.Image = null;
             }
-            if (this.MdiChildren.Contains(addClient))
+
+
+            if (this.MdiChildren.Contains(addClient) || this.MdiChildren.Contains(dictionaries))
             {
                 добавитьНовогоКлиентаToolStripMenuItem.Enabled = false;
-                добавитьНовогоКлиентаToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
+                if (!this.MdiChildren.Contains(dictionaries))
+                    добавитьНовогоКлиентаToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
+                else
+                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
             }
             else
             {
                 if (MdiChildren.Contains(changeClient))
                 {
                     добавитьНовогоКлиентаToolStripMenuItem.Enabled = false;
-                    добавитьНовогоКлиентаToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
+                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
                 }
                 else
                 {
@@ -87,20 +178,43 @@ namespace BeautyStudio
             }
         }
 
-        private void обновитьСловариToolStripMenuItem_Click(object sender, EventArgs e)
+        #endregion
+
+        public string firstUp(string s)
         {
-            Password psw = new Password();
-            if (psw.ShowDialog() == DialogResult.OK)
+            if (s != "")
             {
-                Dictionaries dictionaries = new Dictionaries();
-                dictionaries.MdiParent = this;
-                dictionaries.Show();
+                var s0Up = char.ToUpper(s[0]);
+                if (s0Up != s[0])
+                {
+                    string new_s = "";
+                    new_s += s0Up;
+                    for (int i = 1; i < s.Length; i++)
+                    {
+                        new_s += s[i].ToString();
+                    }
+                    return new_s;
+                }
+                else
+                    return s;
             }
-        }
+            else
+                return s;
+        }//делает первую букву заглавной
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (this.MdiChildren.Contains(addVisit))
+                addVisit.Cancel_Click(sender, e); //если не выполнить, то в базу данных добавится несохранненное посещение 
+            if (this.MdiChildren.Contains(dictionaries))
+                if(dictionaries.тип_иглыDataGridView.Visible == true)
+                    dictionaries.btnBack_Click(sender, e); //если не выполнить, то в базу данных добавится несохранненный импорт
             Application.Exit();
+        }
+
+        private void упорядочитьОкнаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
         }
     }
 }

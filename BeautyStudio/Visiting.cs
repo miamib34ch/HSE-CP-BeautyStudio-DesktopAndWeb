@@ -38,7 +38,7 @@ namespace BeautyStudio
             итоговая_ценаTextBox.Text = "0";
             comboBox1.SelectedItem = 0;
             comboBox1.SelectedValue = 0;
-            maskedTextBox1.Text = DateTime.Now.ToString();
+            maskedTextBox1.Text = DateTime.Now.ToShortDateString() + "0" + DateTime.Now.ToShortTimeString();
             id_клиентаTextBox.Text = idClient;
         }
 
@@ -76,7 +76,7 @@ namespace BeautyStudio
             }
         }
 
-        private void Cancel_Click(object sender, EventArgs e)
+        public void Cancel_Click(object sender, EventArgs e)
         {
             процедуры_клиентаTableAdapter.DeleteQuery(int.Parse(id_посещенияTextBox.Text));
             посещениеBindingSource.RemoveCurrent();

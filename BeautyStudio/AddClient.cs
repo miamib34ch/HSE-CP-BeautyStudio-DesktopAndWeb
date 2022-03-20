@@ -74,9 +74,43 @@ namespace BeautyStudio
             Invalidate();
         }
 
+        #region изменение на заглавную букву
+
         private void фамилияTextBox_Leave(object sender, EventArgs e)
         {
-            //фамилияTextBox.Text = clients.firstUp(фамилияTextBox.Text);
+            фамилияTextBox.Text = ((MainForm)MdiParent).firstUp(фамилияTextBox.Text);
         }
+
+        private void имяTextBox_Leave(object sender, EventArgs e)
+        {
+            имяTextBox.Text = ((MainForm)MdiParent).firstUp(имяTextBox.Text);
+        }
+
+        private void отчествоTextBox_Leave(object sender, EventArgs e)
+        {
+            отчествоTextBox.Text = ((MainForm)MdiParent).firstUp(отчествоTextBox.Text);
+        }
+
+        private void противопоказанияTextBox_TextChanged(object sender, EventArgs e)
+        {
+            противопоказанияTextBox.Text = ((MainForm)MdiParent).firstUp(противопоказанияTextBox.Text);
+        }
+
+        private void примечание_о_клиентеTextBox_TextChanged(object sender, EventArgs e)
+        {
+            примечание_о_клиентеTextBox.Text = ((MainForm)MdiParent).firstUp(примечание_о_клиентеTextBox.Text);
+        }
+
+        private void соглашениеTextBox_TextChanged(object sender, EventArgs e)
+        {
+            соглашениеTextBox.Text = ((MainForm)MdiParent).firstUp(соглашениеTextBox.Text);
+        }
+
+        private void как_узнал_о_салонеTextBox_TextChanged(object sender, EventArgs e)
+        {
+            как_узнал_о_салонеTextBox.Text = ((MainForm)MdiParent).firstUp(как_узнал_о_салонеTextBox.Text);
+        }
+
+        #endregion
     }
 }

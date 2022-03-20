@@ -32,12 +32,14 @@
             this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показатьВсехКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьНовогоКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.свойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обновитьСловариToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.функцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показатьУКогоСегодняДеньРожденияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поискПосещенийПоДатеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.свойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обновитьСловариToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.упорядочитьОкнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,14 +83,42 @@
             this.добавитьНовогоКлиентаToolStripMenuItem.Text = "Добавить нового клиента";
             this.добавитьНовогоКлиентаToolStripMenuItem.Click += new System.EventHandler(this.добавитьНовогоКлиентаToolStripMenuItem_Click);
             // 
+            // функцииToolStripMenuItem
+            // 
+            this.функцииToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem,
+            this.поискПосещенийПоДатеToolStripMenuItem});
+            this.функцииToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.функцииToolStripMenuItem.Name = "функцииToolStripMenuItem";
+            this.функцииToolStripMenuItem.Size = new System.Drawing.Size(87, 25);
+            this.функцииToolStripMenuItem.Text = "Функции";
+            this.функцииToolStripMenuItem.DropDownOpening += new System.EventHandler(this.функцииToolStripMenuItem_DropDownOpening);
+            // 
+            // показатьУКогоСегодняДеньРожденияToolStripMenuItem
+            // 
+            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem.Name = "показатьУКогоСегодняДеньРожденияToolStripMenuItem";
+            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem.Size = new System.Drawing.Size(369, 26);
+            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem.Text = "Показать у кого сегодня день рождения";
+            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem.Click += new System.EventHandler(this.показатьУКогоСегодняДеньРожденияToolStripMenuItem_Click);
+            // 
+            // поискПосещенийПоДатеToolStripMenuItem
+            // 
+            this.поискПосещенийПоДатеToolStripMenuItem.Name = "поискПосещенийПоДатеToolStripMenuItem";
+            this.поискПосещенийПоДатеToolStripMenuItem.Size = new System.Drawing.Size(369, 26);
+            this.поискПосещенийПоДатеToolStripMenuItem.Text = "Поиск посещений по дате";
+            this.поискПосещенийПоДатеToolStripMenuItem.Click += new System.EventHandler(this.поискПосещенийПоДатеToolStripMenuItem_Click);
+            // 
             // свойстваToolStripMenuItem
             // 
             this.свойстваToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.обновитьСловариToolStripMenuItem});
+            this.обновитьСловариToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.упорядочитьОкнаToolStripMenuItem});
             this.свойстваToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.свойстваToolStripMenuItem.Name = "свойстваToolStripMenuItem";
             this.свойстваToolStripMenuItem.Size = new System.Drawing.Size(88, 25);
             this.свойстваToolStripMenuItem.Text = "Свойства";
+            this.свойстваToolStripMenuItem.DropDownOpening += new System.EventHandler(this.свойстваToolStripMenuItem_DropDownOpening);
             // 
             // обновитьСловариToolStripMenuItem
             // 
@@ -105,27 +135,17 @@
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
-            // функцииToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.функцииToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem,
-            this.поискПосещенийПоДатеToolStripMenuItem});
-            this.функцииToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.функцииToolStripMenuItem.Name = "функцииToolStripMenuItem";
-            this.функцииToolStripMenuItem.Size = new System.Drawing.Size(87, 25);
-            this.функцииToolStripMenuItem.Text = "Функции";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
             // 
-            // показатьУКогоСегодняДеньРожденияToolStripMenuItem
+            // упорядочитьОкнаToolStripMenuItem
             // 
-            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem.Name = "показатьУКогоСегодняДеньРожденияToolStripMenuItem";
-            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem.Size = new System.Drawing.Size(369, 26);
-            this.показатьУКогоСегодняДеньРожденияToolStripMenuItem.Text = "Показать у кого сегодня день рождения";
-            // 
-            // поискПосещенийПоДатеToolStripMenuItem
-            // 
-            this.поискПосещенийПоДатеToolStripMenuItem.Name = "поискПосещенийПоДатеToolStripMenuItem";
-            this.поискПосещенийПоДатеToolStripMenuItem.Size = new System.Drawing.Size(369, 26);
-            this.поискПосещенийПоДатеToolStripMenuItem.Text = "Поиск посещений по дате";
+            this.упорядочитьОкнаToolStripMenuItem.Name = "упорядочитьОкнаToolStripMenuItem";
+            this.упорядочитьОкнаToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.упорядочитьОкнаToolStripMenuItem.Text = "Упорядочить окна";
+            this.упорядочитьОкнаToolStripMenuItem.Click += new System.EventHandler(this.упорядочитьОкнаToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -157,5 +177,7 @@
         private System.Windows.Forms.ToolStripMenuItem функцииToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem показатьУКогоСегодняДеньРожденияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem поискПосещенийПоДатеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem упорядочитьОкнаToolStripMenuItem;
     }
 }

@@ -694,11 +694,10 @@
         private BeautyStudioDataSetTableAdapters.Тип_иглыTableAdapter тип_иглыTableAdapter;
         private System.Windows.Forms.DataGridView скидкаDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.BindingSource тип_иглыBindingSource;
         private BeautyStudioDataSetTableAdapters.Тип_кожиTableAdapter тип_кожиTableAdapter;
-        private System.Windows.Forms.DataGridView тип_иглыDataGridView;
         private System.Windows.Forms.BindingSource тип_кожиBindingSource;
         private BeautyStudioDataSetTableAdapters.Тип_процедурыTableAdapter тип_процедурыTableAdapter;
         private System.Windows.Forms.DataGridView тип_кожиDataGridView;
@@ -719,5 +718,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.ToolTip toolTip1;
+        public System.Windows.Forms.DataGridView тип_иглыDataGridView;
     }
 }

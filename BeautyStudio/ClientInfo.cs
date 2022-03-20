@@ -17,8 +17,9 @@ namespace BeautyStudio
         int idClient;
         int idSkin;
         int idIgla;
+        Clients client;
 
-        public ClientInfo(int idClient, int idSkin)
+        public ClientInfo(int idClient, Clients client, int idSkin)
         {
             InitializeComponent();
             this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент,idClient);
@@ -180,6 +181,18 @@ namespace BeautyStudio
             this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            AddClient addClient;
+            if (int.TryParse(idSkin.ToString(), out int res))
+                addClient = new AddClient(idClient, client, res);
+            else
+                addClient = new AddClient(idClient, client, 0);
+            addClient.MdiParent = this.MdiParent;
+            ((MainForm)MdiParent).changeClient = addClient;
+            addClient.Show();
+        }
+
         private void процедуры_клиентаDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
@@ -187,70 +200,64 @@ namespace BeautyStudio
 
         private void btnOpewWord_Click(object sender, EventArgs e)
         {
-            string resources = "";
-            for (int i = 0; i < Application.StartupPath.Length - 9; i++)
-                resources += Application.StartupPath[i];
-
-            //запускаем Word и открываем шаблон файла   
-            object fileName = resources + "\\Resources\\Шаблон.docx";
-            Word.Application WordApplication = new Word.Application();
-            WordApplication.Visible = true; //выводим документ на экран
-            Word.Document WordDocument = WordApplication.Documents.Open(fileName);
-            //присваиваем значение полю
-            WordDocument.Variables["SURNAME"].Value = фамилияLabel.Text + " " + имяLabel.Text + " " + отчествоLabel.Text;
-            if (номер_телефонаLabel.Text == "")
-                WordDocument.Variables["NUMBER"].Value = " ";
-            else
-                WordDocument.Variables["NUMBER"].Value = "+7 " + номер_телефонаLabel.Text;
-            if (дата_рожденияLabel.Text == "")
-                WordDocument.Variables["DATA"].Value = " ";
-            else
-                WordDocument.Variables["DATA"].Value = дата_рожденияLabel.Text;
-
-            if (bindingNavigator1.BindingSource.Count == 0)
+            try
             {
-                WordDocument.Variables["VISITING"].Value = label4.Text;
-                WordDocument.Variables["PRICE"].Value = " ";
-                WordDocument.Variables["PRICENUM"].Value = " ";
-                WordDocument.Variables["SALE"].Value = " ";
-                WordDocument.Variables["SALENUM"].Value = " ";
-                WordDocument.Variables["PROCEDURE"].Value = " ";
-                WordDocument.Variables["ALLPRO"].Value = " ";
-            }
-            else
-            {
-                WordDocument.Variables["VISITING"].Value = "Посещение " + label3.Text;
-                WordDocument.Variables["PRICE"].Value = "Цена:";
-                WordDocument.Variables["PRICENUM"].Value = label7.Text;
-                WordDocument.Variables["SALE"].Value = "Применена скидка:";
-                WordDocument.Variables["SALENUM"].Value = label8.Text;
-                WordDocument.Variables["PROCEDURE"].Value = "Процедуры:";
-                string s = "";
-                for (int i = 0; i < процедуры_клиентаDataGridView.Rows.Count-1; i++)
-                    s += процедуры_клиентаDataGridView.Rows[i].Cells[1].FormattedValue.ToString() + " " + процедуры_клиентаDataGridView.Rows[i].Cells[2].FormattedValue.ToString().ToLower() + ", ";
-                s += процедуры_клиентаDataGridView.Rows[процедуры_клиентаDataGridView.Rows.Count - 1].Cells[1].FormattedValue.ToString() + " " + процедуры_клиентаDataGridView.Rows[процедуры_клиентаDataGridView.Rows.Count - 1].Cells[2].FormattedValue.ToString().ToLower();
+                string resources = "";
+                for (int i = 0; i < Application.StartupPath.Length - 9; i++)
+                    resources += Application.StartupPath[i];
 
-                if (s != "")
-                    WordDocument.Variables["ALLPRO"].Value = s;
+                //запускаем Word и открываем шаблон файла   
+                object fileName = resources + "\\Resources\\Шаблон.docx";
+                Word.Application WordApplication = new Word.Application();
+                WordApplication.Visible = true; //выводим документ на экран
+                Word.Document WordDocument = WordApplication.Documents.Open(fileName);
+                //присваиваем значение полю
+                WordDocument.Variables["SURNAME"].Value = фамилияLabel.Text + " " + имяLabel.Text + " " + отчествоLabel.Text;
+                if (номер_телефонаLabel.Text == "")
+                    WordDocument.Variables["NUMBER"].Value = " ";
                 else
+                    WordDocument.Variables["NUMBER"].Value = "+7 " + номер_телефонаLabel.Text;
+                if (дата_рожденияLabel.Text == "")
+                    WordDocument.Variables["DATA"].Value = " ";
+                else
+                    WordDocument.Variables["DATA"].Value = дата_рожденияLabel.Text;
+
+                if (bindingNavigator1.BindingSource.Count == 0)
+                {
+                    WordDocument.Variables["VISITING"].Value = label4.Text;
+                    WordDocument.Variables["PRICE"].Value = " ";
+                    WordDocument.Variables["PRICENUM"].Value = " ";
+                    WordDocument.Variables["SALE"].Value = " ";
+                    WordDocument.Variables["SALENUM"].Value = " ";
+                    WordDocument.Variables["PROCEDURE"].Value = " ";
                     WordDocument.Variables["ALLPRO"].Value = " ";
+                }
+                else
+                {
+                    WordDocument.Variables["VISITING"].Value = "Посещение " + label3.Text;
+                    WordDocument.Variables["PRICE"].Value = "Цена:";
+                    WordDocument.Variables["PRICENUM"].Value = label7.Text;
+                    WordDocument.Variables["SALE"].Value = "Применена скидка:";
+                    WordDocument.Variables["SALENUM"].Value = label8.Text;
+                    WordDocument.Variables["PROCEDURE"].Value = "Процедуры:";
+                    string s = "";
+                    for (int i = 0; i < процедуры_клиентаDataGridView.Rows.Count - 1; i++)
+                        s += процедуры_клиентаDataGridView.Rows[i].Cells[1].FormattedValue.ToString() + " " + процедуры_клиентаDataGridView.Rows[i].Cells[2].FormattedValue.ToString().ToLower() + ", ";
+                    s += процедуры_клиентаDataGridView.Rows[процедуры_клиентаDataGridView.Rows.Count - 1].Cells[1].FormattedValue.ToString() + " " + процедуры_клиентаDataGridView.Rows[процедуры_клиентаDataGridView.Rows.Count - 1].Cells[2].FormattedValue.ToString().ToLower();
 
+                    if (s != "")
+                        WordDocument.Variables["ALLPRO"].Value = s;
+                    else
+                        WordDocument.Variables["ALLPRO"].Value = " ";
+
+                }
+                //обновляем поля документа
+                WordDocument.Fields.Update();
             }
-            //обновляем поля документа
-            WordDocument.Fields.Update();
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            /*AddClient addClient;
-            if (int.TryParse(клиентDataGridView.CurrentRow.Cells[6].Value.ToString(), out int res))
-                addClient = new AddClient(idClient, this, res);
-            else
-                addClient = new AddClient(idClient, this, 0);
-            addClient.MdiParent = this.MdiParent;
-            addClient.Show();
-            this.Enabled = false;
-            ((MainForm)MdiParent).changeClient = addClient;*/
-        }
+            catch
+            {
+                
+            }
+        } //выгрузка в шаблон
     }
 }
