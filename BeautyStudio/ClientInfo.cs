@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace BeautyStudio
 {
@@ -14,20 +15,67 @@ namespace BeautyStudio
     {
 
         int idClient;
+        int idSkin;
+        int idIgla;
 
-        public ClientInfo(int idClient)
+        public ClientInfo(int idClient, int idSkin)
         {
             InitializeComponent();
             this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент,idClient);
-            this.тип_кожиTableAdapter.Fill(this.beautyStudioDataSet.Тип_кожи);
+            this.тип_кожиTableAdapter.FillByIdSkin(this.beautyStudioDataSet.Тип_кожи, idSkin);
             this.посещениеTableAdapter.FillByIdClient(this.beautyStudioDataSet.Посещение,idClient);
-            this.процедуры_клиентаTableAdapter.Fill(this.beautyStudioDataSet.Процедуры_клиента);
             this.idClient = idClient;
+            this.idSkin = idSkin;
         }
 
         private void ClientInfo_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet2.Пигменты". При необходимости она может быть перемещена или удалена.
+            this.пигментыTableAdapter.Fill(this.beautyStudioDataSet2.Пигменты);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet2.Процедура". При необходимости она может быть перемещена или удалена.
+            this.процедураTableAdapter.Fill(this.beautyStudioDataSet2.Процедура);
+            if (label9.Text != "label9")
+                this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            if (label6.Text != "label6")
+                this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            if (id_посещенияTextBox.Text != "")
+                this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента,int.Parse(id_посещенияTextBox.Text));
             labelNameSet();
+            Visitings();
+        }
+
+        void Visitings()
+        {
+            if (bindingNavigator1.BindingSource.Count == 0)
+            {
+                label4.Visible = true;
+                дата_и_время_посещенияLabel.Visible = false;
+                label3.Visible = false;
+                id_типа_иглыLabel.Visible = false;
+                label5.Visible = false;
+                итоговая_ценаLabel.Visible = false;
+                label7.Visible = false;
+                id_скидкиLabel.Visible = false;
+                label8.Visible = false;
+                процедуры_клиентаDataGridView.Visible = false;
+                примечание_о_посещенииLabel.Visible = false;
+                примечание_о_посещенииTextBox.Visible = false;
+            }
+            else
+            {
+                label4.Visible = false;
+                дата_и_время_посещенияLabel.Visible = true;
+                label3.Visible = true;
+                id_типа_иглыLabel.Visible = true;
+                label5.Visible = true;
+                итоговая_ценаLabel.Visible = true;
+                label7.Visible = true;
+                id_скидкиLabel.Visible = true;
+                label8.Visible = true;
+                процедуры_клиентаDataGridView.Visible = true;
+                примечание_о_посещенииLabel.Visible = true;
+                примечание_о_посещенииTextBox.Visible = true;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -91,21 +139,110 @@ namespace BeautyStudio
         private void ClientInfo_Activated(object sender, EventArgs e)
         {
             this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент, idClient);
-            this.тип_кожиTableAdapter.Fill(this.beautyStudioDataSet.Тип_кожи);
+            this.тип_кожиTableAdapter.FillByIdSkin(this.beautyStudioDataSet.Тип_кожи,idSkin); //не работает тк переменная idSKin не обновляется
             this.посещениеTableAdapter.FillByIdClient(this.beautyStudioDataSet.Посещение, idClient);
-            this.процедуры_клиентаTableAdapter.Fill(this.beautyStudioDataSet.Процедуры_клиента);
+            if (id_посещенияTextBox.Text != "")
+                this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
 
             labelNameSet();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        /*private void toolStripButton1_Click(object sender, EventArgs e)
+        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
         {
-            AddClient addClient;
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+        private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
+        {
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+        private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
+        {
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+        private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
+        {
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+        private void процедуры_клиентаDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void btnOpewWord_Click(object sender, EventArgs e)
+        {
+            string resources = "";
+            for (int i = 0; i < Application.StartupPath.Length - 9; i++)
+                resources += Application.StartupPath[i];
+
+            //запускаем Word и открываем шаблон файла   
+            object fileName = resources + "\\Resources\\Шаблон.docx";
+            Word.Application WordApplication = new Word.Application();
+            WordApplication.Visible = true; //выводим документ на экран
+            Word.Document WordDocument = WordApplication.Documents.Open(fileName);
+            //присваиваем значение полю
+            WordDocument.Variables["SURNAME"].Value = фамилияLabel.Text + " " + имяLabel.Text + " " + отчествоLabel.Text;
+            if (номер_телефонаLabel.Text == "")
+                WordDocument.Variables["NUMBER"].Value = " ";
+            else
+                WordDocument.Variables["NUMBER"].Value = "+7 " + номер_телефонаLabel.Text;
+            if (дата_рожденияLabel.Text == "")
+                WordDocument.Variables["DATA"].Value = " ";
+            else
+                WordDocument.Variables["DATA"].Value = дата_рожденияLabel.Text;
+
+            if (bindingNavigator1.BindingSource.Count == 0)
+            {
+                WordDocument.Variables["VISITING"].Value = label4.Text;
+                WordDocument.Variables["PRICE"].Value = " ";
+                WordDocument.Variables["PRICENUM"].Value = " ";
+                WordDocument.Variables["SALE"].Value = " ";
+                WordDocument.Variables["SALENUM"].Value = " ";
+                WordDocument.Variables["PROCEDURE"].Value = " ";
+                WordDocument.Variables["ALLPRO"].Value = " ";
+            }
+            else
+            {
+                WordDocument.Variables["VISITING"].Value = "Посещение " + label3.Text;
+                WordDocument.Variables["PRICE"].Value = "Цена:";
+                WordDocument.Variables["PRICENUM"].Value = label7.Text;
+                WordDocument.Variables["SALE"].Value = "Применена скидка:";
+                WordDocument.Variables["SALENUM"].Value = label8.Text;
+                WordDocument.Variables["PROCEDURE"].Value = "Процедуры:";
+                string s = "";
+                for (int i = 0; i < процедуры_клиентаDataGridView.Rows.Count-1; i++)
+                    s += процедуры_клиентаDataGridView.Rows[i].Cells[1].FormattedValue.ToString() + " " + процедуры_клиентаDataGridView.Rows[i].Cells[2].FormattedValue.ToString().ToLower() + ", ";
+                s += процедуры_клиентаDataGridView.Rows[процедуры_клиентаDataGridView.Rows.Count - 1].Cells[1].FormattedValue.ToString() + " " + процедуры_клиентаDataGridView.Rows[процедуры_клиентаDataGridView.Rows.Count - 1].Cells[2].FormattedValue.ToString().ToLower();
+
+                if (s != "")
+                    WordDocument.Variables["ALLPRO"].Value = s;
+                else
+                    WordDocument.Variables["ALLPRO"].Value = " ";
+
+            }
+            //обновляем поля документа
+            WordDocument.Fields.Update();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            /*AddClient addClient;
             if (int.TryParse(клиентDataGridView.CurrentRow.Cells[6].Value.ToString(), out int res))
                 addClient = new AddClient(idClient, this, res);
             else
@@ -113,7 +250,7 @@ namespace BeautyStudio
             addClient.MdiParent = this.MdiParent;
             addClient.Show();
             this.Enabled = false;
-            ((MainForm)MdiParent).changeClient = addClient;
-        }*/
+            ((MainForm)MdiParent).changeClient = addClient;*/
+        }
     }
 }

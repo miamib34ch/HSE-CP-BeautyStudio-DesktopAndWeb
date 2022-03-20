@@ -99,5 +99,25 @@ namespace BeautyStudio.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap separator {
+            get {
+                object obj = ResourceManager.GetObject("separator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Шаблон {
+            get {
+                object obj = ResourceManager.GetObject("Шаблон", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

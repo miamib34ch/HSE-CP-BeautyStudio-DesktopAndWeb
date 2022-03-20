@@ -2688,7 +2688,7 @@ namespace BeautyStudio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public СкидкаRow AddСкидкаRow(string Размер_скидки) {
+            public СкидкаRow AddСкидкаRow(float Размер_скидки) {
                 СкидкаRow rowСкидкаRow = ((СкидкаRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2731,7 +2731,7 @@ namespace BeautyStudio {
             private void InitClass() {
                 this.columnId_скидки = new global::System.Data.DataColumn("Id скидки", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId_скидки);
-                this.columnРазмер_скидки = new global::System.Data.DataColumn("Размер скидки", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnРазмер_скидки = new global::System.Data.DataColumn("Размер скидки", typeof(float), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnРазмер_скидки);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId_скидки}, true));
@@ -2739,7 +2739,6 @@ namespace BeautyStudio {
                 this.columnId_скидки.AllowDBNull = false;
                 this.columnId_скидки.Unique = true;
                 this.columnРазмер_скидки.AllowDBNull = false;
-                this.columnРазмер_скидки.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4498,9 +4497,9 @@ namespace BeautyStudio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Размер_скидки {
+            public float Размер_скидки {
                 get {
-                    return ((string)(this[this.tableСкидка.Размер_скидкиColumn]));
+                    return ((float)(this[this.tableСкидка.Размер_скидкиColumn]));
                 }
                 set {
                     this[this.tableСкидка.Размер_скидкиColumn] = value;
@@ -7541,11 +7540,17 @@ WHERE        ([Процедуры в посещении].[Id посещения]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Id скидки], [Размер скидки] FROM Скидка";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT [Id скидки], [Размер скидки] FROM Скидка WHERE Скидка.[Id скидки] = @idSal" +
+                "e";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSale", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id скидки", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7567,6 +7572,32 @@ WHERE        ([Процедуры в посещении].[Id посещения]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual BeautyStudioDataSet.СкидкаDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            BeautyStudioDataSet.СкидкаDataTable dataTable = new BeautyStudioDataSet.СкидкаDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByIdSale(BeautyStudioDataSet.СкидкаDataTable dataTable, int idSale) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idSale));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BeautyStudioDataSet.СкидкаDataTable GetDataBy(int idSale) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idSale));
             BeautyStudioDataSet.СкидкаDataTable dataTable = new BeautyStudioDataSet.СкидкаDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -7848,11 +7879,17 @@ WHERE        ([Процедуры в посещении].[Id посещения]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Id типа иглы], [Название типа иглы] FROM dbo.[Тип иглы]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT [Id типа иглы], [Название типа иглы] FROM dbo.[Тип иглы] WHERE dbo.[Тип иг" +
+                "лы].[Id типа иглы] = @idIgla\r\n";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idIgla", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id типа иглы", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7874,6 +7911,32 @@ WHERE        ([Процедуры в посещении].[Id посещения]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual BeautyStudioDataSet.Тип_иглыDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            BeautyStudioDataSet.Тип_иглыDataTable dataTable = new BeautyStudioDataSet.Тип_иглыDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByIdIgla(BeautyStudioDataSet.Тип_иглыDataTable dataTable, int idIgla) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idIgla));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BeautyStudioDataSet.Тип_иглыDataTable GetDataBy(int idIgla) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idIgla));
             BeautyStudioDataSet.Тип_иглыDataTable dataTable = new BeautyStudioDataSet.Тип_иглыDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -8155,11 +8218,17 @@ WHERE        ([Процедуры в посещении].[Id посещения]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT [Id типа кожи], [Название типа кожи] FROM dbo.[Тип кожи]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT [Id типа кожи], [Название типа кожи] FROM dbo.[Тип кожи] WHERE dbo.[Тип ко" +
+                "жи].[Id типа кожи] = @idSkin";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSkin", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id типа кожи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8181,6 +8250,32 @@ WHERE        ([Процедуры в посещении].[Id посещения]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual BeautyStudioDataSet.Тип_кожиDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            BeautyStudioDataSet.Тип_кожиDataTable dataTable = new BeautyStudioDataSet.Тип_кожиDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByIdSkin(BeautyStudioDataSet.Тип_кожиDataTable dataTable, int idSkin) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idSkin));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BeautyStudioDataSet.Тип_кожиDataTable GetDataBy1(int idSkin) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idSkin));
             BeautyStudioDataSet.Тип_кожиDataTable dataTable = new BeautyStudioDataSet.Тип_кожиDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

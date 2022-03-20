@@ -38,6 +38,7 @@
             System.Windows.Forms.Label id_скидкиLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.beautyStudioDataSet = new BeautyStudio.BeautyStudioDataSet();
             this.посещениеBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.посещениеTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПосещениеTableAdapter();
@@ -370,6 +371,14 @@
             this.процедуры_клиентаDataGridView.Location = new System.Drawing.Point(402, 37);
             this.процедуры_клиентаDataGridView.Name = "процедуры_клиентаDataGridView";
             this.процедуры_клиентаDataGridView.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.процедуры_клиентаDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.процедуры_клиентаDataGridView.Size = new System.Drawing.Size(448, 163);
             this.процедуры_клиентаDataGridView.TabIndex = 8;
             this.процедуры_клиентаDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.процедуры_клиентаDataGridView_DataError);
