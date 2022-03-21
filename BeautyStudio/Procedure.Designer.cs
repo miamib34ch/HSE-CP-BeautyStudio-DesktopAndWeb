@@ -164,7 +164,7 @@
             this.Cancel.TabIndex = 5;
             this.Cancel.Text = "Отмена";
             this.Cancel.UseVisualStyleBackColor = true;
-            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
+            this.Cancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // comboBox1
             // 
@@ -283,6 +283,7 @@
             this.Name = "Procedure";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление процедуры";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Procedure_FormClosing);
             this.Load += new System.EventHandler(this.Procedure_Load);
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).EndInit();

@@ -37,9 +37,11 @@
             this.поискПосещенийПоДатеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.свойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьСловариToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.упорядочитьОкнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменитьПарольАдминаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,7 +115,8 @@
             this.свойстваToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.обновитьСловариToolStripMenuItem,
             this.toolStripSeparator1,
-            this.упорядочитьОкнаToolStripMenuItem});
+            this.упорядочитьОкнаToolStripMenuItem,
+            this.сменитьПарольАдминаToolStripMenuItem});
             this.свойстваToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.свойстваToolStripMenuItem.Name = "свойстваToolStripMenuItem";
             this.свойстваToolStripMenuItem.Size = new System.Drawing.Size(88, 25);
@@ -123,9 +126,21 @@
             // обновитьСловариToolStripMenuItem
             // 
             this.обновитьСловариToolStripMenuItem.Name = "обновитьСловариToolStripMenuItem";
-            this.обновитьСловариToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.обновитьСловариToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.обновитьСловариToolStripMenuItem.Text = "Обновить словари";
             this.обновитьСловариToolStripMenuItem.Click += new System.EventHandler(this.обновитьСловариToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(252, 6);
+            // 
+            // упорядочитьОкнаToolStripMenuItem
+            // 
+            this.упорядочитьОкнаToolStripMenuItem.Name = "упорядочитьОкнаToolStripMenuItem";
+            this.упорядочитьОкнаToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.упорядочитьОкнаToolStripMenuItem.Text = "Упорядочить окна";
+            this.упорядочитьОкнаToolStripMenuItem.Click += new System.EventHandler(this.упорядочитьОкнаToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
@@ -135,17 +150,21 @@
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // сменитьПарольАдминаToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
+            this.сменитьПарольАдминаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox1});
+            this.сменитьПарольАдминаToolStripMenuItem.Name = "сменитьПарольАдминаToolStripMenuItem";
+            this.сменитьПарольАдминаToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.сменитьПарольАдминаToolStripMenuItem.Text = "Сменить пароль админа";
+            this.сменитьПарольАдминаToolStripMenuItem.Visible = false;
             // 
-            // упорядочитьОкнаToolStripMenuItem
+            // toolStripTextBox1
             // 
-            this.упорядочитьОкнаToolStripMenuItem.Name = "упорядочитьОкнаToolStripMenuItem";
-            this.упорядочитьОкнаToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
-            this.упорядочитьОкнаToolStripMenuItem.Text = "Упорядочить окна";
-            this.упорядочитьОкнаToolStripMenuItem.Click += new System.EventHandler(this.упорядочитьОкнаToolStripMenuItem_Click);
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox1_KeyUp);
             // 
             // MainForm
             // 
@@ -179,5 +198,7 @@
         private System.Windows.Forms.ToolStripMenuItem поискПосещенийПоДатеToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem упорядочитьОкнаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сменитьПарольАдминаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
     }
 }

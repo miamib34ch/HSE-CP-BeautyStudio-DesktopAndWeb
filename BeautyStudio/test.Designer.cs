@@ -68,6 +68,38 @@
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.пигментыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.пигментыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПигментыTableAdapter();
+            this.пигментыDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.процедураBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.процедураTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter();
+            this.процедураDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.скидкаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.скидкаTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.СкидкаTableAdapter();
+            this.скидкаDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.тип_иглыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.тип_иглыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Тип_иглыTableAdapter();
+            this.тип_иглыDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.тип_кожиBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.тип_кожиTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Тип_кожиTableAdapter();
+            this.тип_кожиDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.тип_процедурыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.тип_процедурыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.Тип_процедурыTableAdapter();
+            this.тип_процедурыDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентDataGridView)).BeginInit();
@@ -77,6 +109,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_в_посещенииDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.пигментыBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.пигментыDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.скидкаDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_иглыBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_иглыDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_кожиBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_кожиDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_процедурыBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_процедурыDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // beautyStudioDataSet
@@ -357,11 +401,235 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // пигментыBindingSource
+            // 
+            this.пигментыBindingSource.DataMember = "Пигменты";
+            this.пигментыBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // пигментыTableAdapter
+            // 
+            this.пигментыTableAdapter.ClearBeforeFill = true;
+            // 
+            // пигментыDataGridView
+            // 
+            this.пигментыDataGridView.AutoGenerateColumns = false;
+            this.пигментыDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.пигментыDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn26});
+            this.пигментыDataGridView.DataSource = this.пигментыBindingSource;
+            this.пигментыDataGridView.Location = new System.Drawing.Point(1187, 12);
+            this.пигментыDataGridView.Name = "пигментыDataGridView";
+            this.пигментыDataGridView.Size = new System.Drawing.Size(300, 220);
+            this.пигментыDataGridView.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "Id пигмента";
+            this.dataGridViewTextBoxColumn25.HeaderText = "Id пигмента";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "Название пигмента";
+            this.dataGridViewTextBoxColumn26.HeaderText = "Название пигмента";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            // 
+            // процедураBindingSource
+            // 
+            this.процедураBindingSource.DataMember = "Процедура";
+            this.процедураBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // процедураTableAdapter
+            // 
+            this.процедураTableAdapter.ClearBeforeFill = true;
+            // 
+            // процедураDataGridView
+            // 
+            this.процедураDataGridView.AutoGenerateColumns = false;
+            this.процедураDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.процедураDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30});
+            this.процедураDataGridView.DataSource = this.процедураBindingSource;
+            this.процедураDataGridView.Location = new System.Drawing.Point(1011, 238);
+            this.процедураDataGridView.Name = "процедураDataGridView";
+            this.процедураDataGridView.Size = new System.Drawing.Size(476, 220);
+            this.процедураDataGridView.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "Id процедуры";
+            this.dataGridViewTextBoxColumn27.HeaderText = "Id процедуры";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            this.dataGridViewTextBoxColumn28.DataPropertyName = "Название процедуры";
+            this.dataGridViewTextBoxColumn28.HeaderText = "Название процедуры";
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.DataPropertyName = "Id типа процедуры";
+            this.dataGridViewTextBoxColumn29.HeaderText = "Id типа процедуры";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.DataPropertyName = "Цена процедуры";
+            this.dataGridViewTextBoxColumn30.HeaderText = "Цена процедуры";
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            // 
+            // скидкаBindingSource
+            // 
+            this.скидкаBindingSource.DataMember = "Скидка";
+            this.скидкаBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // скидкаTableAdapter
+            // 
+            this.скидкаTableAdapter.ClearBeforeFill = true;
+            // 
+            // скидкаDataGridView
+            // 
+            this.скидкаDataGridView.AutoGenerateColumns = false;
+            this.скидкаDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.скидкаDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn31,
+            this.dataGridViewTextBoxColumn32});
+            this.скидкаDataGridView.DataSource = this.скидкаBindingSource;
+            this.скидкаDataGridView.Location = new System.Drawing.Point(1187, 483);
+            this.скидкаDataGridView.Name = "скидкаDataGridView";
+            this.скидкаDataGridView.Size = new System.Drawing.Size(300, 220);
+            this.скидкаDataGridView.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumn31
+            // 
+            this.dataGridViewTextBoxColumn31.DataPropertyName = "Id скидки";
+            this.dataGridViewTextBoxColumn31.HeaderText = "Id скидки";
+            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+            // 
+            // dataGridViewTextBoxColumn32
+            // 
+            this.dataGridViewTextBoxColumn32.DataPropertyName = "Размер скидки";
+            this.dataGridViewTextBoxColumn32.HeaderText = "Размер скидки";
+            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
+            // 
+            // тип_иглыBindingSource
+            // 
+            this.тип_иглыBindingSource.DataMember = "Тип иглы";
+            this.тип_иглыBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // тип_иглыTableAdapter
+            // 
+            this.тип_иглыTableAdapter.ClearBeforeFill = true;
+            // 
+            // тип_иглыDataGridView
+            // 
+            this.тип_иглыDataGridView.AutoGenerateColumns = false;
+            this.тип_иглыDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.тип_иглыDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn33,
+            this.dataGridViewTextBoxColumn34});
+            this.тип_иглыDataGridView.DataSource = this.тип_иглыBindingSource;
+            this.тип_иглыDataGridView.Location = new System.Drawing.Point(870, 565);
+            this.тип_иглыDataGridView.Name = "тип_иглыDataGridView";
+            this.тип_иглыDataGridView.Size = new System.Drawing.Size(300, 220);
+            this.тип_иглыDataGridView.TabIndex = 8;
+            // 
+            // dataGridViewTextBoxColumn33
+            // 
+            this.dataGridViewTextBoxColumn33.DataPropertyName = "Id типа иглы";
+            this.dataGridViewTextBoxColumn33.HeaderText = "Id типа иглы";
+            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
+            // 
+            // dataGridViewTextBoxColumn34
+            // 
+            this.dataGridViewTextBoxColumn34.DataPropertyName = "Название типа иглы";
+            this.dataGridViewTextBoxColumn34.HeaderText = "Название типа иглы";
+            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
+            // 
+            // тип_кожиBindingSource
+            // 
+            this.тип_кожиBindingSource.DataMember = "Тип кожи";
+            this.тип_кожиBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // тип_кожиTableAdapter
+            // 
+            this.тип_кожиTableAdapter.ClearBeforeFill = true;
+            // 
+            // тип_кожиDataGridView
+            // 
+            this.тип_кожиDataGridView.AutoGenerateColumns = false;
+            this.тип_кожиDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.тип_кожиDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn35,
+            this.dataGridViewTextBoxColumn36});
+            this.тип_кожиDataGridView.DataSource = this.тип_кожиBindingSource;
+            this.тип_кожиDataGridView.Location = new System.Drawing.Point(564, 565);
+            this.тип_кожиDataGridView.Name = "тип_кожиDataGridView";
+            this.тип_кожиDataGridView.Size = new System.Drawing.Size(300, 220);
+            this.тип_кожиDataGridView.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.DataPropertyName = "Id типа кожи";
+            this.dataGridViewTextBoxColumn35.HeaderText = "Id типа кожи";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "Название типа кожи";
+            this.dataGridViewTextBoxColumn36.HeaderText = "Название типа кожи";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            // 
+            // тип_процедурыBindingSource
+            // 
+            this.тип_процедурыBindingSource.DataMember = "Тип процедуры";
+            this.тип_процедурыBindingSource.DataSource = this.beautyStudioDataSet;
+            // 
+            // тип_процедурыTableAdapter
+            // 
+            this.тип_процедурыTableAdapter.ClearBeforeFill = true;
+            // 
+            // тип_процедурыDataGridView
+            // 
+            this.тип_процедурыDataGridView.AutoGenerateColumns = false;
+            this.тип_процедурыDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.тип_процедурыDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn37,
+            this.dataGridViewTextBoxColumn38});
+            this.тип_процедурыDataGridView.DataSource = this.тип_процедурыBindingSource;
+            this.тип_процедурыDataGridView.Location = new System.Drawing.Point(258, 565);
+            this.тип_процедурыDataGridView.Name = "тип_процедурыDataGridView";
+            this.тип_процедурыDataGridView.Size = new System.Drawing.Size(300, 220);
+            this.тип_процедурыDataGridView.TabIndex = 10;
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "Id типа процедуры";
+            this.dataGridViewTextBoxColumn37.HeaderText = "Id типа процедуры";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            // 
+            // dataGridViewTextBoxColumn38
+            // 
+            this.dataGridViewTextBoxColumn38.DataPropertyName = "Название типа процедуры";
+            this.dataGridViewTextBoxColumn38.HeaderText = "Название типа процедуры";
+            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
+            // 
             // test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 736);
+            this.ClientSize = new System.Drawing.Size(1734, 899);
+            this.Controls.Add(this.тип_процедурыDataGridView);
+            this.Controls.Add(this.тип_кожиDataGridView);
+            this.Controls.Add(this.тип_иглыDataGridView);
+            this.Controls.Add(this.скидкаDataGridView);
+            this.Controls.Add(this.процедураDataGridView);
+            this.Controls.Add(this.пигментыDataGridView);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.процедуры_клиентаDataGridView);
             this.Controls.Add(this.процедуры_в_посещенииDataGridView);
@@ -379,6 +647,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_в_посещенииDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.процедуры_клиентаDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.пигментыBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.пигментыDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.процедураDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.скидкаBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.скидкаDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_иглыBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_иглыDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_кожиBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_кожиDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_процедурыBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_процедурыDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -424,5 +704,37 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource пигментыBindingSource;
+        private BeautyStudioDataSetTableAdapters.ПигментыTableAdapter пигментыTableAdapter;
+        private System.Windows.Forms.DataGridView пигментыDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.BindingSource процедураBindingSource;
+        private BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter процедураTableAdapter;
+        private System.Windows.Forms.DataGridView процедураDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
+        private System.Windows.Forms.BindingSource скидкаBindingSource;
+        private BeautyStudioDataSetTableAdapters.СкидкаTableAdapter скидкаTableAdapter;
+        private System.Windows.Forms.DataGridView скидкаDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.BindingSource тип_иглыBindingSource;
+        private BeautyStudioDataSetTableAdapters.Тип_иглыTableAdapter тип_иглыTableAdapter;
+        private System.Windows.Forms.DataGridView тип_иглыDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.BindingSource тип_кожиBindingSource;
+        private BeautyStudioDataSetTableAdapters.Тип_кожиTableAdapter тип_кожиTableAdapter;
+        private System.Windows.Forms.DataGridView тип_кожиDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+        private System.Windows.Forms.BindingSource тип_процедурыBindingSource;
+        private BeautyStudioDataSetTableAdapters.Тип_процедурыTableAdapter тип_процедурыTableAdapter;
+        private System.Windows.Forms.DataGridView тип_процедурыDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
     }
 }

@@ -46,9 +46,22 @@ namespace BeautyStudio
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            клиентBindingSource.EndEdit();
-            клиентTableAdapter.Update(this.beautyStudioDataSet.Клиент);
-            Close();
+            if (this.Text == "Добавление клиента")
+            {
+                var res = MessageBox.Show("Вы уверены, что хотите добавить нового клиента?", "Добавление клиента", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.OK)
+                {
+                    клиентBindingSource.EndEdit();
+                    клиентTableAdapter.Update(this.beautyStudioDataSet.Клиент);
+                    Close();
+                }
+            }
+            else
+            {
+                клиентBindingSource.EndEdit();
+                клиентTableAdapter.Update(this.beautyStudioDataSet.Клиент);
+                Close();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -67,11 +80,6 @@ namespace BeautyStudio
         {
             if (clients != null)
                 clients.Enabled = true;
-        }
-
-        private void AddClient_GiveFeedback(object sender, GiveFeedbackEventArgs e)
-        {
-            Invalidate();
         }
 
         #region изменение на заглавную букву

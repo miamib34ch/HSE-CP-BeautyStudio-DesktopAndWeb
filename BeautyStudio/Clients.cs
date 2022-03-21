@@ -27,8 +27,9 @@ namespace BeautyStudio
 
         int lastSelectedRowId = 0;
         bool flag = true; //нужен для проверки была ли строка выбрана автоматически (при перезаливке таблицы) или вручную 
-        public string connectionSourse = "(LocalDB)\\MSSQLLocalDB";
-        public string bdName = "BeautyStudio";
+
+        public string connectionSourse = "(LocalDB)\\MSSQLLocalDB"; //подключение к серверу
+        public string bdName = "BeautyStudio";  //имя бд
 
         private void Clients_Activated(object sender, EventArgs e)
         {
@@ -62,17 +63,16 @@ namespace BeautyStudio
             }
         }
 
-        private void изменитьИнформациюToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            AddClient addClient;
-            if (int.TryParse(клиентDataGridView.CurrentRow.Cells[6].Value.ToString(),out int res))
-                addClient = new AddClient(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, res);
-            else
-                addClient = new AddClient(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, 0);
-            addClient.MdiParent = this.MdiParent;
-            addClient.Show();
-            this.Enabled = false;
-            ((MainForm)MdiParent).changeClient = addClient;
+            Close();
+        }
+
+        #region контекстное меню строк таблицы 
+
+        private void клиентDataGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
+        {
+            e.ContextMenuStrip = contextMenuStripClient;
         }
 
         private void contextMenuStripClient_Opening(object sender, CancelEventArgs e)
@@ -91,38 +91,16 @@ namespace BeautyStudio
             }
         }
 
-        private void клиентDataGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
-        {
-            e.ContextMenuStrip = contextMenuStripClient;
-        }
-
         private void добавитьПосещениеКлиентуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Visiting visit;
-            visit = new Visiting(клиентDataGridView.CurrentRow.Cells[0].Value.ToString(),this);
+            visit = new Visiting(клиентDataGridView.CurrentRow.Cells[0].Value.ToString(), this);
             visit.MdiParent = this.MdiParent;
             ((MainForm)MdiParent).addVisit = visit;
             visit.Show();
             this.Enabled = false;
             ((MainForm)MdiParent).addVisit = visit;
         }
-
-        private void btnFind_Click(object sender, EventArgs e)
-        {
-            if (surnameSearch.Text != "")
-            {
-                this.клиентTableAdapter.FillBySurname(this.beautyStudioDataSet.Клиент, ((MainForm)MdiParent).firstUp(surnameSearch.Text));
-                
-                surnameSearch.Text = "";
-            }
-            if (numberSearch.Text != "(   )    -" && numberSearch.Text.Length == 14)
-            {
-                this.клиентTableAdapter.FillByNumber(this.beautyStudioDataSet.Клиент, numberSearch.Text);
-                numberSearch.Text = "(   )    -";
-            }
-        }
-
-
 
         private void посмотретьИнформациюToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -135,9 +113,53 @@ namespace BeautyStudio
             info.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void изменитьИнформациюToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+            AddClient addClient;
+            if (int.TryParse(клиентDataGridView.CurrentRow.Cells[6].Value.ToString(), out int res))
+                addClient = new AddClient(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, res);
+            else
+                addClient = new AddClient(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()), this, 0);
+            addClient.MdiParent = this.MdiParent;
+            addClient.Show();
+            this.Enabled = false;
+            ((MainForm)MdiParent).changeClient = addClient;
         }
+
+        #endregion
+
+        #region поиск
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            if (surnameSearch.Text != "")
+            {
+                this.клиентTableAdapter.FillBySurname(this.beautyStudioDataSet.Клиент, ((MainForm)MdiParent).firstUp(surnameSearch.Text));
+                surnameSearch.Text = "";
+            }
+            if (numberSearch.Text != "(   )    -" && numberSearch.Text.Length == 14)
+            {
+                this.клиентTableAdapter.FillByNumber(this.beautyStudioDataSet.Клиент, numberSearch.Text);
+                numberSearch.Text = "(   )    -";
+            }
+        }
+
+        private void surnameSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnFind_Click(sender, e);  
+            }
+        }
+
+        private void numberSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnFind_Click(sender, e);
+            }
+        }
+
+        #endregion
     }
 }

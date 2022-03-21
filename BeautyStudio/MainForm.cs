@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BeautyStudio
@@ -17,14 +18,21 @@ namespace BeautyStudio
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.Icon = BeautyStudio.Properties.Resources.iconBS;
+
+            string resources = "";
+            for (int i = 0; i < Application.StartupPath.Length - 9; i++)
+                resources += Application.StartupPath[i];
+            fileName = resources + "\\Resources\\pass.txt";
         }
 
-        Clients clients;
+        string fileName;
+
         birthdays birthdays;
         visitings visitings;
         Dictionaries dictionaries;
         AddClient addClient;
 
+        public Clients clients { get; set; }
         public Visiting addVisit { get; set; }
         public AddClient changeClient { get; set; }
 
@@ -36,10 +44,13 @@ namespace BeautyStudio
             clients.MdiParent = this;
             this.clients = clients;
             clients.Show();
-            if (MdiChildren.Contains(addClient))
+            if (MdiChildren.Contains(addClient) || MdiChildren.Contains(changeClient))
             {
                 clients.Enabled = false;
-                addClient.clients = clients;
+                if (MdiChildren.Contains(addClient))
+                    addClient.clients = clients;
+                else
+                    changeClient.clients = clients;
             }
         }
 
@@ -93,6 +104,46 @@ namespace BeautyStudio
 
         #region учитывание открытых окон 
 
+        private void клиентыToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (this.MdiChildren.Contains(clients) || this.MdiChildren.Contains(dictionaries))
+            {
+                показатьВсехКлиентовToolStripMenuItem.Enabled = false;
+                if (!this.MdiChildren.Contains(dictionaries))
+                    показатьВсехКлиентовToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
+                else
+                    показатьВсехКлиентовToolStripMenuItem.Image = null;
+            }
+            else
+            {
+                показатьВсехКлиентовToolStripMenuItem.Enabled = true;
+                показатьВсехКлиентовToolStripMenuItem.Image = null;
+            }
+
+
+            if (this.MdiChildren.Contains(addClient) || this.MdiChildren.Contains(dictionaries) || this.MdiChildren.Contains(addVisit))
+            {
+                добавитьНовогоКлиентаToolStripMenuItem.Enabled = false;
+                if (!(this.MdiChildren.Contains(dictionaries) || this.MdiChildren.Contains(addVisit)))
+                    добавитьНовогоКлиентаToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
+                else
+                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
+            }
+            else
+            {
+                if (MdiChildren.Contains(changeClient))
+                {
+                    добавитьНовогоКлиентаToolStripMenuItem.Enabled = false;
+                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
+                }
+                else
+                {
+                    добавитьНовогоКлиентаToolStripMenuItem.Enabled = true;
+                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
+                }
+            }
+        }
+
         private void функцииToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             if (this.MdiChildren.Contains(birthdays) || this.MdiChildren.Contains(dictionaries))
@@ -130,52 +181,19 @@ namespace BeautyStudio
             {
                 обновитьСловариToolStripMenuItem.Enabled = false;
                 обновитьСловариToolStripMenuItem.Image = Properties.Resources.selected;
+                сменитьПарольАдминаToolStripMenuItem.Visible = true;
             }
             else
             {
                 обновитьСловариToolStripMenuItem.Enabled = true;
                 обновитьСловариToolStripMenuItem.Image = null;
+                сменитьПарольАдминаToolStripMenuItem.Visible = false;
             }
-        }
 
-        private void клиентыToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
-        {
-            if (this.MdiChildren.Contains(clients) || this.MdiChildren.Contains(dictionaries))
-            {
-                показатьВсехКлиентовToolStripMenuItem.Enabled = false;
-                if (!this.MdiChildren.Contains(dictionaries))
-                    показатьВсехКлиентовToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
-                else
-                    показатьВсехКлиентовToolStripMenuItem.Image = null;
-            }
+            if(MdiChildren.Count() == 0)
+                упорядочитьОкнаToolStripMenuItem.Enabled=false;
             else
-            {
-                показатьВсехКлиентовToolStripMenuItem.Enabled = true;
-                показатьВсехКлиентовToolStripMenuItem.Image = null;
-            }
-
-
-            if (this.MdiChildren.Contains(addClient) || this.MdiChildren.Contains(dictionaries))
-            {
-                добавитьНовогоКлиентаToolStripMenuItem.Enabled = false;
-                if (!this.MdiChildren.Contains(dictionaries))
-                    добавитьНовогоКлиентаToolStripMenuItem.Image = BeautyStudio.Properties.Resources.selected;
-                else
-                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
-            }
-            else
-            {
-                if (MdiChildren.Contains(changeClient))
-                {
-                    добавитьНовогоКлиентаToolStripMenuItem.Enabled = false;
-                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
-                }
-                else
-                {
-                    добавитьНовогоКлиентаToolStripMenuItem.Enabled = true;
-                    добавитьНовогоКлиентаToolStripMenuItem.Image = null;
-                }
-            }
+                упорядочитьОкнаToolStripMenuItem.Enabled = true;
         }
 
         #endregion
@@ -205,7 +223,7 @@ namespace BeautyStudio
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.MdiChildren.Contains(addVisit))
-                addVisit.Cancel_Click(sender, e); //если не выполнить, то в базу данных добавится несохранненное посещение 
+                addVisit.btnCancel_Click(sender, e); //если не выполнить, то в базу данных добавится несохранненное посещение 
             if (this.MdiChildren.Contains(dictionaries))
                 if(dictionaries.тип_иглыDataGridView.Visible == true)
                     dictionaries.btnBack_Click(sender, e); //если не выполнить, то в базу данных добавится несохранненный импорт
@@ -216,5 +234,14 @@ namespace BeautyStudio
         {
             LayoutMdi(MdiLayout.Cascade);
         }
+
+        private void toolStripTextBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                File.WriteAllText(fileName, toolStripTextBox1.Text);
+                MessageBox.Show("Пароль изменён!\nИзменения вступят в силу после перезапуска системы!");
+            }
+        } //смена пароля админа
     }
 }

@@ -255,10 +255,10 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.пигментыDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.пигментыDataGridView.Location = new System.Drawing.Point(13, 12);
+            this.пигментыDataGridView.Location = new System.Drawing.Point(12, 12);
             this.пигментыDataGridView.Name = "пигментыDataGridView";
             this.пигментыDataGridView.Size = new System.Drawing.Size(476, 446);
-            this.пигментыDataGridView.TabIndex = 8;
+            this.пигментыDataGridView.TabIndex = 17;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -309,10 +309,10 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.процедураDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
-            this.процедураDataGridView.Location = new System.Drawing.Point(13, 12);
+            this.процедураDataGridView.Location = new System.Drawing.Point(12, 12);
             this.процедураDataGridView.Name = "процедураDataGridView";
             this.процедураDataGridView.Size = new System.Drawing.Size(476, 446);
-            this.процедураDataGridView.TabIndex = 8;
+            this.процедураDataGridView.TabIndex = 16;
             this.процедураDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.процедураDataGridView_DataError);
             // 
             // dataGridViewTextBoxColumn3
@@ -390,10 +390,10 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.скидкаDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.скидкаDataGridView.Location = new System.Drawing.Point(13, 12);
+            this.скидкаDataGridView.Location = new System.Drawing.Point(12, 12);
             this.скидкаDataGridView.Name = "скидкаDataGridView";
             this.скидкаDataGridView.Size = new System.Drawing.Size(476, 446);
-            this.скидкаDataGridView.TabIndex = 9;
+            this.скидкаDataGridView.TabIndex = 18;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -442,10 +442,10 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.тип_иглыDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
-            this.тип_иглыDataGridView.Location = new System.Drawing.Point(13, 12);
+            this.тип_иглыDataGridView.Location = new System.Drawing.Point(12, 12);
             this.тип_иглыDataGridView.Name = "тип_иглыDataGridView";
             this.тип_иглыDataGridView.Size = new System.Drawing.Size(476, 446);
-            this.тип_иглыDataGridView.TabIndex = 10;
+            this.тип_иглыDataGridView.TabIndex = 21;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -498,10 +498,10 @@
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.тип_кожиDataGridView.DefaultCellStyle = dataGridViewCellStyle10;
-            this.тип_кожиDataGridView.Location = new System.Drawing.Point(13, 12);
+            this.тип_кожиDataGridView.Location = new System.Drawing.Point(12, 12);
             this.тип_кожиDataGridView.Name = "тип_кожиDataGridView";
             this.тип_кожиDataGridView.Size = new System.Drawing.Size(476, 446);
-            this.тип_кожиDataGridView.TabIndex = 11;
+            this.тип_кожиDataGridView.TabIndex = 19;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -545,10 +545,10 @@
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.тип_процедурыDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
-            this.тип_процедурыDataGridView.Location = new System.Drawing.Point(13, 11);
+            this.тип_процедурыDataGridView.Location = new System.Drawing.Point(12, 12);
             this.тип_процедурыDataGridView.Name = "тип_процедурыDataGridView";
             this.тип_процедурыDataGridView.Size = new System.Drawing.Size(476, 446);
-            this.тип_процедурыDataGridView.TabIndex = 12;
+            this.тип_процедурыDataGridView.TabIndex = 20;
             // 
             // dataGridViewTextBoxColumn14
             // 
@@ -601,7 +601,7 @@
             this.btnImport.Location = new System.Drawing.Point(61, 464);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(46, 40);
-            this.btnImport.TabIndex = 14;
+            this.btnImport.TabIndex = 15;
             this.btnImport.Tag = "";
             this.btnImport.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnImport.UseVisualStyleBackColor = true;
@@ -618,7 +618,7 @@
             this.btnExport.Location = new System.Drawing.Point(12, 464);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(43, 40);
-            this.btnExport.TabIndex = 15;
+            this.btnExport.TabIndex = 14;
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -627,7 +627,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 516);
+            this.ClientSize = new System.Drawing.Size(500, 515);
             this.ControlBox = false;
             this.Controls.Add(this.тип_иглыDataGridView);
             this.Controls.Add(this.btnExport);

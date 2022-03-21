@@ -42,15 +42,6 @@ namespace BeautyStudio
             id_клиентаTextBox.Text = idClient;
         }
 
-        private void addProcedure_Click(object sender, EventArgs e)
-        {
-            посещениеBindingSource.EndEdit();
-            посещениеTableAdapter.Update(this.beautyStudioDataSet.Посещение);
-            Procedure procedure = new Procedure(id_посещенияTextBox.Text);
-            procedure.MdiParent = this.MdiParent;
-            procedure.Show();
-        }
-
         private void Visiting_Activated(object sender, EventArgs e)
         {
             updateMoney();
@@ -65,18 +56,34 @@ namespace BeautyStudio
                 clients.Enabled = true;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+        private void addProcedure_Click(object sender, EventArgs e)
         {
-            var res = MessageBox.Show("Вы уверены, что хотите добавить данное посещение?", "Добавление посещение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (res == DialogResult.OK)
-            {
-                посещениеBindingSource.EndEdit();
-                посещениеTableAdapter.Update(this.beautyStudioDataSet.Посещение);
-                Close();
-            }
+            посещениеBindingSource.EndEdit();
+            посещениеTableAdapter.Update(this.beautyStudioDataSet.Посещение);
+            Procedure procedure = new Procedure(id_посещенияTextBox.Text,this);
+            procedure.MdiParent = this.MdiParent;
+            this.Enabled = false;
+            procedure.Show();
         }
 
-        public void Cancel_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "Не указано" && процедуры_клиентаDataGridView.Rows.Count != 0)
+            {
+                var res = MessageBox.Show("Вы уверены, что хотите добавить данное посещение?", "Добавление посещение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.OK)
+                {
+                    посещениеBindingSource.EndEdit();
+                    посещениеTableAdapter.Update(this.beautyStudioDataSet.Посещение);
+                    Close();
+                }
+            }
+            else
+                MessageBox.Show("Выберите тип иглы и добавьте процедуры!\nТакже проверьте формат времени!");
+        }
+
+        public void btnCancel_Click(object sender, EventArgs e)
         {
             процедуры_клиентаTableAdapter.DeleteQuery(int.Parse(id_посещенияTextBox.Text));
             посещениеBindingSource.RemoveCurrent();
@@ -84,10 +91,7 @@ namespace BeautyStudio
             Close();
         }
 
-        private void процедуры_клиентаDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
-        }
+        #region удаление процедур
 
         private void процедуры_клиентаDataGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
         {
@@ -117,6 +121,8 @@ namespace BeautyStudio
             conn.Close();
         }
 
+        #endregion
+
         void updateMoney()
         {
             try
@@ -135,11 +141,18 @@ namespace BeautyStudio
             {
 
             }
-        }
+        } //подсчёт итоговой суммы
 
         private void comboBox2_TextChanged(object sender, EventArgs e)
         {
             updateMoney();
+        } //изменение скидки
+
+
+        private void процедуры_клиентаDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
+
     }
 }

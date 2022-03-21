@@ -124,17 +124,6 @@ namespace BeautyStudio
             btnSave.Visible = false;
         }
 
-        public void btnBack_Click(object sender, EventArgs e)
-        {
-            if (wasImport && this.тип_иглыDataGridView.Enabled == true)
-            {
-                for(int i = 0; i < importCount; i++)
-                    тип_иглыTableAdapter.Delete(countBeforeImport+i);
-            }
-            hideAllData();
-            ComebackAllBtn();
-        }
-
         private void btnPrice_Click(object sender, EventArgs e)
         {
             hideAllBtn();
@@ -193,6 +182,18 @@ namespace BeautyStudio
             тип_процедурыDataGridView.Columns[0].Visible = false;
         }
 
+
+        public void btnBack_Click(object sender, EventArgs e)
+        {
+            if (wasImport && this.тип_иглыDataGridView.Enabled == true)
+            {
+                for (int i = 0; i < importCount; i++)
+                    тип_иглыTableAdapter.Delete(countBeforeImport + i);
+            }
+            hideAllData();
+            ComebackAllBtn();
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet.Тип_процедуры". При необходимости она может быть перемещена или удалена.
@@ -210,15 +211,11 @@ namespace BeautyStudio
             wasImport = false;
         }
 
-        private void процедураDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
+
 
         private void btnExport_Click(object sender, EventArgs e)
         {
@@ -311,5 +308,11 @@ namespace BeautyStudio
                 MessageBox.Show("Плохой файл!");
             }
 }
+
+
+        private void процедураDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
     }
 }

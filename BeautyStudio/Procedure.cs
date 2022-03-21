@@ -14,8 +14,9 @@ namespace BeautyStudio
     {
 
         string idVisiting;
+        Visiting visiting;
 
-        public Procedure(string idVisiting)
+        public Procedure(string idVisiting, Visiting visiting)
         {
             InitializeComponent();
             this.процедуры_клиентаTableAdapter.Fill(this.beautyStudioDataSet.Процедуры_клиента);
@@ -25,6 +26,7 @@ namespace BeautyStudio
             процедуры_клиентаBindingSource.AddNew();
             процедуры_в_посещенииBindingSource.AddNew();
             this.idVisiting = idVisiting;
+            this.visiting = visiting;
         }
 
         private void Procedure_Load(object sender, EventArgs e)
@@ -33,18 +35,28 @@ namespace BeautyStudio
             id_процедуры_клиентаTextBox.Text = textBox1.Text;
         }
 
-        private void Cancel_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "" && comboBox2.Text != "")
+            {
+                процедуры_клиентаBindingSource.EndEdit();
+                процедуры_клиентаTableAdapter.Update(this.beautyStudioDataSet.Процедуры_клиента);
+                процедуры_в_посещенииBindingSource.EndEdit();
+                процедуры_в_посещенииTableAdapter.Update(this.beautyStudioDataSet.Процедуры_в_посещении);
+                Close();
+            }
+            else
+                MessageBox.Show("Выберите процедуру и пигмент!");
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void Procedure_FormClosing(object sender, FormClosingEventArgs e)
         {
-            процедуры_клиентаBindingSource.EndEdit();
-            процедуры_клиентаTableAdapter.Update(this.beautyStudioDataSet.Процедуры_клиента);
-            процедуры_в_посещенииBindingSource.EndEdit();
-            процедуры_в_посещенииTableAdapter.Update(this.beautyStudioDataSet.Процедуры_в_посещении);
-            Close();
+            visiting.Enabled = true;
         }
     }
 }

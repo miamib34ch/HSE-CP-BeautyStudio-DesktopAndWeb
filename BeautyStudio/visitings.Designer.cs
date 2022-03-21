@@ -132,7 +132,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.посещениеDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.посещениеDataGridView.Size = new System.Drawing.Size(905, 541);
-            this.посещениеDataGridView.TabIndex = 1;
+            this.посещениеDataGridView.TabIndex = 2;
             this.посещениеDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.посещениеDataGridView_DataError);
             // 
             // dataGridViewTextBoxColumn1
@@ -253,7 +253,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(189, 29);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.TabIndex = 1;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // visitings

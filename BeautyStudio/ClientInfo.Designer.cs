@@ -35,9 +35,9 @@
             System.Windows.Forms.Label как_узнал_о_салонеLabel;
             System.Windows.Forms.Label id_посещенияLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientInfo));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.примечание_о_посещенииLabel = new System.Windows.Forms.Label();
             this.итоговая_ценаLabel = new System.Windows.Forms.Label();
             this.id_типа_иглыLabel = new System.Windows.Forms.Label();
@@ -316,7 +316,7 @@
             this.противопоказанияTextBox.ReadOnly = true;
             this.противопоказанияTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.противопоказанияTextBox.Size = new System.Drawing.Size(258, 88);
-            this.противопоказанияTextBox.TabIndex = 16;
+            this.противопоказанияTextBox.TabIndex = 6;
             // 
             // примечание_о_клиентеTextBox
             // 
@@ -330,7 +330,7 @@
             this.примечание_о_клиентеTextBox.ReadOnly = true;
             this.примечание_о_клиентеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.примечание_о_клиентеTextBox.Size = new System.Drawing.Size(258, 88);
-            this.примечание_о_клиентеTextBox.TabIndex = 18;
+            this.примечание_о_клиентеTextBox.TabIndex = 5;
             // 
             // соглашениеTextBox
             // 
@@ -344,7 +344,7 @@
             this.соглашениеTextBox.ReadOnly = true;
             this.соглашениеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.соглашениеTextBox.Size = new System.Drawing.Size(258, 88);
-            this.соглашениеTextBox.TabIndex = 20;
+            this.соглашениеTextBox.TabIndex = 4;
             // 
             // как_узнал_о_салонеTextBox
             // 
@@ -358,7 +358,7 @@
             this.как_узнал_о_салонеTextBox.ReadOnly = true;
             this.как_узнал_о_салонеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.как_узнал_о_салонеTextBox.Size = new System.Drawing.Size(258, 88);
-            this.как_узнал_о_салонеTextBox.TabIndex = 22;
+            this.как_узнал_о_салонеTextBox.TabIndex = 3;
             // 
             // id_посещенияTextBox
             // 
@@ -385,7 +385,7 @@
             this.примечание_о_посещенииTextBox.ReadOnly = true;
             this.примечание_о_посещенииTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.примечание_о_посещенииTextBox.Size = new System.Drawing.Size(369, 71);
-            this.примечание_о_посещенииTextBox.TabIndex = 33;
+            this.примечание_о_посещенииTextBox.TabIndex = 7;
             this.примечание_о_посещенииTextBox.Visible = false;
             // 
             // bindingNavigator1
@@ -417,7 +417,7 @@
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
             this.bindingNavigator1.Size = new System.Drawing.Size(1038, 28);
-            this.bindingNavigator1.TabIndex = 44;
+            this.bindingNavigator1.TabIndex = 2;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
@@ -508,7 +508,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(276, 25);
             this.toolStripButton1.Text = "Изменить информацию о клиенте";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.btnChangeInfo_Click);
             // 
             // toolStripSeparator2
             // 
@@ -535,7 +535,7 @@
             this.label1.Size = new System.Drawing.Size(593, 22);
             this.label1.TabIndex = 45;
             this.label1.Text = "Вывод";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.phnNumberBufer_Click);
             // 
             // btnClose
             // 
@@ -543,7 +543,7 @@
             this.btnClose.Location = new System.Drawing.Point(608, 469);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(418, 42);
-            this.btnClose.TabIndex = 47;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Закрыть";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -709,14 +709,14 @@
             this.процедуры_клиентаDataGridView.AllowUserToAddRows = false;
             this.процедуры_клиентаDataGridView.AllowUserToDeleteRows = false;
             this.процедуры_клиентаDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.процедуры_клиентаDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.процедуры_клиентаDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.процедуры_клиентаDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.процедуры_клиентаDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -724,25 +724,25 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
             this.процедуры_клиентаDataGridView.DataSource = this.процедуры_клиентаBindingSource;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.процедуры_клиентаDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.процедуры_клиентаDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.процедуры_клиентаDataGridView.Location = new System.Drawing.Point(13, 189);
             this.процедуры_клиентаDataGridView.Name = "процедуры_клиентаDataGridView";
             this.процедуры_клиентаDataGridView.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.процедуры_клиентаDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.процедуры_клиентаDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.процедуры_клиентаDataGridView.Size = new System.Drawing.Size(572, 240);
             this.процедуры_клиентаDataGridView.TabIndex = 55;
             this.процедуры_клиентаDataGridView.Visible = false;

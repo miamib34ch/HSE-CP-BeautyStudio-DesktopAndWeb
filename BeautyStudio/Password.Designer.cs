@@ -42,7 +42,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(375, 29);
-            this.textBox1.TabIndex = 0;
+            this.textBox1.TabIndex = 1;
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Password_KeyUp);
             // 
             // label
@@ -70,7 +70,7 @@
             this.button1.Location = new System.Drawing.Point(144, 70);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(187, 30);
-            this.button1.TabIndex = 3;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Продолжить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -82,7 +82,7 @@
             this.button2.Location = new System.Drawing.Point(332, 70);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(187, 30);
-            this.button2.TabIndex = 4;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             // 

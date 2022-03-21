@@ -404,7 +404,6 @@
             this.Text = "Добавление клиента";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddClient_FormClosing);
             this.Load += new System.EventHandler(this.AddClient_Load);
-            this.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.AddClient_GiveFeedback);
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.типКожиBindingSource)).EndInit();

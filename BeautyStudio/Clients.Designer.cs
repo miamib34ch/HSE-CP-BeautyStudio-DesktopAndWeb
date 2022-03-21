@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.клиентDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,14 +73,14 @@
             this.клиентDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.клиентDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.клиентDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.клиентDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.клиентDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.клиентDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.клиентDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -95,20 +95,20 @@
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11});
             this.клиентDataGridView.DataSource = this.клиентBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.клиентDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.клиентDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.клиентDataGridView.Location = new System.Drawing.Point(-2, -1);
             this.клиентDataGridView.Name = "клиентDataGridView";
             this.клиентDataGridView.ReadOnly = true;
             this.клиентDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.клиентDataGridView.Size = new System.Drawing.Size(800, 550);
-            this.клиентDataGridView.TabIndex = 1;
+            this.клиентDataGridView.TabIndex = 5;
             this.клиентDataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.клиентDataGridView_CellEnter);
             this.клиентDataGridView.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.клиентDataGridView_RowContextMenuStripNeeded);
             // 
@@ -313,7 +313,8 @@
             this.numberSearch.Mask = "(999) 000-0000";
             this.numberSearch.Name = "numberSearch";
             this.numberSearch.Size = new System.Drawing.Size(160, 27);
-            this.numberSearch.TabIndex = 4;
+            this.numberSearch.TabIndex = 1;
+            this.numberSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numberSearch_KeyUp);
             // 
             // label3
             // 
@@ -331,7 +332,8 @@
             this.surnameSearch.Location = new System.Drawing.Point(908, 87);
             this.surnameSearch.Name = "surnameSearch";
             this.surnameSearch.Size = new System.Drawing.Size(160, 27);
-            this.surnameSearch.TabIndex = 6;
+            this.surnameSearch.TabIndex = 2;
+            this.surnameSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.surnameSearch_KeyUp);
             // 
             // btnFind
             // 
@@ -339,7 +341,7 @@
             this.btnFind.Location = new System.Drawing.Point(808, 134);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(260, 31);
-            this.btnFind.TabIndex = 7;
+            this.btnFind.TabIndex = 3;
             this.btnFind.Text = "Найти";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -350,10 +352,10 @@
             this.btnClose.Location = new System.Drawing.Point(808, 501);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(260, 36);
-            this.btnClose.TabIndex = 8;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Закрыть";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.button1_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // Clients
             // 

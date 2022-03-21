@@ -17,7 +17,7 @@ namespace BeautyStudio
         public Password()
         {
             InitializeComponent();
-            password = "admin";
+            password = Properties.Resources.pass;
 
         }
 

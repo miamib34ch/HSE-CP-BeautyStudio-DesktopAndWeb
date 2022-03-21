@@ -91,6 +91,15 @@ namespace BeautyStudio.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на admin.
+        /// </summary>
+        internal static string pass {
+            get {
+                return ResourceManager.GetString("pass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap selected {

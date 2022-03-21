@@ -16,7 +16,6 @@ namespace BeautyStudio
 
         int idClient;
         int idSkin;
-        int idIgla;
         Clients client;
 
         public ClientInfo(int idClient, Clients client, int idSkin)
@@ -27,6 +26,7 @@ namespace BeautyStudio
             this.посещениеTableAdapter.FillByIdClient(this.beautyStudioDataSet.Посещение,idClient);
             this.idClient = idClient;
             this.idSkin = idSkin;
+            this.client = client;
         }
 
         private void ClientInfo_Load(object sender, EventArgs e)
@@ -45,143 +45,30 @@ namespace BeautyStudio
             Visitings();
         }
 
-        void Visitings()
+        private void ClientInfo_Activated(object sender, EventArgs e)
         {
-            if (bindingNavigator1.BindingSource.Count == 0)
-            {
-                label4.Visible = true;
-                дата_и_время_посещенияLabel.Visible = false;
-                label3.Visible = false;
-                id_типа_иглыLabel.Visible = false;
-                label5.Visible = false;
-                итоговая_ценаLabel.Visible = false;
-                label7.Visible = false;
-                id_скидкиLabel.Visible = false;
-                label8.Visible = false;
-                процедуры_клиентаDataGridView.Visible = false;
-                примечание_о_посещенииLabel.Visible = false;
-                примечание_о_посещенииTextBox.Visible = false;
-            }
-            else
-            {
-                label4.Visible = false;
-                дата_и_время_посещенияLabel.Visible = true;
-                label3.Visible = true;
-                id_типа_иглыLabel.Visible = true;
-                label5.Visible = true;
-                итоговая_ценаLabel.Visible = true;
-                label7.Visible = true;
-                id_скидкиLabel.Visible = true;
-                label8.Visible = true;
-                процедуры_клиентаDataGridView.Visible = true;
-                примечание_о_посещенииLabel.Visible = true;
-                примечание_о_посещенииTextBox.Visible = true;
-            }
+            this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент, idClient);
+            this.тип_кожиTableAdapter.FillByIdSkin(this.beautyStudioDataSet.Тип_кожи, idSkin); //не работает тк переменная idSKin не обновляется, также не обновляется игла и скидка
+            this.посещениеTableAdapter.FillByIdClient(this.beautyStudioDataSet.Посещение, idClient);
+            if (id_посещенияTextBox.Text != "")
+                this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+
+            labelNameSet();
+            Visitings();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        #region кнопки
+
+        private void phnNumberBufer_Click(object sender, EventArgs e)
         {
             if (label1.Cursor == Cursors.Hand)
             {
                 Clipboard.SetText("+7 "+номер_телефонаLabel.Text);   //копирование в буфер обмена
                 MessageBox.Show("Номер телефона скопирован!");
             }
-        }
+        } //копирование номера телефона в буфер обмена
 
-        void labelNameSet()
-        {
-            фамилияLabel.Visible = true;
-            имяLabel.Visible = true;
-            отчествоLabel.Visible = true;
-            номер_телефонаLabel.Visible = true;
-            дата_рожденияLabel.Visible = true;
-
-            label1.Text = "";
-
-            if (фамилияLabel.Text == "" || фамилияLabel.Text == " ")
-                label1.Text += "- ";
-            else
-                label1.Text += фамилияLabel.Text + " ";
-
-            if (имяLabel.Text == "" || имяLabel.Text == " ")
-                label1.Text += "- ";
-            else
-                label1.Text += имяLabel.Text + " ";
-
-            if (отчествоLabel.Text == "" || отчествоLabel.Text == " ")
-                label1.Text += "- | ";
-            else
-                label1.Text += отчествоLabel.Text + " | ";
-
-
-            if (дата_рожденияLabel.Text == "" || дата_рожденияLabel.Text == " ")
-                label1.Text += "- | ";
-            else
-                label1.Text += дата_рожденияLabel.Text + " | ";
-
-            if (номер_телефонаLabel.Text == "" || номер_телефонаLabel.Text == " ")
-            {
-                label1.Text += "-";
-                label1.Cursor = Cursors.Default;
-            }
-            else
-            {
-                label1.Text += "+7 " + номер_телефонаLabel.Text;
-                label1.Cursor = Cursors.Hand;
-            }
-
-            фамилияLabel.Visible = false;
-            имяLabel.Visible = false;
-            отчествоLabel.Visible = false;
-            номер_телефонаLabel.Visible = false;
-            дата_рожденияLabel.Visible = false;
-        }
-
-        private void ClientInfo_Activated(object sender, EventArgs e)
-        {
-            this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент, idClient);
-            this.тип_кожиTableAdapter.FillByIdSkin(this.beautyStudioDataSet.Тип_кожи,idSkin); //не работает тк переменная idSKin не обновляется
-            this.посещениеTableAdapter.FillByIdClient(this.beautyStudioDataSet.Посещение, idClient);
-            if (id_посещенияTextBox.Text != "")
-                this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
-
-            labelNameSet();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
-        {
-            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
-            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
-            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
-        }
-
-        private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
-        {
-            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
-            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
-            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
-        }
-
-        private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
-        {
-            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
-            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
-            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
-        }
-
-        private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
-        {
-            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
-            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
-            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void btnChangeInfo_Click(object sender, EventArgs e)
         {
             AddClient addClient;
             if (int.TryParse(idSkin.ToString(), out int res))
@@ -189,13 +76,9 @@ namespace BeautyStudio
             else
                 addClient = new AddClient(idClient, client, 0);
             addClient.MdiParent = this.MdiParent;
+            client.Enabled = false;
             ((MainForm)MdiParent).changeClient = addClient;
             addClient.Show();
-        }
-
-        private void процедуры_клиентаDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
         }
 
         private void btnOpewWord_Click(object sender, EventArgs e)
@@ -256,8 +139,134 @@ namespace BeautyStudio
             }
             catch
             {
-                
+
             }
-        } //выгрузка в шаблон
+        } //выгрузка в шаблон Word
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
+
+        void labelNameSet()
+        {
+            фамилияLabel.Visible = true;
+            имяLabel.Visible = true;
+            отчествоLabel.Visible = true;
+            номер_телефонаLabel.Visible = true;
+            дата_рожденияLabel.Visible = true;
+
+            label1.Text = "";
+
+            if (фамилияLabel.Text == "" || фамилияLabel.Text == " ")
+                label1.Text += "- ";
+            else
+                label1.Text += фамилияLabel.Text + " ";
+
+            if (имяLabel.Text == "" || имяLabel.Text == " ")
+                label1.Text += "- ";
+            else
+                label1.Text += имяLabel.Text + " ";
+
+            if (отчествоLabel.Text == "" || отчествоLabel.Text == " ")
+                label1.Text += "- | ";
+            else
+                label1.Text += отчествоLabel.Text + " | ";
+
+
+            if (дата_рожденияLabel.Text == "" || дата_рожденияLabel.Text == " ")
+                label1.Text += "- | ";
+            else
+                label1.Text += дата_рожденияLabel.Text + " | ";
+
+            if (номер_телефонаLabel.Text == "" || номер_телефонаLabel.Text == " ")
+            {
+                label1.Text += "-";
+                label1.Cursor = Cursors.Default;
+            }
+            else
+            {
+                label1.Text += "+7 " + номер_телефонаLabel.Text;
+                label1.Cursor = Cursors.Hand;
+            }
+
+            фамилияLabel.Visible = false;
+            имяLabel.Visible = false;
+            отчествоLabel.Visible = false;
+            номер_телефонаLabel.Visible = false;
+            дата_рожденияLabel.Visible = false;
+        } //отображение имени
+
+        void Visitings()
+        {
+            if (bindingNavigator1.BindingSource.Count == 0)
+            {
+                label4.Visible = true;
+                дата_и_время_посещенияLabel.Visible = false;
+                label3.Visible = false;
+                id_типа_иглыLabel.Visible = false;
+                label5.Visible = false;
+                итоговая_ценаLabel.Visible = false;
+                label7.Visible = false;
+                id_скидкиLabel.Visible = false;
+                label8.Visible = false;
+                процедуры_клиентаDataGridView.Visible = false;
+                примечание_о_посещенииLabel.Visible = false;
+                примечание_о_посещенииTextBox.Visible = false;
+            }
+            else
+            {
+                label4.Visible = false;
+                дата_и_время_посещенияLabel.Visible = true;
+                label3.Visible = true;
+                id_типа_иглыLabel.Visible = true;
+                label5.Visible = true;
+                итоговая_ценаLabel.Visible = true;
+                label7.Visible = true;
+                id_скидкиLabel.Visible = true;
+                label8.Visible = true;
+                процедуры_клиентаDataGridView.Visible = true;
+                примечание_о_посещенииLabel.Visible = true;
+                примечание_о_посещенииTextBox.Visible = true;
+            }
+        }   //отображение посещений
+
+
+        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
+        {
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+        private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
+        {
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+        private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
+        {
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+        private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
+        {
+            this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+            this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
+        }
+
+
+        private void процедуры_клиентаDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
     }
 }
