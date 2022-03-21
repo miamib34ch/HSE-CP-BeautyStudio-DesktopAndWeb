@@ -29,6 +29,7 @@ namespace BeautyStudio
 
         private void Visiting_Load(object sender, EventArgs e)
         {
+            
             this.процедураTableAdapter.Fill(this.beautyStudioDataSet1.Процедура);
             this.скидкаTableAdapter.Fill(this.beautyStudioDataSet1.Скидка);
             this.пигментыTableAdapter.Fill(this.beautyStudioDataSet.Пигменты);
@@ -38,7 +39,7 @@ namespace BeautyStudio
             итоговая_ценаTextBox.Text = "0";
             comboBox1.SelectedItem = 0;
             comboBox1.SelectedValue = 0;
-            maskedTextBox1.Text = DateTime.Now.ToShortDateString() + "0" + DateTime.Now.ToShortTimeString();
+            maskedTextBox1.Text = DeleteSeconds();
             id_клиентаTextBox.Text = idClient;
         }
 
@@ -147,6 +148,20 @@ namespace BeautyStudio
         {
             updateMoney();
         } //изменение скидки
+
+
+        string DeleteSeconds()
+        {
+            string date = "";
+            date += DateTime.Now.ToString().Split(' ')[0];
+            date += " ";
+            if (DateTime.Now.ToString().Split(' ')[1].Split(':')[0].Length == 1)
+                date += "0";
+            date += DateTime.Now.ToString().Split(' ')[1].Split(':')[0];
+            date += ":";
+            date += DateTime.Now.ToString().Split(' ')[1].Split(':')[1];
+            return date;
+        } //удаляет секунды из текущего времени
 
 
         private void процедуры_клиентаDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
