@@ -85,12 +85,8 @@ namespace BeautyStudio
         {
             try
             {
-                string resources = "";
-                for (int i = 0; i < Application.StartupPath.Length - 9; i++)
-                    resources += Application.StartupPath[i];
-
                 //запускаем Word и открываем шаблон файла   
-                object fileName = resources + "\\Resources\\Шаблон.docx";
+                object fileName = Application.StartupPath + "\\Шаблон.docx";
                 Word.Application WordApplication = new Word.Application();
                 WordApplication.Visible = true; //выводим документ на экран
                 Word.Document WordDocument = WordApplication.Documents.Open(fileName);

@@ -17,7 +17,11 @@ namespace BeautyStudio
         public Password()
         {
             InitializeComponent();
-            password = Properties.Resources.pass;
+            string fileName = Application.StartupPath + "\\pass.txt";
+
+            System.IO.StreamReader sr = new System.IO.StreamReader(System.IO.File.OpenRead(fileName));
+            password = sr.ReadLine();
+            sr.Close();
 
         }
 

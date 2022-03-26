@@ -18,11 +18,7 @@ namespace BeautyStudio
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.Icon = BeautyStudio.Properties.Resources.iconBS;
-
-            string resources = "";
-            for (int i = 0; i < Application.StartupPath.Length - 9; i++)
-                resources += Application.StartupPath[i];
-            fileName = resources + "\\Resources\\pass.txt";
+            fileName = Application.StartupPath + "\\pass.txt";
         }
 
         string fileName;
@@ -240,7 +236,7 @@ namespace BeautyStudio
             if (e.KeyCode == Keys.Enter)
             {
                 File.WriteAllText(fileName, toolStripTextBox1.Text);
-                MessageBox.Show("Пароль изменён!\nИзменения вступят в силу после перезапуска системы!");
+                MessageBox.Show("Пароль изменён!");
             }
         } //смена пароля админа
     }

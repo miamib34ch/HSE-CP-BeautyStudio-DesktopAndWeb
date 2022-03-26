@@ -101,7 +101,7 @@ namespace BeautyStudio
 
         private void удалитьПроцедуруToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show($"Удаление процедуры {процедуры_клиентаDataGridView.CurrentRow.Cells[0].Value.ToString()}", "Удалить?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            var result = MessageBox.Show($"Удаление процедуры \"{процедураTableAdapter1.ScalarQuery(int.Parse(процедуры_клиентаDataGridView.CurrentRow.Cells[1].Value.ToString()))}\"", "Удалить?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 DeleteRow(int.Parse(процедуры_клиентаDataGridView.CurrentRow.Cells[0].Value.ToString()));

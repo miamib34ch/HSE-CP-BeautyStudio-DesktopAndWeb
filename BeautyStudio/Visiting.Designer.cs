@@ -36,9 +36,9 @@
             System.Windows.Forms.Label id_типа_иглыLabel;
             System.Windows.Forms.Label примечание_о_посещенииLabel;
             System.Windows.Forms.Label id_скидкиLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.beautyStudioDataSet = new BeautyStudio.BeautyStudioDataSet();
             this.посещениеBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.посещениеTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПосещениеTableAdapter();
@@ -73,6 +73,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьПроцедуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.процедураTableAdapter1 = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter();
             id_посещенияLabel = new System.Windows.Forms.Label();
             id_клиентаLabel = new System.Windows.Forms.Label();
             дата_и_время_посещенияLabel = new System.Windows.Forms.Label();
@@ -345,14 +346,14 @@
             this.процедуры_клиентаDataGridView.AllowUserToAddRows = false;
             this.процедуры_клиентаDataGridView.AllowUserToDeleteRows = false;
             this.процедуры_клиентаDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.процедуры_клиентаDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.процедуры_клиентаDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.процедуры_клиентаDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.процедуры_клиентаDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -360,25 +361,25 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
             this.процедуры_клиентаDataGridView.DataSource = this.процедуры_клиентаBindingSource;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.процедуры_клиентаDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.процедуры_клиентаDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.процедуры_клиентаDataGridView.Location = new System.Drawing.Point(402, 37);
             this.процедуры_клиентаDataGridView.Name = "процедуры_клиентаDataGridView";
             this.процедуры_клиентаDataGridView.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.процедуры_клиентаDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.процедуры_клиентаDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.процедуры_клиентаDataGridView.Size = new System.Drawing.Size(448, 163);
             this.процедуры_клиентаDataGridView.TabIndex = 8;
             this.процедуры_клиентаDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.процедуры_клиентаDataGridView_DataError);
@@ -403,12 +404,12 @@
             this.dataGridViewTextBoxColumn2.DataSource = this.процедураBindingSource;
             this.dataGridViewTextBoxColumn2.DisplayMember = "Название процедуры";
             this.dataGridViewTextBoxColumn2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Id процедуры";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Название процедуры";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn2.ValueMember = "Id процедуры";
-            this.dataGridViewTextBoxColumn2.Width = 92;
+            this.dataGridViewTextBoxColumn2.Width = 135;
             // 
             // процедураBindingSource
             // 
@@ -422,12 +423,12 @@
             this.dataGridViewTextBoxColumn3.DataSource = this.пигментыBindingSource;
             this.dataGridViewTextBoxColumn3.DisplayMember = "Название пигмента";
             this.dataGridViewTextBoxColumn3.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Id пигмента";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Название пигмента";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn3.ValueMember = "Id пигмента";
-            this.dataGridViewTextBoxColumn3.Width = 80;
+            this.dataGridViewTextBoxColumn3.Width = 123;
             // 
             // пигментыBindingSource
             // 
@@ -478,6 +479,10 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(200, 29);
             this.maskedTextBox1.TabIndex = 1;
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            // 
+            // процедураTableAdapter1
+            // 
+            this.процедураTableAdapter1.ClearBeforeFill = true;
             // 
             // Visiting
             // 
@@ -559,10 +564,11 @@
         private BeautyStudioDataSet beautyStudioDataSet1;
         private System.Windows.Forms.BindingSource скидкаBindingSource;
         private System.Windows.Forms.BindingSource процедураBindingSource;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter процедураTableAdapter1;
     }
 }
