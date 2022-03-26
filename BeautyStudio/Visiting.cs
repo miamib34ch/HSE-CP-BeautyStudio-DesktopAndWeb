@@ -156,7 +156,17 @@ namespace BeautyStudio
             date += DateTime.Now.ToString().Split(' ')[0];
             date += " ";
             if (DateTime.Now.ToString().Split(' ')[1].Split(':')[0].Length == 1)
-                date += "0";
+            {
+                maskedTextBox1.ResetOnPrompt = false;
+                maskedTextBox1.ResetOnSpace = false;
+                maskedTextBox1.SkipLiterals = false;
+            }
+            else
+            {
+                maskedTextBox1.ResetOnPrompt = true;
+                maskedTextBox1.ResetOnSpace = true;
+                maskedTextBox1.SkipLiterals = true;
+            }
             date += DateTime.Now.ToString().Split(' ')[1].Split(':')[0];
             date += ":";
             date += DateTime.Now.ToString().Split(' ')[1].Split(':')[1];
@@ -169,5 +179,27 @@ namespace BeautyStudio
 
         }
 
+        private void maskedTextBox1_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (maskedTextBox1.Text.ToString().Split(' ')[1].Split(':')[0].Length == 1 || maskedTextBox1.Text.ToString().Split(' ')[1].Split(':')[0][0] == '0')
+                {
+                    maskedTextBox1.ResetOnPrompt = false;
+                    maskedTextBox1.ResetOnSpace = false;
+                    maskedTextBox1.SkipLiterals = false;
+                }
+                else
+                {
+                    maskedTextBox1.ResetOnPrompt = true;
+                    maskedTextBox1.ResetOnSpace = true;
+                    maskedTextBox1.SkipLiterals = true;
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
