@@ -233,7 +233,7 @@
             this.изменитьИнформациюToolStripMenuItem});
             this.contextMenuStripClient.Name = "contextMenuStripClient";
             this.contextMenuStripClient.ShowImageMargin = false;
-            this.contextMenuStripClient.Size = new System.Drawing.Size(402, 88);
+            this.contextMenuStripClient.Size = new System.Drawing.Size(315, 110);
             this.contextMenuStripClient.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripClient_Opening);
             // 
             // посмотретьИнформациюToolStripMenuItem
@@ -241,7 +241,7 @@
             this.посмотретьИнформациюToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.посмотретьИнформациюToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.посмотретьИнформациюToolStripMenuItem.Name = "посмотретьИнформациюToolStripMenuItem";
-            this.посмотретьИнформациюToolStripMenuItem.Size = new System.Drawing.Size(401, 26);
+            this.посмотретьИнформациюToolStripMenuItem.Size = new System.Drawing.Size(314, 26);
             this.посмотретьИнформациюToolStripMenuItem.Text = "Посмотреть информацию о клиенте";
             this.посмотретьИнформациюToolStripMenuItem.Click += new System.EventHandler(this.посмотретьИнформациюToolStripMenuItem_Click);
             // 
@@ -249,22 +249,22 @@
             // 
             this.добавитьПосещениеКлиентуToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.добавитьПосещениеКлиентуToolStripMenuItem.Name = "добавитьПосещениеКлиентуToolStripMenuItem";
-            this.добавитьПосещениеКлиентуToolStripMenuItem.Size = new System.Drawing.Size(401, 26);
+            this.добавитьПосещениеКлиентуToolStripMenuItem.Size = new System.Drawing.Size(314, 26);
             this.добавитьПосещениеКлиентуToolStripMenuItem.Text = "Добавить посещение клиенту";
             this.добавитьПосещениеКлиентуToolStripMenuItem.Click += new System.EventHandler(this.добавитьПосещениеКлиентуToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(398, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(311, 6);
             // 
             // изменитьИнформациюToolStripMenuItem
             // 
             this.изменитьИнформациюToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.изменитьИнформациюToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.изменитьИнформациюToolStripMenuItem.Name = "изменитьИнформациюToolStripMenuItem";
-            this.изменитьИнформациюToolStripMenuItem.Size = new System.Drawing.Size(401, 26);
-            this.изменитьИнформациюToolStripMenuItem.Text = "Изменить информацию информацию о клиенте";
+            this.изменитьИнформациюToolStripMenuItem.Size = new System.Drawing.Size(314, 26);
+            this.изменитьИнформациюToolStripMenuItem.Text = "Изменить информацию о клиенте";
             this.изменитьИнформациюToolStripMenuItem.Click += new System.EventHandler(this.изменитьИнформациюToolStripMenuItem_Click);
             // 
             // клиентTableAdapter
