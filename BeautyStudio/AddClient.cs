@@ -99,22 +99,22 @@ namespace BeautyStudio
             отчествоTextBox.Text = ((MainForm)MdiParent).firstUp(отчествоTextBox.Text);
         }
 
-        private void противопоказанияTextBox_TextChanged(object sender, EventArgs e)
+        private void противопоказанияTextBox_Leave(object sender, EventArgs e)
         {
             противопоказанияTextBox.Text = ((MainForm)MdiParent).firstUp(противопоказанияTextBox.Text);
         }
 
-        private void примечание_о_клиентеTextBox_TextChanged(object sender, EventArgs e)
+        private void примечание_о_клиентеTextBox_Leave(object sender, EventArgs e)
         {
             примечание_о_клиентеTextBox.Text = ((MainForm)MdiParent).firstUp(примечание_о_клиентеTextBox.Text);
         }
 
-        private void соглашениеTextBox_TextChanged(object sender, EventArgs e)
+        private void соглашениеTextBox_Leave(object sender, EventArgs e)
         {
             соглашениеTextBox.Text = ((MainForm)MdiParent).firstUp(соглашениеTextBox.Text);
         }
 
-        private void как_узнал_о_салонеTextBox_TextChanged(object sender, EventArgs e)
+        private void как_узнал_о_салонеTextBox_Leave(object sender, EventArgs e)
         {
             как_узнал_о_салонеTextBox.Text = ((MainForm)MdiParent).firstUp(как_узнал_о_салонеTextBox.Text);
         }

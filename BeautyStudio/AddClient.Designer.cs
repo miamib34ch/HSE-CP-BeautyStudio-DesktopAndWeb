@@ -259,7 +259,7 @@
             this.противопоказанияTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.противопоказанияTextBox.Size = new System.Drawing.Size(337, 70);
             this.противопоказанияTextBox.TabIndex = 7;
-            this.противопоказанияTextBox.TextChanged += new System.EventHandler(this.противопоказанияTextBox_TextChanged);
+            this.противопоказанияTextBox.Leave += new System.EventHandler(this.противопоказанияTextBox_Leave);
             // 
             // примечание_о_клиентеTextBox
             // 
@@ -272,7 +272,7 @@
             this.примечание_о_клиентеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.примечание_о_клиентеTextBox.Size = new System.Drawing.Size(337, 70);
             this.примечание_о_клиентеTextBox.TabIndex = 8;
-            this.примечание_о_клиентеTextBox.TextChanged += new System.EventHandler(this.примечание_о_клиентеTextBox_TextChanged);
+            this.примечание_о_клиентеTextBox.Leave += new System.EventHandler(this.примечание_о_клиентеTextBox_Leave);
             // 
             // соглашениеTextBox
             // 
@@ -285,7 +285,7 @@
             this.соглашениеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.соглашениеTextBox.Size = new System.Drawing.Size(337, 70);
             this.соглашениеTextBox.TabIndex = 9;
-            this.соглашениеTextBox.TextChanged += new System.EventHandler(this.соглашениеTextBox_TextChanged);
+            this.соглашениеTextBox.Leave += new System.EventHandler(this.соглашениеTextBox_Leave);
             // 
             // как_узнал_о_салонеTextBox
             // 
@@ -298,7 +298,7 @@
             this.как_узнал_о_салонеTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.как_узнал_о_салонеTextBox.Size = new System.Drawing.Size(337, 70);
             this.как_узнал_о_салонеTextBox.TabIndex = 10;
-            this.как_узнал_о_салонеTextBox.TextChanged += new System.EventHandler(this.как_узнал_о_салонеTextBox_TextChanged);
+            this.как_узнал_о_салонеTextBox.Leave += new System.EventHandler(this.как_узнал_о_салонеTextBox_Leave);
             // 
             // btnSave
             // 
