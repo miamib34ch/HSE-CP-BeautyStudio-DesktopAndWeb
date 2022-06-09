@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BeautyStudioPractice.Процедура>
+
+@{
+    ViewBag.Title = "Прайс";
+}
+<style>
+    .inlineb {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+        .inlineb:hover {
+            background-color: #99669a; /* Green */
+            color: white;
+        }
+
+    .inlinel {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .inlinei {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+</style>
+<h2>Процедуры</h2>
+
+<p>
+    @Html.ActionLink("Добавить новую процедуру", "Create", new { @Controller = "Процедура" }, new { @class = "inlineb" })
+</p>
+<table class="table" style="font-size:15px">
+    <tr>
+        <th>
+            @Html.Label("Название процедуры")
+        </th>
+        <th>
+            @Html.Label("Цена процедуры")
+        </th>
+        <th>
+            @Html.Label("Название типа процедуры")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Название_процедуры)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Цена_процедуры)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Тип_процедуры.Название_типа_процедуры)
+        </td>
+        <td>
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id_процедуры }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+        </td>
+    </tr>
+}
+
+</table>

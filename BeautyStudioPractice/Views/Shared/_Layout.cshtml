@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>@ViewBag.Title - приложение ASP.NET</title>
+    <meta name="keywords" content="INTUITIVE">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="~/Content/nicepage.css" media="screen">
+    <script class="u-script" type="text/javascript" src="~/Scripts/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.12.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body  style="padding:0;margin=0">
+    <header class="u-clearfix u-custom-color-3 u-header u-header" id="sec-6369">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <nav class="u-align-left u-menu u-menu-dropdown u-offcanvas u-menu-1">
+                <div class="menu-collapse" style="font-size: 1rem;">
+                    <a class="u-button-style u-custom-active-color u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-nav-link" href="#">
+                        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8a8f"></use></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-8a8f" x="0px" y="0px" viewBox="0 0 302 302" style="enable-background:new 0 0 302 302;" xml:space="preserve" class="u-svg-content"><g><rect y="36" width="302" height="30"></rect><rect y="236" width="302" height="30"></rect><rect y="136" width="302" height="30"></rect>
+    </g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                    </a>
+                </div>
+                <div class="u-custom-menu u-nav-container">
+                    <ul class="u-nav u-unstyled u-nav-1" style="margin-left:370px">
+                        <li class="u-nav-item">
+                            @Html.ActionLink("Клиенты", "Index", new { @Controller = "Клиент" }, new
+                       { @class = "u-active-custom-color-3 u-button-style u-nav-link u-text-active-custom-color-1 u-text-hover-palette-5-dark-1 u-text-white", @style = "padding: 10px 20px; font-size: 20px" })
+                        </li>
+                        <li class="u-nav-item">
+                            <a class="u-active-custom-color-3 u-button-style u-nav-link u-text-active-custom-color-1 u-text-hover-palette-5-dark-1 u-text-white" style="padding: 10px 20px; font-size: 20px">Функции</a><div class="u-nav-popup">
+                                <ul class="u-border-2 u-border-grey-75 u-h-spacing-14 u-nav u-unstyled u-v-spacing-10 u-nav-2">
+                                    <li class="u-nav-item">
+                                        @Html.ActionLink("День рождения", "Index", new { @Controller = "ДеньРождения" }, new
+                                   { @class = "u-active-custom-color-2 u-button-style u-custom-color-2 u-hover-custom-color-2 u-nav-link u-text-active-custom-color-1 u-text-hover-black u-text-white", @style = "font-size: 15px" })
+                                    </li>
+                                    <li class="u-nav-item">
+                                        @Html.ActionLink("Поиск посещений", "Index", new { @Controller = "Посещение" },
+                                       new
+                                       { @class = "u-active-custom-color-2 u-button-style u-custom-color-2 u-hover-custom-color-2 u-nav-link u-text-active-custom-color-1 u-text-hover-black u-text-white", @style = "font-size: 15px" })
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="u-nav-item">
+                            @Html.ActionLink("Словари", "Password", new { @Controller = "Словари" }, new
+                       { @class = "u-active-custom-color-3 u-button-style u-nav-link u-text-active-custom-color-1 u-text-hover-palette-5-dark-1 u-text-white", @style = "padding: 10px 20px; font-size: 20px" })
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <a href="https://vk.com/studiya_permanentnogo_tatuazha" class="u-image u-logo u-image-1" style="margin-top:-74px; margin-right:358px">
+                <img src="~/Content/logo.jpg"  class="u-logo-image u-logo-image-1" width="200" height="100">
+            </a>
+        </div>
+    </header>
+
+    <section class="u-clearfix u-section-1" id="sec-dca8">
+        <div class="container body-content" style = "font-size: 15px">
+            @RenderBody()
+        </div>
+    </section>
+    <br>
+    <footer class="u-align-center u-clearfix u-custom-color-3 u-footer u-footer" id="sec-102d">
+        <div class="container">
+            <p class="u-text u-text-variant u-text-1" style=" font-size: 20px"> Полыгалов Богдан - Практика 2 курс</p>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

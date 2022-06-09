@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BeautyStudioPractice.Тип_кожи>
+
+@{
+    ViewBag.Title = "Тип кожи";
+}
+<style>
+    .inlineb {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+        .inlineb:hover {
+            background-color: #99669a; /* Green */
+            color: white;
+        }
+
+    .inlinel {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .inlinei {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+</style>
+<h2>Тип кожи</h2>
+
+<p>
+    @Html.ActionLink("Добавить новый тип кожи", "Create", new { @Controller = "Тип_кожи" }, new { @class = "inlineb" })
+</p>
+<table class="table" style="font-size:15px">
+    <tr>
+        <th>
+            @Html.Label("Название типа кожи")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Название_типа_кожи)
+        </td>
+        <td>
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id_типа_кожи }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+        </td>
+    </tr>
+}
+
+</table>

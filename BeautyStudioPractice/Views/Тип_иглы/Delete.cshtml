@@ -1,0 +1,31 @@
+﻿@model BeautyStudioPractice.Тип_иглы
+
+@{
+    ViewBag.Title = "Удаление типа иглы";
+}
+
+<h2>Удаление типа иглы</h2>
+
+<h3>Вы действительно хотите удалить этот тип иглы?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Название типа иглы")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_типа_иглы)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Удалить" class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2" style="display: inline; padding: 0; border: 0; background-color: transparent; font-size: 13.5px; color: #337ab7;" /> |
+    @Html.ActionLink("Отмена", "Index", new { @Controller = "Тип_иглы" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+</div>
+    }
+</div>

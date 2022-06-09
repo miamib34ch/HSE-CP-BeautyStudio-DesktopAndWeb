@@ -1,0 +1,97 @@
+﻿@model BeautyStudioPractice.Посещение
+
+@{
+    ViewBag.Title = "Детали";
+}
+
+<h2>Детали</h2>
+
+<div>
+    <h4>Посещение</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Дата посещения")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_и_время_посещения)
+        </dd>
+
+        <dt>
+            @Html.Label("Итоговая цена")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Итоговая_цена)
+        </dd>
+
+        <dt>
+            @Html.Label("Примечание о посещении")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Примечание_о_посещении)
+        </dd>
+
+        <dt>
+            @Html.Label("Клиент")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Клиент.Фамилия)
+        </dd>
+
+        <dt>
+            @Html.Label("Размер скидки")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Скидка.Размер_скидки)
+        </dd>
+
+        <dt>
+            @Html.Label("Тип иглы")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тип_иглы.Название_типа_иглы)
+        </dd>
+
+    </dl>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Процедура")
+        </th>
+        <th>
+            @Html.Label("Пигмент")
+        </th>
+        <th>
+            @Html.Label("Примечание")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ((Посещение)Model).Процедуры_клиента)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Процедура.Название_процедуры)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Пигменты.Название_пигмента)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Примечание_о_процедуре_клиента)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Назад", "Index", new { Controller = "Посещение" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+</p>

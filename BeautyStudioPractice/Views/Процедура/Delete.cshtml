@@ -1,0 +1,47 @@
+﻿@model BeautyStudioPractice.Процедура
+
+@{
+    ViewBag.Title = "Удаление процедуры";
+}
+
+<h2>Удаление процедуры</h2>
+
+<h3>Вы действительно хотите удалить эту процедуру?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Название процедуры")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_процедуры)
+        </dd>
+
+        <dt>
+            @Html.Label("Цена процедуры")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Цена_процедуры)
+        </dd>
+
+        <dt>
+            @Html.Label("Название типа процедуры")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тип_процедуры.Название_типа_процедуры)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Удалить" class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2" style="display: inline; padding: 0; border: 0; background-color: transparent; font-size: 13.5px; color: #337ab7;" /> |
+    @Html.ActionLink("Отмена", "Index", new { @Controller = "Процедура" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+</div>
+    }
+</div>

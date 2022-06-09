@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BeautyStudioModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Клиент">
+          <Key>
+            <PropertyRef Name="Id клиента" />
+          </Key>
+          <Property Name="Id клиента" Type="int" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar(max)" />
+          <Property Name="Имя" Type="nvarchar(max)" />
+          <Property Name="Отчество" Type="nvarchar(max)" />
+          <Property Name="Номер телефона" Type="nvarchar(max)" />
+          <Property Name="Дата рождения" Type="date" />
+          <Property Name="Id типа кожи" Type="int" />
+          <Property Name="Противопоказания" Type="nvarchar(max)" />
+          <Property Name="Примечание о клиенте" Type="nvarchar(max)" />
+          <Property Name="Соглашение" Type="nvarchar(max)" />
+          <Property Name="Как узнал о салоне" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Пигменты">
+          <Key>
+            <PropertyRef Name="Id пигмента" />
+          </Key>
+          <Property Name="Id пигмента" Type="int" Nullable="false" />
+          <Property Name="Название пигмента" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Посещение">
+          <Key>
+            <PropertyRef Name="Id посещения" />
+          </Key>
+          <Property Name="Id посещения" Type="int" Nullable="false" />
+          <Property Name="Id клиента" Type="int" Nullable="false" />
+          <Property Name="Дата и время посещения" Type="datetime" Nullable="false" />
+          <Property Name="Итоговая цена" Type="money" Nullable="false" />
+          <Property Name="Id типа иглы" Type="int" />
+          <Property Name="Примечание о посещении" Type="nvarchar(max)" />
+          <Property Name="Id скидки" Type="int" />
+        </EntityType>
+        <EntityType Name="Процедура">
+          <Key>
+            <PropertyRef Name="Id процедуры" />
+          </Key>
+          <Property Name="Id процедуры" Type="int" Nullable="false" />
+          <Property Name="Название процедуры" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id типа процедуры" Type="int" Nullable="false" />
+          <Property Name="Цена процедуры" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Процедуры в посещении">
+          <Key>
+            <PropertyRef Name="Id посещения" />
+            <PropertyRef Name="Id процедуры клиента" />
+          </Key>
+          <Property Name="Id посещения" Type="int" Nullable="false" />
+          <Property Name="Id процедуры клиента" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Процедуры клиента">
+          <Key>
+            <PropertyRef Name="Id процедуры клиента" />
+          </Key>
+          <Property Name="Id процедуры клиента" Type="int" Nullable="false" />
+          <Property Name="Id процедуры" Type="int" Nullable="false" />
+          <Property Name="Id пигмента" Type="int" Nullable="false" />
+          <Property Name="Примечание о процедуре клиента" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Скидка">
+          <Key>
+            <PropertyRef Name="Id скидки" />
+          </Key>
+          <Property Name="Id скидки" Type="int" Nullable="false" />
+          <Property Name="Размер скидки" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Тип иглы">
+          <Key>
+            <PropertyRef Name="Id типа иглы" />
+          </Key>
+          <Property Name="Id типа иглы" Type="int" Nullable="false" />
+          <Property Name="Название типа иглы" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Тип кожи">
+          <Key>
+            <PropertyRef Name="Id типа кожи" />
+          </Key>
+          <Property Name="Id типа кожи" Type="int" Nullable="false" />
+          <Property Name="Название типа кожи" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Тип процедуры">
+          <Key>
+            <PropertyRef Name="Id типа процедуры" />
+          </Key>
+          <Property Name="Id типа процедуры" Type="int" Nullable="false" />
+          <Property Name="Название типа процедуры" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Клиент_Тип кожи">
+          <End Role="Тип кожи" Type="Self.Тип кожи" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип кожи">
+              <PropertyRef Name="Id типа кожи" />
+            </Principal>
+            <Dependent Role="Клиент">
+              <PropertyRef Name="Id типа кожи" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Посещение_Клиент">
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиент">
+              <PropertyRef Name="Id клиента" />
+            </Principal>
+            <Dependent Role="Посещение">
+              <PropertyRef Name="Id клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Посещение_Скидка">
+          <End Role="Скидка" Type="Self.Скидка" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Скидка">
+              <PropertyRef Name="Id скидки" />
+            </Principal>
+            <Dependent Role="Посещение">
+              <PropertyRef Name="Id скидки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Посещение_Тип иглы">
+          <End Role="Тип иглы" Type="Self.Тип иглы" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип иглы">
+              <PropertyRef Name="Id типа иглы" />
+            </Principal>
+            <Dependent Role="Посещение">
+              <PropertyRef Name="Id типа иглы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедура_Тип процедуры">
+          <End Role="Тип процедуры" Type="Self.Тип процедуры" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедура" Type="Self.Процедура" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип процедуры">
+              <PropertyRef Name="Id типа процедуры" />
+            </Principal>
+            <Dependent Role="Процедура">
+              <PropertyRef Name="Id типа процедуры" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедуры в посещении_Посещение">
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедуры в посещении" Type="Self.Процедуры в посещении" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Посещение">
+              <PropertyRef Name="Id посещения" />
+            </Principal>
+            <Dependent Role="Процедуры в посещении">
+              <PropertyRef Name="Id посещения" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедуры в посещении_Процедуры клиента">
+          <End Role="Процедуры клиента" Type="Self.Процедуры клиента" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедуры в посещении" Type="Self.Процедуры в посещении" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Процедуры клиента">
+              <PropertyRef Name="Id процедуры клиента" />
+            </Principal>
+            <Dependent Role="Процедуры в посещении">
+              <PropertyRef Name="Id процедуры клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедуры клиента_Пигменты">
+          <End Role="Пигменты" Type="Self.Пигменты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедуры клиента" Type="Self.Процедуры клиента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пигменты">
+              <PropertyRef Name="Id пигмента" />
+            </Principal>
+            <Dependent Role="Процедуры клиента">
+              <PropertyRef Name="Id пигмента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедуры клиента_Процедура">
+          <End Role="Процедура" Type="Self.Процедура" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедуры клиента" Type="Self.Процедуры клиента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Процедура">
+              <PropertyRef Name="Id процедуры" />
+            </Principal>
+            <Dependent Role="Процедуры клиента">
+              <PropertyRef Name="Id процедуры" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BeautyStudioModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пигменты" EntityType="Self.Пигменты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Посещение" EntityType="Self.Посещение" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Процедура" EntityType="Self.Процедура" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Процедуры в посещении" EntityType="Self.Процедуры в посещении" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Процедуры клиента" EntityType="Self.Процедуры клиента" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Скидка" EntityType="Self.Скидка" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Тип иглы" EntityType="Self.Тип иглы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Тип кожи" EntityType="Self.Тип кожи" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Тип процедуры" EntityType="Self.Тип процедуры" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Клиент_Тип кожи" Association="Self.FK_Клиент_Тип кожи">
+            <End Role="Тип кожи" EntitySet="Тип кожи" />
+            <End Role="Клиент" EntitySet="Клиент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Посещение_Клиент" Association="Self.FK_Посещение_Клиент">
+            <End Role="Клиент" EntitySet="Клиент" />
+            <End Role="Посещение" EntitySet="Посещение" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Посещение_Скидка" Association="Self.FK_Посещение_Скидка">
+            <End Role="Скидка" EntitySet="Скидка" />
+            <End Role="Посещение" EntitySet="Посещение" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Посещение_Тип иглы" Association="Self.FK_Посещение_Тип иглы">
+            <End Role="Тип иглы" EntitySet="Тип иглы" />
+            <End Role="Посещение" EntitySet="Посещение" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедура_Тип процедуры" Association="Self.FK_Процедура_Тип процедуры">
+            <End Role="Тип процедуры" EntitySet="Тип процедуры" />
+            <End Role="Процедура" EntitySet="Процедура" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедуры в посещении_Посещение" Association="Self.FK_Процедуры в посещении_Посещение">
+            <End Role="Посещение" EntitySet="Посещение" />
+            <End Role="Процедуры в посещении" EntitySet="Процедуры в посещении" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедуры в посещении_Процедуры клиента" Association="Self.FK_Процедуры в посещении_Процедуры клиента">
+            <End Role="Процедуры клиента" EntitySet="Процедуры клиента" />
+            <End Role="Процедуры в посещении" EntitySet="Процедуры в посещении" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедуры клиента_Пигменты" Association="Self.FK_Процедуры клиента_Пигменты">
+            <End Role="Пигменты" EntitySet="Пигменты" />
+            <End Role="Процедуры клиента" EntitySet="Процедуры клиента" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедуры клиента_Процедура" Association="Self.FK_Процедуры клиента_Процедура">
+            <End Role="Процедура" EntitySet="Процедура" />
+            <End Role="Процедуры клиента" EntitySet="Процедуры клиента" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BeautyStudioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Клиент">
+          <Key>
+            <PropertyRef Name="Id_клиента" />
+          </Key>
+          <Property Name="Id_клиента" Type="Int32" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+          <Property Name="Id_типа_кожи" Type="Int32" />
+          <Property Name="Противопоказания" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Примечание_о_клиенте" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Соглашение" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Как_узнал_о_салоне" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Тип_кожи" Relationship="Self.FK_Клиент_Тип_кожи" FromRole="Клиент" ToRole="Тип_кожи" />
+          <NavigationProperty Name="Посещение" Relationship="Self.FK_Посещение_Клиент" FromRole="Клиент" ToRole="Посещение" />
+        </EntityType>
+        <EntityType Name="Пигменты">
+          <Key>
+            <PropertyRef Name="Id_пигмента" />
+          </Key>
+          <Property Name="Id_пигмента" Type="Int32" Nullable="false" />
+          <Property Name="Название_пигмента" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Процедуры_клиента" Relationship="Self.FK_Процедуры_клиента_Пигменты" FromRole="Пигменты" ToRole="Процедуры_клиента" />
+        </EntityType>
+        <EntityType Name="Посещение">
+          <Key>
+            <PropertyRef Name="Id_посещения" />
+          </Key>
+          <Property Name="Id_посещения" Type="Int32" Nullable="false" />
+          <Property Name="Id_клиента" Type="Int32" Nullable="false" />
+          <Property Name="Дата_и_время_посещения" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Итоговая_цена" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Id_типа_иглы" Type="Int32" />
+          <Property Name="Примечание_о_посещении" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_скидки" Type="Int32" />
+          <NavigationProperty Name="Клиент" Relationship="Self.FK_Посещение_Клиент" FromRole="Посещение" ToRole="Клиент" />
+          <NavigationProperty Name="Скидка" Relationship="Self.FK_Посещение_Скидка" FromRole="Посещение" ToRole="Скидка" />
+          <NavigationProperty Name="Тип_иглы" Relationship="Self.FK_Посещение_Тип_иглы" FromRole="Посещение" ToRole="Тип_иглы" />
+          <NavigationProperty Name="Процедуры_клиента" Relationship="Self.Процедуры_в_посещении" FromRole="Посещение" ToRole="Процедуры_клиента" />
+        </EntityType>
+        <EntityType Name="Процедура">
+          <Key>
+            <PropertyRef Name="Id_процедуры" />
+          </Key>
+          <Property Name="Id_процедуры" Type="Int32" Nullable="false" />
+          <Property Name="Название_процедуры" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_типа_процедуры" Type="Int32" Nullable="false" />
+          <Property Name="Цена_процедуры" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Тип_процедуры" Relationship="Self.FK_Процедура_Тип_процедуры" FromRole="Процедура" ToRole="Тип_процедуры" />
+          <NavigationProperty Name="Процедуры_клиента" Relationship="Self.FK_Процедуры_клиента_Процедура" FromRole="Процедура" ToRole="Процедуры_клиента" />
+        </EntityType>
+        <EntityType Name="Процедуры_клиента">
+          <Key>
+            <PropertyRef Name="Id_процедуры_клиента" />
+          </Key>
+          <Property Name="Id_процедуры_клиента" Type="Int32" Nullable="false" />
+          <Property Name="Id_процедуры" Type="Int32" Nullable="false" />
+          <Property Name="Id_пигмента" Type="Int32" Nullable="false" />
+          <Property Name="Примечание_о_процедуре_клиента" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Пигменты" Relationship="Self.FK_Процедуры_клиента_Пигменты" FromRole="Процедуры_клиента" ToRole="Пигменты" />
+          <NavigationProperty Name="Процедура" Relationship="Self.FK_Процедуры_клиента_Процедура" FromRole="Процедуры_клиента" ToRole="Процедура" />
+          <NavigationProperty Name="Посещение" Relationship="Self.Процедуры_в_посещении" FromRole="Процедуры_клиента" ToRole="Посещение" />
+        </EntityType>
+        <EntityType Name="Скидка">
+          <Key>
+            <PropertyRef Name="Id_скидки" />
+          </Key>
+          <Property Name="Id_скидки" Type="Int32" Nullable="false" />
+          <Property Name="Размер_скидки" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Посещение" Relationship="Self.FK_Посещение_Скидка" FromRole="Скидка" ToRole="Посещение" />
+        </EntityType>
+        <EntityType Name="Тип_иглы">
+          <Key>
+            <PropertyRef Name="Id_типа_иглы" />
+          </Key>
+          <Property Name="Id_типа_иглы" Type="Int32" Nullable="false" />
+          <Property Name="Название_типа_иглы" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Посещение" Relationship="Self.FK_Посещение_Тип_иглы" FromRole="Тип_иглы" ToRole="Посещение" />
+        </EntityType>
+        <EntityType Name="Тип_кожи">
+          <Key>
+            <PropertyRef Name="Id_типа_кожи" />
+          </Key>
+          <Property Name="Id_типа_кожи" Type="Int32" Nullable="false" />
+          <Property Name="Название_типа_кожи" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Клиент" Relationship="Self.FK_Клиент_Тип_кожи" FromRole="Тип_кожи" ToRole="Клиент" />
+        </EntityType>
+        <EntityType Name="Тип_процедуры">
+          <Key>
+            <PropertyRef Name="Id_типа_процедуры" />
+          </Key>
+          <Property Name="Id_типа_процедуры" Type="Int32" Nullable="false" />
+          <Property Name="Название_типа_процедуры" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Процедура" Relationship="Self.FK_Процедура_Тип_процедуры" FromRole="Тип_процедуры" ToRole="Процедура" />
+        </EntityType>
+        <Association Name="FK_Клиент_Тип_кожи">
+          <End Role="Тип_кожи" Type="Self.Тип_кожи" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип_кожи">
+              <PropertyRef Name="Id_типа_кожи" />
+            </Principal>
+            <Dependent Role="Клиент">
+              <PropertyRef Name="Id_типа_кожи" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Посещение_Клиент">
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиент">
+              <PropertyRef Name="Id_клиента" />
+            </Principal>
+            <Dependent Role="Посещение">
+              <PropertyRef Name="Id_клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедуры_клиента_Пигменты">
+          <End Role="Пигменты" Type="Self.Пигменты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедуры_клиента" Type="Self.Процедуры_клиента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пигменты">
+              <PropertyRef Name="Id_пигмента" />
+            </Principal>
+            <Dependent Role="Процедуры_клиента">
+              <PropertyRef Name="Id_пигмента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Посещение_Скидка">
+          <End Role="Скидка" Type="Self.Скидка" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Скидка">
+              <PropertyRef Name="Id_скидки" />
+            </Principal>
+            <Dependent Role="Посещение">
+              <PropertyRef Name="Id_скидки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Посещение_Тип_иглы">
+          <End Role="Тип_иглы" Type="Self.Тип_иглы" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип_иглы">
+              <PropertyRef Name="Id_типа_иглы" />
+            </Principal>
+            <Dependent Role="Посещение">
+              <PropertyRef Name="Id_типа_иглы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедура_Тип_процедуры">
+          <End Role="Тип_процедуры" Type="Self.Тип_процедуры" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедура" Type="Self.Процедура" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип_процедуры">
+              <PropertyRef Name="Id_типа_процедуры" />
+            </Principal>
+            <Dependent Role="Процедура">
+              <PropertyRef Name="Id_типа_процедуры" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Процедуры_клиента_Процедура">
+          <End Role="Процедура" Type="Self.Процедура" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Процедуры_клиента" Type="Self.Процедуры_клиента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Процедура">
+              <PropertyRef Name="Id_процедуры" />
+            </Principal>
+            <Dependent Role="Процедуры_клиента">
+              <PropertyRef Name="Id_процедуры" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Процедуры_в_посещении">
+          <End Role="Посещение" Type="Self.Посещение" Multiplicity="*" />
+          <End Role="Процедуры_клиента" Type="Self.Процедуры_клиента" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BeautyStudioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Клиент" EntityType="Self.Клиент" />
+          <EntitySet Name="Пигменты" EntityType="Self.Пигменты" />
+          <EntitySet Name="Посещение" EntityType="Self.Посещение" />
+          <EntitySet Name="Процедура" EntityType="Self.Процедура" />
+          <EntitySet Name="Процедуры_клиента" EntityType="Self.Процедуры_клиента" />
+          <EntitySet Name="Скидка" EntityType="Self.Скидка" />
+          <EntitySet Name="Тип_иглы" EntityType="Self.Тип_иглы" />
+          <EntitySet Name="Тип_кожи" EntityType="Self.Тип_кожи" />
+          <EntitySet Name="Тип_процедуры" EntityType="Self.Тип_процедуры" />
+          <AssociationSet Name="FK_Клиент_Тип_кожи" Association="Self.FK_Клиент_Тип_кожи">
+            <End Role="Тип_кожи" EntitySet="Тип_кожи" />
+            <End Role="Клиент" EntitySet="Клиент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Посещение_Клиент" Association="Self.FK_Посещение_Клиент">
+            <End Role="Клиент" EntitySet="Клиент" />
+            <End Role="Посещение" EntitySet="Посещение" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедуры_клиента_Пигменты" Association="Self.FK_Процедуры_клиента_Пигменты">
+            <End Role="Пигменты" EntitySet="Пигменты" />
+            <End Role="Процедуры_клиента" EntitySet="Процедуры_клиента" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Посещение_Скидка" Association="Self.FK_Посещение_Скидка">
+            <End Role="Скидка" EntitySet="Скидка" />
+            <End Role="Посещение" EntitySet="Посещение" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Посещение_Тип_иглы" Association="Self.FK_Посещение_Тип_иглы">
+            <End Role="Тип_иглы" EntitySet="Тип_иглы" />
+            <End Role="Посещение" EntitySet="Посещение" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедура_Тип_процедуры" Association="Self.FK_Процедура_Тип_процедуры">
+            <End Role="Тип_процедуры" EntitySet="Тип_процедуры" />
+            <End Role="Процедура" EntitySet="Процедура" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Процедуры_клиента_Процедура" Association="Self.FK_Процедуры_клиента_Процедура">
+            <End Role="Процедура" EntitySet="Процедура" />
+            <End Role="Процедуры_клиента" EntitySet="Процедуры_клиента" />
+          </AssociationSet>
+          <AssociationSet Name="Процедуры_в_посещении" Association="Self.Процедуры_в_посещении">
+            <End Role="Посещение" EntitySet="Посещение" />
+            <End Role="Процедуры_клиента" EntitySet="Процедуры_клиента" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BeautyStudioModelContainer" CdmEntityContainer="BeautyStudioEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BeautyStudioModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Клиент">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Клиент">
+              <MappingFragment StoreEntitySet="Клиент">
+                <ScalarProperty Name="Id_клиента" ColumnName="Id клиента" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+                <ScalarProperty Name="Id_типа_кожи" ColumnName="Id типа кожи" />
+                <ScalarProperty Name="Противопоказания" ColumnName="Противопоказания" />
+                <ScalarProperty Name="Примечание_о_клиенте" ColumnName="Примечание о клиенте" />
+                <ScalarProperty Name="Соглашение" ColumnName="Соглашение" />
+                <ScalarProperty Name="Как_узнал_о_салоне" ColumnName="Как узнал о салоне" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пигменты">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Пигменты">
+              <MappingFragment StoreEntitySet="Пигменты">
+                <ScalarProperty Name="Id_пигмента" ColumnName="Id пигмента" />
+                <ScalarProperty Name="Название_пигмента" ColumnName="Название пигмента" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Посещение">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Посещение">
+              <MappingFragment StoreEntitySet="Посещение">
+                <ScalarProperty Name="Id_посещения" ColumnName="Id посещения" />
+                <ScalarProperty Name="Id_клиента" ColumnName="Id клиента" />
+                <ScalarProperty Name="Дата_и_время_посещения" ColumnName="Дата и время посещения" />
+                <ScalarProperty Name="Итоговая_цена" ColumnName="Итоговая цена" />
+                <ScalarProperty Name="Id_типа_иглы" ColumnName="Id типа иглы" />
+                <ScalarProperty Name="Примечание_о_посещении" ColumnName="Примечание о посещении" />
+                <ScalarProperty Name="Id_скидки" ColumnName="Id скидки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Процедура">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Процедура">
+              <MappingFragment StoreEntitySet="Процедура">
+                <ScalarProperty Name="Id_процедуры" ColumnName="Id процедуры" />
+                <ScalarProperty Name="Название_процедуры" ColumnName="Название процедуры" />
+                <ScalarProperty Name="Id_типа_процедуры" ColumnName="Id типа процедуры" />
+                <ScalarProperty Name="Цена_процедуры" ColumnName="Цена процедуры" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Процедуры_клиента">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Процедуры_клиента">
+              <MappingFragment StoreEntitySet="Процедуры клиента">
+                <ScalarProperty Name="Id_процедуры_клиента" ColumnName="Id процедуры клиента" />
+                <ScalarProperty Name="Id_процедуры" ColumnName="Id процедуры" />
+                <ScalarProperty Name="Id_пигмента" ColumnName="Id пигмента" />
+                <ScalarProperty Name="Примечание_о_процедуре_клиента" ColumnName="Примечание о процедуре клиента" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Скидка">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Скидка">
+              <MappingFragment StoreEntitySet="Скидка">
+                <ScalarProperty Name="Id_скидки" ColumnName="Id скидки" />
+                <ScalarProperty Name="Размер_скидки" ColumnName="Размер скидки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тип_иглы">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Тип_иглы">
+              <MappingFragment StoreEntitySet="Тип иглы">
+                <ScalarProperty Name="Id_типа_иглы" ColumnName="Id типа иглы" />
+                <ScalarProperty Name="Название_типа_иглы" ColumnName="Название типа иглы" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тип_кожи">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Тип_кожи">
+              <MappingFragment StoreEntitySet="Тип кожи">
+                <ScalarProperty Name="Id_типа_кожи" ColumnName="Id типа кожи" />
+                <ScalarProperty Name="Название_типа_кожи" ColumnName="Название типа кожи" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тип_процедуры">
+            <EntityTypeMapping TypeName="BeautyStudioModel.Тип_процедуры">
+              <MappingFragment StoreEntitySet="Тип процедуры">
+                <ScalarProperty Name="Id_типа_процедуры" ColumnName="Id типа процедуры" />
+                <ScalarProperty Name="Название_типа_процедуры" ColumnName="Название типа процедуры" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Процедуры_в_посещении" TypeName="BeautyStudioModel.Процедуры_в_посещении" StoreEntitySet="Процедуры в посещении">
+            <EndProperty Name="Посещение">
+              <ScalarProperty Name="Id_посещения" ColumnName="Id посещения" />
+            </EndProperty>
+            <EndProperty Name="Процедуры_клиента">
+              <ScalarProperty Name="Id_процедуры_клиента" ColumnName="Id процедуры клиента" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

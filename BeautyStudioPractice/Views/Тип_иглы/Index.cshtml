@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BeautyStudioPractice.Тип_иглы>
+
+@{
+    ViewBag.Title = "Тип иглы";
+}
+<style>
+    .inlineb {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+        .inlineb:hover {
+            background-color: #99669a; /* Green */
+            color: white;
+        }
+
+    .inlinel {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .inlinei {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+    ::-webkit-file-upload-button {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+</style>
+<h2>Тип иглы</h2>
+
+<p>
+    @Html.ActionLink("Добавить тип иглы", "Create", new { @Controller = "Тип_иглы" }, new { @class = "inlineb" })
+</p>
+
+@using (Html.BeginForm("Import", "Тип_иглы", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="Data" />
+    <button type="submit" class = "inlineb">Импортировать данные</button>
+}
+
+<br>
+
+@using (Html.BeginForm("Export", "Тип_иглы"))
+{
+    <button class = "inlineb" type="submit">Экспортировать данные</button>
+}
+
+<br>
+
+<table class="table" style="font-size:15px">
+    <tr>
+        <th>
+            @Html.Label("Название типа иглы")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название_типа_иглы)
+            </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id_типа_иглы }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+            </td>
+        </tr>
+    }
+
+</table>
+

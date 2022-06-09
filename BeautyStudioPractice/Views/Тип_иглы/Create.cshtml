@@ -1,0 +1,40 @@
+﻿@model BeautyStudioPractice.Тип_иглы
+
+@{
+    ViewBag.Title = "Добавление типа иглы";
+}
+
+<h2>Добавление типа иглы</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Название_типа_иглы, "Название типа иглы", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Название_типа_иглы, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize" } })
+                @Html.ValidationMessageFor(model => model.Название_типа_иглы, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить тип иглы" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Отмена", "Index", new { @Controller = "Тип_иглы" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,138 @@
+﻿@model BeautyStudioPractice.Клиент
+
+@{
+    ViewBag.Title = "Информация о клиенте";
+}
+
+<h2>Информация о клиенте</h2>
+
+<div>
+    <h4>Клиент</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Фамилия)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Имя)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Имя)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Отчество)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Отчество)
+        </dd>
+
+        <dt>
+            @Html.Label("Номер_телефона")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Номер_телефона)
+        </dd>
+
+        <dt>
+            @Html.Label("Дата рождения")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_рождения)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Противопоказания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Противопоказания)
+        </dd>
+
+        <dt>
+            @Html.Label("Примечание о клиенте")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Примечание_о_клиенте)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Соглашение)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Соглашение)
+        </dd>
+
+        <dt>
+            @Html.Label("Как узнал о салоне")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Как_узнал_о_салоне)
+        </dd>
+
+        <dt>
+            @Html.Label("Тип кожи")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тип_кожи.Название_типа_кожи)
+        </dd>
+
+    </dl>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Дата посещения")
+        </th>
+        <th>
+            @Html.Label("Клиент")
+        </th>
+        <th>
+            @Html.Label("Итоговая цена")
+        </th>
+        <th>
+            @Html.Label("Примечание о посещении")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in (List<BeautyStudioPractice.Посещение>)(ViewBag.ЕгоПосещения))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_и_время_посещения)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Клиент.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Итоговая_цена)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Примечание_о_посещении)
+            </td>
+            <td>
+                @Html.ActionLink("Открыть шаблон Word", "WordOpen", new { @Controller = "Клиент", @idVisit = item.Id_посещения }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " }) |
+                @Html.ActionLink("Детали", "Details", new { @Controller ="Посещение", @id = item.Id_посещения }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Изменить личные данные клиента", "Edit", new { id = Model.Id_клиента }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " }) |
+    @Html.ActionLink("Назад", "Index", new { @Controller = "Клиент" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+</p>

@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Найденные посещения";
+}
+
+<style>
+    .inlineb {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+        .inlineb:hover {
+            background-color: #99669a; /* Green */
+            color: white;
+        }
+
+    .inlinel {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .inlinei {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+</style>
+
+@if (((Посещение[])(ViewBag.НайденныеПосещения)).Length != 0)
+{
+
+    <h2>Найденные посещения</h2>
+
+    <p>
+        @using (Html.BeginForm("FindVisit", "Посещение"))
+        {
+            <input class="inlinei" type="date" name="dt" id="dt">
+            <button class="inlineb" type="submit">Найти посещение</button>
+        }
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Дата посещения")
+            </th>
+            <th>
+                @Html.Label("Клиент")
+            </th>
+            <th>
+                @Html.Label("Итоговая цена")
+            </th>
+            <th>
+                @Html.Label("Примечание о посещении")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in (Посещение[])(ViewBag.НайденныеПосещения))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_и_время_посещения)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Клиент.Фамилия)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Итоговая_цена)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Примечание_о_посещении)
+                </td>
+                <td>
+                    @Html.ActionLink("Детали", "Details", new { id = item.Id_посещения }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h2>Посещений в эту дату нет</h2>
+
+    <p>
+        @using (Html.BeginForm("FindVisit", "Посещение"))
+        {
+            <input class="inlinei" type="date" name="dt" id="dt">
+            <button class="inlineb" type="submit">Найти посещение</button>
+        }
+    </p>
+}

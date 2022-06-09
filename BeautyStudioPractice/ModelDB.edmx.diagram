@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b29c7ce282d347a18adf652ac8a4cb0a" Name="Diagram1">
+        <EntityTypeShape EntityType="BeautyStudioModel.sysdiagram" Width="1.5" PointX="10.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Клиент" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Пигменты" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Посещение" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Процедура" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Процедуры_клиента" Width="1.5" PointX="8.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Скидка" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Тип_иглы" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Тип_кожи" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyStudioModel.Тип_процедуры" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="BeautyStudioModel.FK_Клиент_Тип_кожи" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyStudioModel.FK_Посещение_Клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyStudioModel.FK_Процедуры_клиента_Пигменты" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyStudioModel.FK_Посещение_Скидка" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyStudioModel.FK_Посещение_Тип_иглы" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyStudioModel.FK_Процедура_Тип_процедуры" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyStudioModel.FK_Процедуры_клиента_Процедура" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyStudioModel.Процедуры_в_посещении" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

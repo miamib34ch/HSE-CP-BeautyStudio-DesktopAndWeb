@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "День Рождения";
+}
+
+<h2>Клиенты с Днём Рождения</h2>
+
+<table class="table" style="font-size:15px">
+    <tr>
+        <th>
+            @Html.Label("Фамилия")
+        </th>
+        <th>
+            @Html.Label("Имя")
+        </th>
+        <th>
+            @Html.Label("Отчество")
+        </th>
+        <th>
+            @Html.Label("Номер телефона")
+        </th>
+        <th>
+            @Html.Label("Дата рождения")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (Клиент item in ViewBag.Именинники)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Имя)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Отчество)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Номер_телефона)
+            </td>
+
+            @try
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_рождения).ToString().Remove(10)
+                </td>
+            }
+            catch
+            {
+                @Html.DisplayFor(modelItem => item.Дата_рождения)
+            }
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<BeautyStudioPractice.Клиент>
+
+@{
+    ViewBag.Title = "Клиенты";
+}
+<style>
+    .inlineb {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+        .inlineb:hover {
+            background-color: #99669a;
+            color: white;
+        }
+
+    .inlinel {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .inlinei {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 8px;
+        background-color: white;
+        border: 2px solid #2a172b;
+        color: black;
+        padding: 7px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+    }
+</style>
+
+<h3 class="u-text u-text-default u-text-1">Все клиенты</h3>
+
+<p>
+    @using (Html.BeginForm("FindClient", "Клиент"))
+    {
+        @Html.ActionLink("Добавить нового", "Create", new { @Controller = "Клиент" }, new { @class = "inlineb" })
+        <button class="inlineb" type="submit">Найти клиента</button>
+        <input class="inlinei" type="text" size="40" name="phone" id="phone">
+    }
+</p>
+
+<table class="table" style="font-size:15px">
+    <tr>
+        <th>
+            @Html.Label("Фамилия")
+        </th>
+        <th>
+            @Html.Label("Имя")
+        </th>
+        <th>
+            @Html.Label("Отчество")
+        </th>
+        <th>
+            @Html.Label("Номер телефона")
+        </th>
+        <th>
+            @Html.Label("Дата рождения")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Имя)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Отчество)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Номер_телефона)
+            </td>
+            @try
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Дата_рождения).ToString().Remove(10)
+                </td>
+            }
+            catch
+            {
+                @Html.DisplayFor(modelItem => item.Дата_рождения)
+            }
+            <td>
+                @Html.ActionLink("Добавить посещение", "Visit", new { id = item.Id_клиента }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " }) |
+                @Html.ActionLink("Информация", "Details", new { id = item.Id_клиента }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " }) |
+                @Html.ActionLink("Изменить", "Edit", new { id = item.Id_клиента }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id_клиента },new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2" })
+            </td>
+        </tr>
+    }
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/bindings/inputmask.binding.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.phone.extensions.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/jquery.inputmask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        $('#phone').mask("+7 (999) 999-99-99");
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,31 @@
+﻿@model BeautyStudioPractice.Пигменты
+
+@{
+    ViewBag.Title = "Удаление пигмента";
+}
+
+<h2>Удаление пигмента</h2>
+
+<h3>Вы действительно хотите удалить этот пигмент?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Название пигмента")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_пигмента)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Удалить" class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2" style="display: inline; padding: 0; border: 0; background-color: transparent; font-size: 13.5px; color: #337ab7;" /> |
+    @Html.ActionLink("Отмена", "Index", new { @Controller = "Пигменты" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+</div>
+    }
+</div>

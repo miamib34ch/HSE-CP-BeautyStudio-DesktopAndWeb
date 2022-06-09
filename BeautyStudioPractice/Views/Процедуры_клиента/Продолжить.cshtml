@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Продолжить";
+}
+
+<p>
+    @Html.ActionLink("Добавить ещё процедуру", "Create", new { Controller = "Процедуры_клиента" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " }) | 
+    @Html.ActionLink("Завершить", "Index", new { Controller = "Клиент" }, new { @class = "inlinel u-active-none u-border-none u-button-link u-button-style u-hover-none u-none u-text-body-color u-text-hover-custom-color-2 " })
+</p>
+
