@@ -82,12 +82,14 @@ namespace BeautyStudio
                 посмотретьИнформациюToolStripMenuItem.Enabled = true;
                 изменитьИнформациюToolStripMenuItem.Enabled = true;
                 добавитьПосещениеКлиентуToolStripMenuItem.Enabled = true;
+                удалитьКлиентаToolStripMenuItem.Enabled = true;
             }
             else
             {
                 посмотретьИнформациюToolStripMenuItem.Enabled = false;
                 изменитьИнформациюToolStripMenuItem.Enabled = false;
                 добавитьПосещениеКлиентуToolStripMenuItem.Enabled = false;
+                удалитьКлиентаToolStripMenuItem.Enabled = false;
             }
         }
 
@@ -126,6 +128,21 @@ namespace BeautyStudio
             ((MainForm)MdiParent).changeClient = addClient;
         }
 
+        private void удалитьКлиентаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Password psw = new Password();
+            if (psw.ShowDialog() == DialogResult.OK)
+            {
+                var res = MessageBox.Show("Вы уверены, что хотите удалить клиента?\nТакже будут удалены все его посещения!", $"Удаление клиента {клиентDataGridView.CurrentRow.Cells[1].Value} {клиентDataGridView.CurrentRow.Cells[2].Value} {клиентDataGridView.CurrentRow.Cells[3].Value}", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.OK)
+                {
+                    клиентTableAdapter.DeleteQuery(int.Parse(клиентDataGridView.CurrentRow.Cells[0].Value.ToString()));
+                    MessageBox.Show("Клиент удалён");
+                    Clients_Activated(sender, e);
+                } 
+            }
+        }
+
         #endregion
 
         #region поиск
@@ -161,5 +178,6 @@ namespace BeautyStudio
         }
 
         #endregion
+
     }
 }

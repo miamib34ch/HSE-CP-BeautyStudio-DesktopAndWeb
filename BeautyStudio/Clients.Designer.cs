@@ -59,6 +59,7 @@
             this.surnameSearch = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.удалитьКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.клиентDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beautyStudioDataSet)).BeginInit();
@@ -230,10 +231,11 @@
             this.посмотретьИнформациюToolStripMenuItem,
             this.добавитьПосещениеКлиентуToolStripMenuItem,
             this.toolStripSeparator1,
-            this.изменитьИнформациюToolStripMenuItem});
+            this.изменитьИнформациюToolStripMenuItem,
+            this.удалитьКлиентаToolStripMenuItem});
             this.contextMenuStripClient.Name = "contextMenuStripClient";
             this.contextMenuStripClient.ShowImageMargin = false;
-            this.contextMenuStripClient.Size = new System.Drawing.Size(315, 110);
+            this.contextMenuStripClient.Size = new System.Drawing.Size(315, 136);
             this.contextMenuStripClient.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripClient_Opening);
             // 
             // посмотретьИнформациюToolStripMenuItem
@@ -357,6 +359,14 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // удалитьКлиентаToolStripMenuItem
+            // 
+            this.удалитьКлиентаToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.удалитьКлиентаToolStripMenuItem.Name = "удалитьКлиентаToolStripMenuItem";
+            this.удалитьКлиентаToolStripMenuItem.Size = new System.Drawing.Size(314, 26);
+            this.удалитьКлиентаToolStripMenuItem.Text = "Удалить клиента";
+            this.удалитьКлиентаToolStripMenuItem.Click += new System.EventHandler(this.удалитьКлиентаToolStripMenuItem_Click);
+            // 
             // Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,6 +430,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ToolStripMenuItem удалитьКлиентаToolStripMenuItem;
     }
 }
 

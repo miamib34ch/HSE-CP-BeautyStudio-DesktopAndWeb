@@ -173,6 +173,7 @@
             this.ClientSize = new System.Drawing.Size(1310, 632);
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip);
+            this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
