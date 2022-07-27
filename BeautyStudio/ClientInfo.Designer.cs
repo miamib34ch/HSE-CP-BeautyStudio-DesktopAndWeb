@@ -828,6 +828,7 @@
             this.btnChange.Text = "Редактировать посещение";
             this.btnChange.UseVisualStyleBackColor = true;
             this.btnChange.Visible = false;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // btnDelete
             // 

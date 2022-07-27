@@ -29,7 +29,7 @@ namespace BeautyStudio
             this.client = client;
         }
 
-        private void ClientInfo_Load(object sender, EventArgs e)
+        public void ClientInfo_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "beautyStudioDataSet2.Пигменты". При необходимости она может быть перемещена или удалена.
             this.пигментыTableAdapter.Fill(this.beautyStudioDataSet2.Пигменты);
@@ -45,7 +45,7 @@ namespace BeautyStudio
             Visitings();
         }
 
-        private void ClientInfo_Activated(object sender, EventArgs e)
+        public void ClientInfo_Activated(object sender, EventArgs e)
         {
             this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент, idClient);
             idSkin = (int)клиентTableAdapter.ScalarQuery(idClient);
@@ -290,6 +290,17 @@ namespace BeautyStudio
                     ClientInfo_Activated(sender, e);
                 }
             }
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            фамилияLabel.Visible = true;
+            string Фамилия = фамилияLabel.Text;
+            фамилияLabel.Visible = false;
+            if (new Password().ShowDialog() != DialogResult.OK)
+                return;
+            this.client.Enabled = false;
+            new Visiting(Фамилия,int.Parse(this.id_посещенияTextBox.Text), this.client, this).Show();
         }
     }
 }
