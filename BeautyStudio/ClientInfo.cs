@@ -48,11 +48,17 @@ namespace BeautyStudio
         private void ClientInfo_Activated(object sender, EventArgs e)
         {
             this.клиентTableAdapter.FillById(this.beautyStudioDataSet.Клиент, idClient);
-            this.тип_кожиTableAdapter.FillByIdSkin(this.beautyStudioDataSet.Тип_кожи, idSkin); //не работает тк переменная idSKin не обновляется, также не обновляется игла и скидка
+            idSkin = (int)клиентTableAdapter.ScalarQuery(idClient);
+            this.тип_кожиTableAdapter.FillByIdSkin(this.beautyStudioDataSet.Тип_кожи, idSkin);
             this.посещениеTableAdapter.FillByIdClient(this.beautyStudioDataSet.Посещение, idClient);
             if (id_посещенияTextBox.Text != "")
+            {
                 this.процедуры_клиентаTableAdapter.FillBy(this.beautyStudioDataSet.Процедуры_клиента, int.Parse(id_посещенияTextBox.Text));
-
+                if (label9.Text != "label9")
+                    this.скидкаTableAdapter.FillByIdSale(this.beautyStudioDataSet2.Скидка, int.Parse(label9.Text));
+                if (label6.Text != "label6")
+                    this.тип_иглыTableAdapter.FillByIdIgla(this.beautyStudioDataSet1.Тип_иглы, int.Parse(label6.Text));
+            }
             labelNameSet();
             Visitings();
         }
@@ -211,6 +217,8 @@ namespace BeautyStudio
                 процедуры_клиентаDataGridView.Visible = false;
                 примечание_о_посещенииLabel.Visible = false;
                 примечание_о_посещенииTextBox.Visible = false;
+                btnChange.Visible = false;
+                btnDelete.Visible = false;
             }
             else
             {
@@ -226,6 +234,8 @@ namespace BeautyStudio
                 процедуры_клиентаDataGridView.Visible = true;
                 примечание_о_посещенииLabel.Visible = true;
                 примечание_о_посещенииTextBox.Visible = true;
+                btnChange.Visible = true;
+                btnDelete.Visible = true;
             }
         }   //отображение посещений
 
@@ -264,5 +274,22 @@ namespace BeautyStudio
 
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Password psw = new Password();
+            if (psw.ShowDialog() == DialogResult.OK)
+            {
+                фамилияLabel.Visible = true;
+                string Фамилия = фамилияLabel.Text;
+                фамилияLabel.Visible = false;
+                var res = MessageBox.Show("Вы уверены, что хотите удалить посещение?", $"Удалить посещение {label3.Text} {Фамилия}", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.OK)
+                {
+                    посещениеTableAdapter.DeleteQuery(int.Parse(id_посещенияTextBox.Text));
+                    MessageBox.Show("Посещение удалено");
+                    ClientInfo_Activated(sender, e);
+                }
+            }
+        }
     }
 }

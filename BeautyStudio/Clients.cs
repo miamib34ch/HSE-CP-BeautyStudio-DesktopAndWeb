@@ -96,7 +96,7 @@ namespace BeautyStudio
         private void добавитьПосещениеКлиентуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Visiting visit;
-            visit = new Visiting(клиентDataGridView.CurrentRow.Cells[0].Value.ToString(), this);
+            visit = new Visiting(клиентDataGridView.CurrentRow.Cells[0].Value.ToString(), клиентDataGridView.CurrentRow.Cells[1].Value.ToString(), this);
             visit.MdiParent = this.MdiParent;
             ((MainForm)MdiParent).addVisit = visit;
             visit.Show();

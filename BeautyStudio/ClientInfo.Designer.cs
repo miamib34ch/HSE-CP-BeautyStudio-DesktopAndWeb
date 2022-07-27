@@ -104,6 +104,8 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.процедураTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПроцедураTableAdapter();
             this.пигментыTableAdapter = new BeautyStudio.BeautyStudioDataSetTableAdapters.ПигментыTableAdapter();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             противопоказанияLabel = new System.Windows.Forms.Label();
             примечание_о_клиентеLabel = new System.Windows.Forms.Label();
             соглашениеLabel = new System.Windows.Forms.Label();
@@ -178,7 +180,7 @@
             // 
             this.примечание_о_посещенииLabel.AutoSize = true;
             this.примечание_о_посещенииLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.примечание_о_посещенииLabel.Location = new System.Drawing.Point(9, 463);
+            this.примечание_о_посещенииLabel.Location = new System.Drawing.Point(9, 440);
             this.примечание_о_посещенииLabel.Name = "примечание_о_посещенииLabel";
             this.примечание_о_посещенииLabel.Size = new System.Drawing.Size(218, 21);
             this.примечание_о_посещенииLabel.TabIndex = 32;
@@ -816,6 +818,29 @@
             // 
             this.пигментыTableAdapter.ClearBeforeFill = true;
             // 
+            // btnChange
+            // 
+            this.btnChange.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnChange.Location = new System.Drawing.Point(13, 464);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(103, 45);
+            this.btnChange.TabIndex = 56;
+            this.btnChange.Text = "Редактировать посещение";
+            this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Visible = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDelete.Location = new System.Drawing.Point(122, 464);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(105, 45);
+            this.btnDelete.TabIndex = 57;
+            this.btnDelete.Text = "Удалить посещение";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // ClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -824,6 +849,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1038, 521);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnChange);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.процедуры_клиентаDataGridView);
             this.Controls.Add(this.label8);
@@ -954,5 +981,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button btnChange;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

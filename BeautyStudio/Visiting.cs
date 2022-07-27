@@ -16,7 +16,7 @@ namespace BeautyStudio
         string idClient;
         Clients clients;
 
-        public Visiting(string idClient, Clients clients)
+        public Visiting(string idClient, string familia, Clients clients)
         {
             InitializeComponent();
             this.посещениеTableAdapter.Fill(this.beautyStudioDataSet.Посещение);
@@ -25,6 +25,7 @@ namespace BeautyStudio
             посещениеBindingSource.AddNew();
             this.idClient = idClient;
             this.clients = clients;
+            this.Text = $"Добавление посещения для {familia}";
         }
 
         private void Visiting_Load(object sender, EventArgs e)

@@ -37,7 +37,7 @@ namespace BeautyStudio
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text != "" && comboBox2.Text != "")
+            if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox2.SelectedItem != null && comboBox1.SelectedItem != null)
             {
                 процедуры_клиентаBindingSource.EndEdit();
                 процедуры_клиентаTableAdapter.Update(this.beautyStudioDataSet.Процедуры_клиента);
@@ -46,7 +46,11 @@ namespace BeautyStudio
                 Close();
             }
             else
+            {
                 MessageBox.Show("Выберите процедуру и пигмент!");
+                comboBox2.SelectedIndex = 0;
+                comboBox2.SelectedItem = 0;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
