@@ -101,7 +101,11 @@ namespace BeautyStudio
         {
             if (comboBox1.Text != "Не указано" && процедуры_клиентаDataGridView.Rows.Count != 0)
             {
-                var res = MessageBox.Show("Вы уверены, что хотите добавить данное посещение?", "Добавление посещение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult res;
+                if (itsNotChange)
+                    res = MessageBox.Show("Вы уверены, что хотите добавить данное посещение?", "Добавление посещение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                else 
+                    res = MessageBox.Show("Вы уверены, что хотите обновить данное посещение?", "Обновление посещения", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.OK)
                 {
                     посещениеBindingSource.EndEdit();
