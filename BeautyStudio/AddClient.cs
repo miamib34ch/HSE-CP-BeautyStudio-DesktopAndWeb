@@ -46,7 +46,7 @@ namespace BeautyStudio
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (клиентTableAdapter.GetDataBy1(maskedTextBox1.Text) != null && this.Text == "Добавление клиента")
+            if (клиентTableAdapter.GetDataBy1(maskedTextBox1.Text).Count != 0 && this.Text == "Добавление клиента")
             {
                 MessageBox.Show("Клиент с таким номером уже есть!");
             }

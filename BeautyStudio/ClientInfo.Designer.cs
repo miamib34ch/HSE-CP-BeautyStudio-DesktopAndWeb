@@ -378,6 +378,7 @@
             // 
             // примечание_о_посещенииTextBox
             // 
+            this.примечание_о_посещенииTextBox.BackColor = System.Drawing.Color.White;
             this.примечание_о_посещенииTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.примечание_о_посещенииTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.посещениеBindingSource, "Примечание о посещении", true));
             this.примечание_о_посещенииTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
